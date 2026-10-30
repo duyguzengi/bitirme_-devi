@@ -1,0 +1,18 @@
+{
+  "baseline": {
+    "run_name": "baseline",
+    "avg_latency_ms": 74.98,
+    "p95_latency_ms": 88.68,
+    "fps": 13.3,
+    "imgsz": 640,
+    "device": "mps (Apple Silicon)"
+  },
+  "p2head": {
+    "run_name": "p2head",
+    "avg_latency_ms": 116.61,
+    "p95_latency_ms": 121.03,
+    "fps": 8.6,
+    "imgsz": 640,
+    "device": "mps (Apple Silicon)"
+  }
+}

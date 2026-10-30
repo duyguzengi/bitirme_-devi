@@ -1,0 +1,1236 @@
+
+--- PAGE 1 ---
+1
+Advancing Earth Observation: A Survey on
+AI-Powered Image Processing in Satellites
+Aidan Duggan1, Bruno Andrade1, and Haithem Afli1, (Senior Member, IEEE)
+1Computer Science Department, Munster Technological University, Cork, T12 P928 Ireland
+Abstract— Advancements in technology and reduction in it’s cost have led to a substantial growth in the quality &
+quantity of imagery captured by Earth Observation (EO) satellites. This has presented a challenge to the efficacy
+of the traditional workflow of transmitting this imagery to Earth for processing. An approach to addressing this
+issue is to use pre-trained artificial intelligence models to process images on-board the satellite, but this is difficult
+given the constraints within a satellite’s environment. This paper provides an up-to-date and thorough review of
+research related to image processing on-board Earth observation satellites. The significant constraints are
+detailed along with the latest strategies to mitigate them.
+Index Terms— smart satellite, deep learning, energy optimisation, satellite data analysis, edge computing
+✦
+1 I NTRODUCTION
+T
+HERE has been a huge increase in the number of satel-
+lites being launched into space in recent years. As
+of November 2024, the satellite tracking website “Orbit-
+ing Now” [1] lists over 10,500 active satellites in various
+Earth orbits. While the majority (80%) are associated with
+communications 1052 of them are earth observation (EO)
+satellites generating thousands of terabytes of data every
+day. Relaying this volume of data to earth is not feasible
+through traditional radio frequency (RF) communication
+channels so other solutions have been investigated includ-
+ing processing the data on board the satellite where the data
+is produced. This solution is similar to the introduction of
+edge computing which is a model of distributing computa-
+tion closer to the source of data, developed to manage the
+proliferation of devices connected to the internet commonly
+called Internet-of-Things(IoT). Machine Learning (ML) has
+been a key enabler to the success of edge computing.
+An article published at the end of 2020 by Furano et al.
+[2] explores some of the compelling reasons that necessitate
+the deployment of ML on-board a satellite to do image
+processing. This includes the growth in the volume of data
+being produced by sensors not being matched by a cor-
+responding increase in data download capacity, restricted
+power in smaller satellites to download large images and
+issues with ground station availability. The challenges are
+also pointed out including older hardware with insufficient
+resources, lack of on-board storage or working memory and
+limited availability of datasets required for model training
+• This research was conducted with the financial support of the ADV ANCE
+CRT Ph.D. Cohort under Grant Agreement No.18/CRT/6222 and the
+ADAPT SFI Research Centre at Munster Technological University. The
+ADAPT SFI Centre for Digital Media Technology is funded by Science
+Foundation Ireland through the SFI Research Centres Programme and
+is co-funded under the European Regional Development Fund (ERDF)
+through Grant 13/RC/2106 P2
+and evaluation. The benefits identified were better respon-
+siveness because of the reduction in data to be downloaded,
+improved results (including accuracy), bandwidth savings
+so less pressure on the communication channels and more
+flexibility because images can be selected or filtered depend-
+ing on the application.
+The concept of an Intelligent EO satellite system was
+introduced as far back as 2003 by Zhou and Kafatos [3]
+envisioning dynamic on-board integration of sensors, data
+processors and communication systems. Since then there
+have been multiple research efforts to try and achieve this
+vision. Prior reviews of the domain include Miralles et al.
+[4] who did a very broad overview on research of ML in the
+EO domain for both on-ground and on-board operations. It
+covers topics from mission planning, telecommunications to
+on-board image processing. The same authors updated the
+review in early 2023 [5] but there were very few additions
+to the on-board image processing section. While it presents
+a broad review across many aspects of ML in EO it does not
+have the depth to cover all of the literature of the specific
+domain of on-board image processing in detail. In early
+2022, Zhang et al. [6] reviewed developments in intelligent
+remote sensing satellite systems over the previous decade
+including sections on the remote sensing satellite platform,
+imaging payload and onboard processing systems. It also
+outlines the broader challenges of distributing the satellite
+data available to a large audience and documenting the im-
+provements this brings regarding privacy protection, soci-
+etal values, and laws regarding the sharing and distribution
+of data and information. In August 2023 Gardill et al. [7]
+presented a summary of findings related to developments
+and emerging applications of the space edge-computing
+and onboard artificial intelligence. It focuses on the space
+communication link and benchmarks deep-learning models
+on 2 commercial off the shelf edge processors on board the
+arXiv:2501.12030v1  [cs.LG]  21 Jan 2025
+--- PAGE 2 ---
+2
+International Space Station(ISS). In early 2024 Thangavel et
+al. [8] provided a review of AI for satellite operations, with
+a special focus on Distributed Satellite Systems. A great
+overview of the various spaceflight systems is given along
+with how satellite tasks can be made autonomous through
+the use of AI. There is very little information on processing
+imagery on-board a satellite but a strong argument for doing
+so is made, making reference to [2].
+To the best of our knowledge none of the existing
+reviews are dedicated to the deployment of ML onto EO
+satellites for the purpose of on-board processing. In such a
+dynamic domain there is a need for a deep, thorough and
+up to date review of all the developments to assist anyone
+trying to overcome the challenges. Specifically this survey
+addresses the following:
+1) What are the most challenging constraints to de-
+ploying pre-trained ML algorithms on-board an EO
+satellite to facilitate on-board image processing?
+2) What techniques are most effective in overcoming
+these constraints?
+The paper is organised as follows. Section 2 gives back-
+ground information on satellites including how they are
+classified, the cost, typical on-board hardware and sensors
+and well as the data produced and how it in handled. Then
+a brief background is given on the evolution of Artificial
+Intelligence and Edge Computing. Section 3 outlines the
+significant constraints to deploying AI on-board satellites
+in detail. Section 4 described various way to mitigate these
+constraints.
+2 B ACKGROUND
+2.1 Satellites
+In 1957 the first artificial satellite (called Sputnik) was
+launched by the Soviet Union. This was the culmination
+of many years research dating back over 3 centuries when
+Isaac Newton efforts attempted to explain the motion of the
+natural satellites such as the moon that orbit around planets
+[9]. This started an industry that has resulted in over 10,500
+satellites launched from 105 different countries.
+2.1.1 Satellite Classification
+Satellites are primarily classified by mission
+• Communication - transmitting telecommunication
+signals such as TV , phone and Internet from one
+location on earth to another. These are traditionally
+located 35,785 km above the earth which is called
+geostationary or geosynchronous orbit (GEO), be-
+cause they orbit at the same rotation speed as earth
+staying over the same point of earth. However this
+is rapidly changing so satellites at lower altitudes of
+600-800 km (Low Earth Orbit - LEO) will dominate
+the future telecommunications market.
+• Earth Observation - As the name suggests this class
+of satellite is primarily used to take images of the
+earth used for various applications such as land/sea
+monitoring & meteorology. They generally operate
+at LEO altitudes taking around 90 minutes (altitude
+dependant) to orbit the earth [10]
+• Navigation / Global Positioning - provides position,
+tracking & navigation abilities to devices on earth
+containing a electronic receiver using time signals
+transmitted along a line of sight from a combination
+of several satellites. They orbit at around 20,000 km
+(MEO - Medium Earth Orbit) taking around 12 hours
+to orbit the earth
+2.1.2 Satellite Cost
+Historically satellites were custom built for specific tasks
+and cost in the order of hundreds of millions of dollars, so
+were only accessible to governments or very large compa-
+nies. As new technologies, cheaper materials & fuel types
+have emerged along with the miniaturisation and standard-
+isation of electronic parts, satellites have got smaller and
+considerably cheaper and this trend is predicted to continue
+[11]. Several commercial companies (eg. SpaceX in 2012)
+have entered the market and now offer a ”Rideshare” model
+for small satellite companies to hitch a ride to space. A small
+satellite can now be built and deployed in orbit for as little as
+half a million dollars. This has democratised the domain and
+made it accessible to a much wider population and given
+rise to opportunities for both the commercial and research
+sectors.
+2.1.3 Satellite Hardware
+A satellite is designed primarily to stay functional in space
+and communicate the data acquired from it’s payload (sen-
+sors) to the ground station. Figure 1 shows the classical lay-
+out of a satellite with data handling being based on a central
+on-board computer (OBC) with minimal data processing. In
+Fig. 1. LEO Satellite Block Diagram [12]
+1999 [13] Puig-Suari and Bob Twiggs developed the Cube-
+Sat specifications to promote the design of small satellites
+intended for low Earth orbit (LEO). This form factor, of
+10 cm cubes weighing no more than 2kg, has become the
+de-facto standard for small EO satellites (smallsats) design.
+Satellites are defined by the number of cubes (e.g. 6U is 6
+cubes stacked in a 2 cubes side-by-side form).
+2.1.4 Satellite Sensors
+There are 2 broad categories of earth observation sensors as
+shown in Figure 2
+• Passive - gathers radiation reflected or emitted from
+a target which have external sources. In Figure 2
+--- PAGE 3 ---
+3
+Fig. 2. Remote Sensing [14]
+there are 2 examples of external sources (1 - Sun, 2
+- Earth). These are generally categorised as optical
+sensors operating at wavelengths typical for visible
+light(430–720 nm) or for infra-red(750–950 nm) and
+while they can get high resolution of small areas,
+they can only function during the day (i.e. need
+sunlight) and are affected by cloud and weather.
+Hyperspectral sensors collect information as a set
+of ’images’. Each image represents a narrow wave-
+length range of the electromagnetic spectrum. These
+’images’ are combined to form a three-dimensional
+hyperspectral data cube and can be used to detect
+certain minerals or objects if their spectral properties
+are known.
+• Active - Use an internal source which emits en-
+ergy(radiation) directed at a target and a sensor
+gathers the reflected radiation. The difference in time
+between the emission and gathering is then used
+to identify properties of the target. These are more
+generally referred to as radar based (e.g. synthetic
+aperture radar (SAR)) operating at longer wave-
+lengths (e.g.. microwaves) and can operate at any
+time and will not be impacted by weather. This is
+advantageous if constant coverage is required (e.g,
+for monitoring change at reduced spatial resolution).
+2.1.5 Satellite Data
+In 2017 an article by Intel [15] coined the term ”Space Data:
+The Final Analytics Frontier” to bring peoples attention to
+the potential value of the data being obtained from satellites
+orbiting the earth thousands of miles above us. There has
+been a boom in the industry in the last 15 years due to the
+increase in the quality and quantity of imagery available.
+The global Small Satellite market size is projected to grow
+annually by over 20% to $6.6 by the end of 2024 and to over
+$14 billion by 2028 [16]. The Copernicus is the European
+Union’s Earth Observation Programme and provides freely
+available 20TB of data from it’s fleet of 3 Sentinel Satellites to
+the community [17]. Commercial companies also offer over
+150TB per day. The term ”big Earth data” is now used to de-
+scribe the massive earth observation datasets. With SpaceX
+planning to launch 12000 satellites by 2025 [18] along with
+many others that data volume is set to grow exponentially.
+Imagery of the earth gathered from EO satellites are used
+for many purposes from monitoring weather, land usage,
+conflicts, traffic, transportation and many others.
+Traditionally data is accumulated on the satellite and
+sent to an earth based antenna once it passes over ground
+stations [19] which are located around the world or alter-
+natively via a data relay satellite to the ground station.
+Then the data is transferred to where we need it on earth
+for processing and analysis. There has been ongoing re-
+search [20] into improving the downlink bandwidth such
+as switching from X-Band to Ka-Band [21] but these im-
+provements have been by a factor of 10 compared to the
+200 times increase in data size. SAR image sensors are now
+capable of acquiring 2-5 TB of raw high resolution imagery
+per day which presents many opportunities but also huge
+challenges. According to Furano et al. [22] the capability
+that sensors have to produce data increases by a factor of
+100 every generation, while our capabilities to download
+data are increasing, but only by a factor of three, four, five
+per generation. This fact combined with the predicted rise in
+the number of satellites is going to result in an exponential
+and possibly unsustainable rise in demand for the current
+communication infrastructure.
+2.1.6 Satellite Image Processing
+Satellite image processing refers to the operation of ex-
+tracting useful information from imagery acquired from a
+satellite. The processing steps are broken down as follows
+[23]
+• Pre-processing - the operations required prior to the
+main data analysis to correct the image for any
+sensor irregularities and remove unwanted sensor
+distortion or noise. The categories of pre-processing
+include geometric correction, atmospheric correction
+and radiometric correction
+--- PAGE 4 ---
+4
+• Image Enhancement - improving the image quality
+to a better and more understandable level for feature
+extraction or image interpretation. The categories of
+enhancement include radiometric, spatial, spectral
+and geometric
+• Image Transformation - generation of new images
+from current sources to highlight particular features
+or properties of interest. An example is to combine
+2 images of the same area within different spectral
+bands or taken at different times.
+• Image Classification and Analysis - the final step is
+using the outputs of the previous steps to isolate
+what we are looking for. A review of the various
+types of satellite image classification and analysis
+was done in 2015 [24] and also in 2019 [25] which in-
+cluded references to several data sets for evaluating
+algorithms and another more recently [26]. They are
+subdivided between supervised (requiring a dataset
+containing labeled images of the object of interest
+used for training a model) and unsupervised (clas-
+sifying an unlabeled dataset using techniques such
+as clustering to identify unlabeled classes/clusters)
+The use of deep learning techniques [27] has revo-
+lutionised the area of image analysis, classification
+and segmentation [28]. Convolutional Neural Net-
+works(CNNs) is now regarded as the most dominant
+approach when it comes to image classification. [29]
+2.2 Artificial Intelligence
+Around the same time the 1st satellite was being launched,
+the domain of Artificial Intelligence (AI) was being cre-
+ated at a workshop at Dartmouth College [30]. Artificial
+intelligence techniques act as an enabler to extract value
+from data by identifying unknown patterns and objects. The
+concept of a machine replicating the human brain seemed
+like science fiction and despite a lot of investment in time
+and money it remained beyond the grasp of researchers for
+many years after. It wasn’t until the late 20th century due to
+the improvement in computational hardware that AI started
+to show it’s true potential with the use of machine learning
+(ML) models in headline applications such as autonomous
+vehicles, medical diagnosis and facial recognition. ML is a
+computationally demanding process and requires sufficient
+hardware to meet the demand.
+2.3 Edge Computing
+Edge computing is the term given to the distributed com-
+puter paradigm where data processing occurs at or close to
+where the data is produced and/or consumed at the ”edge”
+of the network. While the term was originally coined back
+in the 1990’s to describe the mechanism to deliver website
+content from a local server, it is more recently associated
+with the concept of Internet of Things (IoT), where devices
+embedded with sensors connect and exchange data with
+other devices or system connected to the internet. These IoT
+devices have grown in number at a enormous rate as they
+are now deployed in everyday consumer devices such as
+smart watches, home heating systems and fridges as well as
+vehicles and many healthcare devices to name but a few. The
+latest IoT Analytics report [31] shows there are almost 15
+billion connected IoT devices around the globe worth about
+$800 billion and this is expected to grow to over 25 billion
+by 2030. These produce too much data to be handled by a
+cloud computing infrastructure which involves transporting
+the data over a network to a hosted processing service so the
+concept of having the service closer to the data was more
+applicable. The benefits include an improved response time
+for any applications that need to consume the output of the
+processing, while also reducing the demand on the network
+as the data doesn’t have to travel so far.
+There is a parallel between the problem of handling the data
+produced by the billions of IOT devices and the issue of
+handling the large volume of data being produced by EO
+satellites so there may be lessons to be learned from the
+edge computing domain which has been evolving over the
+last 20 years.
+3 C ONSTRAINTS TO DEPLOYMENT OF MACHINE
+LEARNING TO SATELLITES
+T
+HERE are multiple constraints that make it challenging
+to deploy machine learning (ML) models to EO satel-
+lites. We are focusing on deploying pretrained ML models so
+we are assuming the ML training is done on well resourced
+hardware pre-deployment.
+3.1 Power
+The only power source available to a satellite during it’s
+lifetime is the power it gets from it’s solar panels and stored
+in batteries on board. The design of the satellite power
+system has to balance power consumption with power gen-
+eration as described by Lee et al.[32]. The amount of power
+generated by a Low Earth Orbit (LEO) satellite is influenced
+by various factors (eg Solar panel size, efficiency & satellites
+orbit) all of which are taken into account during the design
+phase. Some examples of satellites currently in orbit listed
+in the UCS Satellite Database [33] are Landsat 8 launched
+in 2013 which generates 4.3KW or EMISat launched in 2022
+which generates just 0.8W. Running a ML model on board
+will add to the power consumption demand in an environ-
+ment where power is already very constrained and tightly
+managed so this will have to be fully understood to ensure
+the power generation can meet the increased demand.
+3.2 Processing Capability
+Processing capability refers to the ability of a computing
+system or device to execute computational tasks efficiently
+and effectively. It is a measure of the system’s ability to per-
+form calculations, process data, execute algorithms, and run
+software applications within a given timeframe. Lentaris
+[34] does a review of the typical standard space processing
+technologies and their applications. Routine housekeeping
+tasks such as attitude control, command decoding, and sys-
+tems management require very little processing power and
+can be supported by simple 8-bit microcontrollers(MCU),
+whereas more intensive tasks such as data compression,
+formatting or encryption require more advanced micropro-
+cessors. These tasks usually require a dedicated controller
+to interface with the platform. This will typically be either a
+microprocessor or a digital signal processor (DSP) device.
+--- PAGE 5 ---
+5
+ML models typically involve a huge number (millions) of
+calculations, carried out by a processor which has to have
+sufficient computing capability to support these calcula-
+tions. This is a large step up from basic tasks such as altitude
+control or data encryption and represents a large hurdle
+to be cleared to support deployment to a satellite. The
+processors that can meet this compute demand are typically
+a large GPU, multi core CPU or a combination of the 2 which
+take up significant space.
+3.3 Memory
+The types of memory used on EO satellites are Volatile, Non-
+Volatile and Mass Memory. Each serve different purposes.
+The volatile memory serves the following purposes:
+• Program Execution: store the satellite’s operating
+system, onboard software, and running processes.
+This includes the instructions and data needed to ex-
+ecute commands, perform computations, and control
+satellite subsystems.
+• Data Buffering: serves as a temporary buffer for
+storing incoming data from onboard sensors or com-
+munication systems before it is processed, analyzed,
+or transmitted.
+• Temporary Storage: store intermediate results and
+variables generated during onboard data processing
+tasks, such as image correction, compression, or fea-
+ture extraction.
+• System State: holds the current state of the satellite’s
+subsystems, including sensor configurations, teleme-
+try data, and system diagnostics
+Common types of volatile memory used in EO satellites
+include Dynamic Random Access Memory (DRAM) which
+provides fast read and write access but requires continuous
+power to retain data and Static Random Access Memory
+(SRAM) which is faster and more power-efficient than
+DRAM and often used for critical subsystems where fast
+access times are essential. The size of volatile memory
+depends on factors such as the complexity of the satel-
+lite’s systems and the processing requirements of onboard
+algorithms but typically ranges from several megabytes to
+gigabytes. Adding ML data processing will demand signif-
+icant amount of volatile memory during inference and this
+is where the biggest constraint will be.
+Non-volatile memory serves the following purposes:
+• Permanent Storage: store essential software,
+firmware, operating system files, and configuration
+data required for the satellite’s operation.
+• Data Logging: log telemetry data, sensor mea-
+surements, satellite health diagnostics, and other
+mission-critical information over extended periods.
+This data can be later retrieved and analyzed for
+mission planning, troubleshooting, and performance
+evaluation.
+Common types of non-volatile memory include Flash
+memory (which offers fast read and write access, low
+power consumption, and resistance to shock and vibration)
+and Electrically Erasable Programmable Read-Only Mem-
+ory(EEPROM) (used for storing small amounts of configu-
+ration data, calibration parameters, and persistent settings)
+Memory mass units (MMU) serves as a buffer for storing
+large volumes of data captured by the satellite’s sensors. It
+allows the satellite to continue collecting data even when the
+ground station is not in range or when downlink bandwidth
+is limited. It stores various types of observational data,
+including images, spectral measurements, telemetry data,
+and sensor readings and usually organized into files or
+data packets for efficient storage and retrieval. The amount
+of MMU memory required depends on factors such as
+the type and number of imaging sensors, the resolution
+(spatial - number of pixels in the image & spectral - number
+of spectral bands), swath (area imaged on the surface) &
+revisit time (the time between subsequent observations of
+the same area of interest). Typical mass memory sizes range
+from several gigabytes to terabytes. It is provided in the
+form of Hard Disk Drives (HDD) and Solid State Drives
+(SSD) and is sometimes included as a module within the
+On Board Computer (OBC). Any machine learning model
+deployed will be stored within the MMU so will have to be
+a consideration when sizing the MMU.
+3.4 Radiation
+Space is one of the most extreme environments imaginable.
+During launch, the contents of a spacecraft will be subject
+to intense and violent shaking along with extremely loud
+sound waves. Once it gets to space it will them have to
+survive very high and low temperatures but probably the
+biggest risk to the functioning of any electronic devices is the
+radiation that exists in space. Maurer et al. [35] outlines the
+damaging impact that space radiation has on the electronics
+within space systems. Lange et al. [36] surveys the obustness
+of on-board ML models to Radiation
+4 M ITIGATING THE CONSTRAINTS TO DEPLOY -
+MENT OF MACHINE LEARNING TO SATELLITES
+T
+HERE are several approaches to mitigating the con-
+straints outlined in section 3 and these are outlined in
+this section.
+4.1 Power
+During the design of a satellite, a power budget is produced
+to balance all the power required for each subsystem with
+the power generated by the solar panels. A good example of
+this is shown in Figure 3 prodcued by Dahbi et al. [37] who
+did a power budget for a 1U CubeSat orbiting the earth 15
+times per day which equates to a 94.6 minute orbit (59mins
+/ 0.99hr of which are in daylight) and has a power system
+that delivers 1568mWh per orbit.
+Fig. 3. Power consumption during day with transmission & payload ( [37]
+--- PAGE 6 ---
+6
+Figure 3 shows the energy consumption during daylight
+during which the satellite sensors (payload) are measuring
+and data is transmitted (COM-TX) data. This is the max
+consumption scenario but there’s 15 other less consumption
+scenarios when the satellite may not be in daylight, measur-
+ing or transmitting data. This is all taken into account when
+balancing the power budget so that the total consumption
+does not exceed the power generated. If this is not the
+case then either the power system has to be modified to
+increase the power delivered or the power consumption
+reduced. This is generally done by either reducing how
+often the satellite payload operates or the number or times
+data is transmitted. In the example case the author decided
+the satellite would use the payload one orbit per day and
+communicate to the ground 4 orbits per day with the
+other 10 orbits used for generating power. The cumulative
+Fig. 4. Power consumption over 24 hours
+consumption of each subsystem over the full day (24 hours)
+is shown in Table 4. The biggest consumers over the day
+are the Electrical Power System (EPS), Beacon, the On board
+computer (OBC) and data transmission to (COM-TX) and
+from (COM-RX) the ground.
+Using ML to process the data on board will consume a large
+amount of power. However a likely benefit to doing on
+board processing will be to reduce the volume of data that
+needs to be transmitted which directly correlates to a reduc-
+tion in the transmission power consumption. Minimising
+the power consumed during data processing and maximis-
+ing the reduction in data transmission consumption is the
+key to justifying the deployment of ML on board. There are
+various strategies to reducing the power consumption both
+at the hardware and the software level.
+Computer hardware systems technology has seen huge
+changes in recent years, well documented by Gill et al.
+[38], driven by rapid technical and user-driven evolution,
+producing new paradigms such as cloud, fog & edge com-
+puting. The proliferation of billions of embedded computing
+devices to every corner of the world has led to many
+challenges to enable computing in low power environ-
+ments. Sze et al. [39] explored how some of the challenges
+can be addressed at various levels of hardware design
+ranging from architecture, hardware-friendly algorithms,
+mixed-signal circuits, and advanced technologies (including
+memories and sensors). Power consumption is divided into
+two modes: active consumption takes place during data
+processing while static consumption takes place when data
+processing is not happening. Techniques such as Dynamic
+voltage and frequency scaling (DVFS), Adaptive voltage
+scaling (AVS) & Dynamic powerswitching (DPS) can save
+significant power within active mode while a technique
+known as static leakage management can produce several
+very low power scenarios during the static mode. The
+author points out the efficiency benefits of performing
+MAC operations in parallel through the use of temporal
+architectures within both CPU and GPU. He also discusses
+the broader area of optimisation and energy efficiency of
+using accelerators. An AI accelerator is a high-performance
+parallel computation device that is specifically designed for
+the efficient processing of AI workloads. They draw much
+(100-1,000x) less power and are faster & more scalable than
+general purpose devices. Reuther et al. [40] did a survey of
+AI accelerators and processors plotting their performance
+and power values on a scatter graph. They span from
+extremely low power through embedded and autonomous
+applications to data center class accelerators for inference
+and training. Ortiz et al. [41] investigated the use of acceler-
+ators to do onboard processing in satellite communications
+identifying AI-capable chipsets that include an On-Chip
+accelerators as well as a CPU that could be deployed on
+board a satellite. Low ( <20W) powered options include the
+Intel/Movidius Myriad Family and several from the Nvidia
+Jetson family such as the Nano and TX2. The NVIDIA
+Jetson Nano is leading the way in enabling consumers to
+equip billions of low-power AI/ML systems across every
+domain and compares very favourably in terms of power
+consumption [42].
+On the software side there are a few approaches to reduce
+the power consumption.
+Model Architecture: The design of the ML model used is
+made up of a combination of multiple layers. The unique
+combination of layers and layer parameters is called the
+model architecture and this has a direct impact into how
+much hardware resources are required to run the model.
+Many different model architectures have been developed
+since LeNet-5 which is regarded as a pioneering 7-level
+CNN was created in 1998. The aim of the model design was
+traditionally around maximising accuracy but more recently
+has included optimising the model, so it can be deployed
+to the available resources on the destination environment.
+AlexNet [27] which won the ImageNet competition in 2012,
+was considered a revolutionary advancement outperform-
+ing other models by over 10%. It consisted of five convolu-
+tional layers and three fully-connected layers with several
+innovations including: the ReLU activation function instead
+of the tanh function, use of Dropout which randomly drops
+neurons to avoid overfitting, a design which could use mul-
+tiple GPUs in parallel & the use of augmentation to create
+new data based on old data to also mitigate overfitting. Two
+years later the next big step improvement was by a group
+called the Visual Geometry Group (VGG) from Oxford
+University who created VGGNets [43] which were a num-
+ber of very deep CNN’s, using smaller 3 × 3 convolution
+kernels (filters) rather than 5 × 5 and supporting up to 19
+layers all of which use ReLU activation, and achieving even
+better results than AlexNet. In the same year GoogleNet
+(or Inception-v1) introduced the idea of an Inception layer,
+--- PAGE 7 ---
+7
+running multiple convolutions in parallel. The number of
+layers was increased up to 22, but produced a large im-
+provement in accuracy, pushing VGG into 2nd place for
+the 2014 ImageNet Classification competition. There were
+4 different versions of Inception created with various archi-
+tecture improvements before it was merged in 2016 with
+ResNet by Szegedy et al.[44]. ResNet had been introduced
+in 2015 by He et al. [29] in a proposal to solve the Vanish-
+ing Gradient Problem associated with deep layer network
+training as outlined by Hochreiter [45]. ResNet introduced
+the idea of “identity shortcut connection” that effectively
+skips layers. The authors demonstrated the approach by
+training a 1001 layer network to outperform less deep
+networks and it went on to win the ImageNet competition
+that year. It spawned several significant variants such as pre-
+activation [46] described as “a robust initialization method
+that particularly considers the rectifier nonlinearities” which
+proved to be the first model to surpass the reported human-
+level performance on ImageNet classification (5.1%) [47]. In
+2018 SENet [48] introduced another irregular module called
+Squeeze-and-excitation which improved the accuracy but
+at a huge computational cost of 100 million paramaters
+and over 10 billion operations. This was the last of the
+really deep and computationally expensive models with the
+focus since then being more on on designing lightweight
+and efficient networks for resource limited platforms such
+as IoT deployments, mobile devices or embedded devices.
+Squeezenet [49] was the one of the earliest models aimed
+at resource constrained devices employing design strategies
+to reduce the number of parameters while maintaining
+high accuracy. In 2018, Tan et al. proposed Mnasnet [50]
+generated from an automated neural architecture search
+(NAS) where the model latency is set as the main objec-
+tive along with accuracy with the focus on deployment to
+mobile devices. MobileNets [51] is a series of 3 lightweight
+models introduced by Google and was TensorFlow’s first
+mobile computer vision models. It uses depthwise separable
+convolutions and less layers and parameters compared to
+previous models. The two ShuffleNet models [52] continued
+the trend focusing on mobile platforms with very limited
+computing power combining pointwise group convolution
+(ie 1x1 kernel that iterates through every single point)
+and channel shuffle within just 11 layers with accuracy
+comparable to MobileNet with 13× speedup compared to
+AlexNet. PeleeNet [53] is a variation of DenseNet using
+regular convolutions instead of the less eficient depthwise
+convolutions. The table in Fig 5 shows some of the well
+known models including several lightweight models along
+with their number of layers, parameters and flops on the
+PyTorch framework and trained on the ImageNet dataset.
+Optimisation: Techniques that have been developed to
+adapt machine learning models to enable them to be
+deployed on hardware subject to resource constraints.
+Collectively they are called acceleration or optimisation
+techniques. The goal of the optimisation is to reduce
+the computational complexity during training/inference
+and hence allow the model to function on less resourced
+platforms. V ´estias [54] investigated the high redundancy
+within CNN models suggesting scope for a significant
+simplification of the model. There have been many efforts
+Fig. 5. Comparison of models FLOPS
+to try and take advantage of this redundancy which broadly
+classify optimisation approaches under the following:
+• Layer decomposition - an approach to reduce the
+network computational complexity by reducing the
+size of individual CNN layers.
+• Knowledge Distillation - a training strategy of dis-
+tilling and transferring knowledge from a large
+(teacher) model (or an ensemble/group of models)
+to a smaller (student) one to improve accuracy and
+speed
+• Pruning - removing parameters deemed unnecessary
+• Quantization - reducing the bitwidth of values by
+encoding full-precision parameters (ie weights and
+activations) with lower-precision ones
+Duggan et al. [55] investigated the power consumption
+behaviour of various ML algorithms deployed to a resource
+limited ‘edge’ devices such as a satellite and also the effec-
+tiveness of quantisation in reducing the power consumption
+during inference of up to 87% without significantly affecting
+accuracy.
+4.2 Processing Capability
+Advances in processor chips have improved the computing
+capability without impacting the size or power require-
+ments and opening up satellite on board processing oppor-
+tunities.
+In 2018 George et al. [56] investigated the challenges and
+opportunities for onboard computers within small satellites.
+Two possible approaches are proposed to meet the chal-
+lenge:
+• Reconfigurable Computing - this is an alternative
+architecture to the expensive custom built hard-
+ware such as application-specific integrated circuits
+--- PAGE 8 ---
+8
+(ASICs). He proposed the use of field-programmable
+gate arrays (FPGAs) and lists some of the advantages
+of this approach including energy efficiency,the abil-
+ity to load new software while the satellite is in orbit
+and parallelisation support.
+• Hybrid Computing - a combination of several com-
+puting technologies to gain the advantages of each
+of them (eg combinning FPGA with ASIC), such
+as combining a radiation hardened device with a
+higher grade commercial device to achieve both high
+reliability and performance. An example is a System-
+on-chip (SoC) device used commonly on mobile sys-
+tems.
+A good overview is given of the SmallSat Computing do-
+main and the current range of processor options available
+from small microcontrollers to powerful microprocessors
+and the pros and cons of each. He provides a useful plot
+Figure 6 showing the performance normalized by power
+consumption of some of the common devices color coded
+by type: microcontrollers (light blue), radiation-hardened
+(rad), microprocessors (black), Field Programmable Gate
+Arrays(FPGA) (green), and System-on-Chip (SoC) (Purple).
+SoCs perform best with FPGA not far behind.
+In 2017 Schmidt et al. introduced SpaceCubeX [57],
+a platform for the exploration of candidate hybrid
+CPU/FPGA/DSP processing architectures. This led to the
+development of Space- Cube v3.0 processor card [58] in
+2019 by NASA, combining a a Kintex Ultra-Scale Field
+Programmable Gate Array (FPGA) and Xilinx Zynq Mul-
+tiprocesser System on Chip (SOC) and considered an evolu-
+tionary advancement of spaceflight computing capability.
+Nvidia launched their Jetson range of System-on-Chip
+(SoC) embedded computing boards back in 2014 as a low-
+power system designed for accelerating ML applications.
+They are increasingly becoming the market leader in this
+space and their small size & high power to weight ratio
+makes them very suitable for deployment to a small satellite.
+One of the earliest efforts to host a computer vision ML
+algorithm on a simulated smallsat environment was per-
+formed in 2017 [59]. It was an early proof of concept, using
+a Nvidia Tegra X1 (TX1). In 2018 Arechiga et al. [60] demon-
+strated the use of of a Jetson TX2 using a CNN trained on
+satellite imagery from Planet’s Open California dataset. The
+same year [61] Manning explored the same domain to try
+and support intelligent computing on a spacecraft. Using
+a SoC Device (Xilinx Zynq-7020) he trained various CNN
+architectures on a dataset of 8000 terrestrial images and
+compared the accuracy (all over 90%), execution time (89-
+1383ms) and runtime memory usage (8 - 41MB) with various
+parameters. The conclusion he drew was that it is possible to
+achieve acceptable performance with modern CNN models
+on a low-memory, low-power, space-grade, embedded plat-
+form. In 2019 Yao et al.[62] discussed and demonstrated (on
+ground) the use of the Jetson TX2, as a suitable embedded
+component for data processing (on board ship detection)
+on small satellites because of it’s low cost, weight, size &
+power consumption. Again in 2019 Mittal [63] carried out a
+survey of works that evaluate and optimize neural network
+applications on the Jetson platform, validating it as a viable
+hardware accelerator in a wide-range of application areas
+and comparing it against alternative platforms. The same
+year Slater et al. [64] tested the Jetson Nano for radiation
+tolerance and concluded it could function successfully in a
+space environment for short term missions. Later the same
+year Hernandez et al. [65] carried out a feasibility study on
+the integration of a Jetson TX1 as the on-board processor for
+a CubeSat to deliver 1 TFLOP/s ( to calculate one trillion
+floating-point operations per second) of processing power.
+A suite of different algorithms were tested on the plat-
+form including objects recognition and classification using
+a neural network. The performance was evaluated in terms
+of how much quicker the TX1 performed the algorithms
+compared with a typical CubeSat microprocessor (ARM
+Cortex-A57 ) and quotes it as an acceleration factor. The
+results showed the TX1 performing over 14 times faster. He
+does however say that the peak power usage was 8.91W
+which may be too high depending on how much power is
+being generated by the CubeSat.
+In mid 2020 a very significant paper was published [66]
+that led to the 1st real world deployment of Deep Learning
+on-board a SmallSat. CloudScout was introduced as a CNN
+for filtering images to be transmitted to ground operating
+directly on board a satellite. Since the paper was released
+the CNN has been installed on a satellite called HyperScout-
+2 and launched as part of the ϕ-sat-1 mission, supported by
+the ESA through a program called PhiSat [67]. The key com-
+ponent is the Eyes of Things (EoT) board [68] powered by
+the Intel Movidius Myriad 2 Vision Processing Unit (VPU).
+An extracted dataset from the Sentinel-2 mission containing
+21,546 hyperspectral cubes was used for training and testing
+the model. CloudScout running on Myriad 2 exceeded the
+requirements, performing an inference in only 325 ms with
+a model footprint of 2.1MB, accuracy of 92% and a false
+positive of 1.03% and an average power consumption of just
+1.8 W. Crucially Myriad 2 also supports reconfigurability so
+it can be reprogrammed while in orbit. As a comparison
+a GPU CNN implementation consumed 100-200W and a
+CPU implementation consumes about 50W. [69]. The same
+author published a related paper [70] the following year to
+summarise the results of the deployment.
+A benchmark comparison was done in April 2021, be-
+tween a new proposed custom hardware accelerator de-
+signed for Field Programmable Gate Arrays (FPGAs) [71]
+and the approach taken by CloudScout [66] using a Myriad
+2 VPU. The motivation was to mitigate the fact that the
+Myriad is not yet considered suitable for the space environ-
+ment. The results were that the FPGA-based solution had
+a reduced inference time of 142ms compared to 346ms for
+CloudScout, but at the cost of increase in power consump-
+tion of 3.4W compared to 1.8W for CloudScout, and a longer
+time to market as it is not off-the-shelf. As a conclusion,
+the proposed approach was considered more suitable to
+long-term Low Earth Orbit (LEO) satellites or interplanetary
+exploration missions who could benefit from the custom
+approach and would be more exposed to radiation and
+could utilise the radiation protection offered by FPGA’s.
+In mid 2022 NVIDIA launched the most recent of their
+ranges called the Orin marking a big leap forward in it’s
+AI capabilities. The Jetson AGX Orin 32GB was released
+first, followed in early 2023 by the Orin NX and Orin Nano
+which has an 8GB variant containing a 1024-core GPU and
+--- PAGE 9 ---
+9
+Fig. 6. Performance scaled by power comparison of onboard processors ( [56]
+16 Tensor cores providing 40 Sparse or 20 Dense Tera-
+Operations per second (TOPs).
+In late 2022 [72] Barnell used the Jetson Orin AGX hard-
+ware to run a deep learning object detector on a video feed
+from a drone detecting vehicles in real-time from various
+flight altitudes. In late 2023 Rad et al. [73] assessed the
+performance and power needs of both the Jetson Nano and
+the Jetson AGX Orin confirming the viability of using the
+NVIDIA Jetson devices for space applications involving de-
+manding data processing or ML models. Around the same
+time Duggan et al. [55] profiled the power consumption of
+the Jetson Orin Nane 8GB platform classifying imagery us-
+ing various convolutional neural networks (CNN) models.
+4.3 Memory
+As outlined in earlier section 3.3 there are various types of
+memory within the EO satellite serving various purposes.
+The addition of ML will increase the demand on both the
+memory mass unit (MMU) for storage of the ML algo-
+rithm and the Volatile memory (RAM) during execution
+of inference when the ML model is loaded into memory.
+The approaches to mitigate memory as a constraint can
+be divided between increasing the storage capacity and
+reducing the demand for storage.
+Increasing the storage capacity is beyond the scope of
+this paper but it is worth noting that there is lots of new
+hardware offerings to the satellite development community
+to handle the increasing demand. Two of the more recent
+products which are built to support on board data process-
+ing are the Unibap SpaceCloud’s iX10 [74] which has 24GB
+RAM and 2 x 3.8TB SSD Storage and KP LAbs Antelope data
+processing unit (DPU) [75] which has 8GB RAM along with
+4 GB SLC NAND Flash and an option of adding a further
+SATA SSD hard drive for storage.
+The amount of memory needed for ML model storage
+depends primarily on the complexity of the ML architecture,
+the number and precision of the model parameters along
+with the training dataset. The ML frameworks (e.g., Ten-
+sorFlow, PyTorch) use different serialization formats with
+to save trained models and this can also affect the model
+file size. There are various different optimisation and com-
+pression techniques which can greatly reduce the file size.
+Model sizes can vary from a few kilobytes to hundreds
+of megabytes depending on these factors. Figure 7 shows
+some of the more common models built on the PyTorch
+framework and trained on the ImageNet dataset. The largest
+is the VGG models at over 500MB and the smallest is
+SqueezeNet less than 1% of that size at 4.8MB.
+--- PAGE 10 ---
+10
+Fig. 7. Model Memory Requirements Comparison
+Some model optimisation techniques (Layer decomposi-
+tion, Knowledge Distillation,Pruning & Quantization ) were
+detailed in the previous power reduction section 4.1. Along
+with reducing the power required to run these models they
+can also reduces the memory footprint of a model as well
+as the memory required to run the model, making it more
+feasible to store and use on devices with limited memory
+capacity.
+Pre-processing describes the operations required prior to
+the data analysis to correct the image for any irregularities
+and generally done for improving the accuracy of the data
+analysis. Using ML models offers the opportunity to do
+some more advanced pre processing reducing the memory
+consumed. A good example of this is the Cloudscout seg-
+mentation neural network (NN), run on Myriad 2 as part
+of the ϕ-sat-1 mission and described by Giufrfrida et al.
+[66] to identify, classify, and eventually discard on-board the
+cloudy images. Similarly Maskey [76] as part of the BIRDS-
+3 project [77] used a a lightweight CNN architecture called
+CubeSatNet to filter images before transmitting and also
+Zhang et al. [78] who introduced a new framework for de-
+tecting clouds from on-board a satellite saving 66% storage
+content. According to the Irish Meteorological Service, the
+sky above Ireland is entirely cloudy over 50 percent of the
+time with more clouds during the day than at night, and fog
+also common. So filtering these images is a very significant
+memory saving. Another case is Arechiga et al. [60] who
+introduced a 2-step approach for ship detection from on-
+board a SmallSat. Neither of these state explicitly how much
+memory is saved but we can reasonably deduce the savings
+is proportional to the amount of processing done. If all the
+data processing is done on board then only the output of the
+processing (eg location and details of an active forest fire or
+oil spill) needs to be transmitted to earth and none of the
+actual images may need to be sent. If partial processing is
+done (eg output of a specific neural network intermediate
+layer) then we can deduce this will be significantly smaller
+than the original image. This output could potentially be
+transmitted to Earth and the remaining processing done on
+Earth. Unfortunately the author could not find a reference
+paper with such work done so there is scope for further
+research in this area.
+4.4 Radiation
+Maurer et al. [35] describes the mitigation strategies to
+get hardware to be ”radiation hardened”, which is a re-
+quirement in many cases before electronic devices can be
+approved for deployment to space. The time delay caused
+by this process often results in approved hardware being at
+least one generation behind the latest hardware being used
+on earth.
+5 C ONCLUSION AND FUTURE RESEARCH
+Earth observation satellites have seen a surge in numbers
+in the last decade due to a series of technological advance-
+ments and a significant reduction in costs. This has led to
+opportunities to exploit the data in all kinds of applications
+from disaster management to marine and land analysis. The
+increase in the volume of data produced has pushed the
+traditional satellite data workflow to its limits, and new
+approaches are being devised to handle the data, including
+the use of artificial intelligence models to process the data
+on board. This is a challenging task with several resource
+constraints to overcome. This paper reviews the most signif-
+icant of these including the availability of sufficient power,
+processing capability and memory on board the satellite to
+facilitate the operation of these models.
+A lot of research has been done into strategies to mitigate
+these constraints including selecting energy efficient com-
+ponents and machine learning models along with creating
+and balancing an accurate power budget for all the energy
+consumers within the satellite. Low power processor chips
+with excellent computing capabilities have been created and
+embedded onto systems small enough to fit on-board Cube-
+Sats. There have been several of these used on board small
+satellites to validate that they function well. The limited
+memory on board can be mitigated by choosing a model
+such as SqueezeNet which requires under 5MB. Also apply-
+ing one of a number of well tested optimisation techniques
+can drastically reduce the momeory footprint without sig-
+nificantly impacting the performance. Pre-processing the
+imagery on-board can also reduce the amount of memory
+allocated for image storage.
+The number of real-world examples of utilizing machine
+learning models for on-board satellite image processing
+remains relatively limited, highlighting the need for further
+research in this area. Minimizing the memory footprint of
+data transmitted from satellites to Earth offers substantial
+advantages, including reduced on-board memory require-
+ments and lower transmission power consumption. The
+resulting power savings can compensate for, and potentially
+surpass, the energy needed to perform the processing. More
+research is required to quantify both the power and memory
+saved. Partial image processing is also an area that could
+be researched further to be able to quantify the resource
+savings possible. Addressing the resource limitations within
+a satellite to enable machine learning inference is a challeng-
+ing task. However, it holds the potential to unlock numerous
+--- PAGE 11 ---
+11
+opportunities for leveraging the underutilized resource of
+satellite data, providing real-time, actionable insights.
+ACKNOWLEDGMENTS
+This research was conducted with the financial support of
+the ADVANCE CRT Ph.D. Cohort under Grant Agreement
+No.18/CRT/6222 and the ADAPT SFI Research Centre at
+Munster Technological University. The ADAPT SFI Centre
+for Digital Media Technology is funded by Science Founda-
+tion Ireland through the SFI Research Centres Programme
+and is co-funded under the European Regional Develop-
+ment Fund (ERDF) through Grant 13/RC/2106 P2.
+REFERENCES
+1. 2024. https://orbit.ing-now.com/.
+2. Furano, G. et al. Towards the Use of Artificial Intelligence
+on the Edge in Space Systems: Challenges and Opportu-
+nities. IEEE Aerospace and Electronic Systems Magazine 35,
+44–56 (2020).
+3. Zhou, G. Future intelligent earth observing satellites in Earth
+Observing Systems VIII 5151 (2003), 1–8.
+4. Di Fraia, Z., Wischert, D. & Stepanova, D. Machine Learn-
+ing in Earth Observation Operations: A review Pablo Mi-
+ralles, Antonio Fulvio Scannapieco, Nitya Jagadam, Pre-
+rna Baranwal, Bhavin Faldu, Ruchita Abhang, Sahil Bha-
+tia, Sebastien Bonnart, Ishita Bhatnagar, Beenish Batul,
+Pallavi Prasad, H ´ector Ortega-Gonz ´alez, Harrish Joseph,
+Harshal More, Sondes Morchedi, Aman Kumar Panda,
+Marco (2021).
+5. Miralles, P . et al. A critical review on the state-of-the-art and
+future prospects of Machine Learning for Earth Observa-
+tion Operations. Advances in Space Research (2023).
+6. Zhang, B. et al. Progress and challenges in intelligent re-
+mote sensing satellite systems. IEEE Journal of Selected Top-
+ics in Applied Earth Observations and Remote Sensing 15,
+1814–1822 (2022).
+7. Towards Space Edge Computing and Onboard AI for Real-Time
+Teleoperations in (). https : / / api . semanticscholar . org /
+CorpusID:268615001.
+8. Thangavel, K. et al. Artificial intelligence for trusted au-
+tonomous satellite operations. Progress in Aerospace Sciences
+144, 100960 (2024).
+9. Earth satellite https://www.britannica.com/technology/
+Earth-satellite.
+10. Catalog of Earth Satellite Orbits https://earthobservatory.
+nasa.gov/features/OrbitsCatalog.
+11. Fox, W. Launch costs to low Earth orbit, 1980-2100 — Future
+Timeline — Data & Trends — Future Predictions 2020. https:
+//www.futuretimeline.net/data-trends/6.htm.
+12. El-Bayoumi, A., Salem, M., Khalil, A. & El-Emam, E. A new
+Checkout-and-Testing-Equipment (CTE) for a satellite Telemetry
+using LabVIEW in 2015 IEEE Aerospace Conference (2015), 1–
+9.
+13. Heidt, H., Puig-Suari, J., Moore, A., Nakasuka, S. & Twiggs,
+R. CubeSat: A new generation of picosatellite for education
+and industry low-cost space experimentation (2000).
+14. What is Remote Sensing? Definition and FAQs https://www.
+omnisci.com/technical-glossary/remote-sensing.
+15. Data, P . Space Data: The Final Analytics Frontier. Intel.
+https : / / www. intel . co . uk / content / www / uk / en /
+it - management / cloud - analytic - hub / big - data - from -
+satellites.html (2017).
+16. 2024. https : / / www. thebusinessresearchcompany. com /
+report/small-satellite-global-market-report.
+17. Esch, T. et al. Exploiting big earth data from space–first
+experiences with the timescan processing chain. Big Earth
+Data 2, 36–55 (2018).
+18. Beall, A. Spotting satellites. New Scientist 247, 51 (2020).
+19. satellite ground stations - everything you ever wanted to
+know and more. Earth Sciences. https : / / www. essearth .
+com/satellite-ground-stations/ (2020).
+20. Wertz, P ., Hespeler, B., Kiessling, M. & Hagmanns, F.-J.
+Next generation high data rate downlink subsystems based on
+a flexible APSK modulator applying SCCC encoding in 2016
+International Workshop on Tracking, Telemetry and Command
+Systems for Space Applications (TTC) (2016), 1–7.
+21. Shi, B., Leong, S. W., Zhai, G., Wang, W. & Luo, B. Develop-
+ment of Ka-band BUC with wideband linearizer for high speed
+satellite communications in GLOBECOM 2017-2017 IEEE
+Global Communications Conference (2017), 1–6.
+22. Furano, G., Tavoularis, A. & Rovatti, M. AI in space: Ap-
+plications examples and challenges in 2020 IEEE International
+Symposium on Defect and Fault Tolerance in VLSI and Nan-
+otechnology Systems (DFT) (2020), 1–6.
+23. Sowmya, D., Shenoy, P . D. & Venugopal, K. Remote sensing
+satellite image processing techniques for image classifica-
+tion: a comprehensive survey. International Journal of Com-
+puter Applications 161, 24–37 (2017).
+24. Abburu, S. & Golla, S. B. Satellite image classification meth-
+ods and techniques A review. International journal of com-
+puter applications 119 (2015).
+25. Babbar, J. & Rathee, N. Satellite Image Analysis: A Review
+in 2019 IEEE International Conference on Electrical, Computer
+and Communication Technologies (ICECCT) (2019), 1–6.
+26. Ouchra, H. & Belangour, A. Satellite image classification
+methods and techniques: A survey in 2021 IEEE International
+Conference on Imaging Systems and Techniques (IST) (2021),
+1–6.
+27. Krizhevsky, A., Sutskever, I. & Hinton, G. E. Imagenet clas-
+sification with deep convolutional neural networks. Ad-
+vances in neural information processing systems 25, 1097–1105
+(2012).
+28. Hao, S., Zhou, Y. & Guo, Y. A brief survey on seman-
+tic segmentation with deep learning. Neurocomputing 406,
+302–321 (2020).
+29. He, K., Zhang, X., Ren, S. & Sun, J. Deep residual learning
+for image recognition in Proceedings of the IEEE conference on
+computer vision and pattern recognition (2015), 770–778.
+30. McCarthy, J., Minsky, M. L., Rochester, N. & Shannon, C. E.
+A proposal for the dartmouth summer research project on
+artificial intelligence, august 31, 1955.AI magazine 27, 12–12
+(2006).
+31. State of IoT – Spring 2024 https : / / iot - analytics . com /
+product/state- of- iot- spring- 2024//. Accessed: 2024-03-
+25.
+32. Lee, J., Kim, E. & Shin, K. G. Design and management of
+satellite power systems in 2013 IEEE 34th Real-Time Systems
+Symposium (2013), 97–106.
+33. 2023. https : / / www . ucsusa . org / resources / satellite -
+database.
+34. Lentaris, G. et al. High-performance embedded computing
+in space: Evaluation of platforms for vision-based navi-
+gation. Journal of Aerospace Information Systems 15, 178–192
+(2018).
+--- PAGE 12 ---
+12
+35. Maurer, R. H., Fraeman, M. E., Martin, M. N. & Roth, D. R.
+Harsh environments: space radiation. Johns Hopkins APL
+technical digest 28, 17 (2008).
+36. Lange, K., Fontana, F., Rossi, F., Varile, M. & Apruzzese,
+G. Machine Learning in Space: Surveying the Robust-
+ness of on-board ML models to Radiation. arXiv preprint
+arXiv:2405.02642 (2024).
+37. Dahbi, S. et al. Power budget analysis for a LEO polar orbiting
+nano-satellite in 2017 International Conference on Advanced
+Technologies for Signal and Image Processing (ATSIP) (2017),
+1–6.
+38. Gill, S. S. et al. Modern computing: Vision and challenges.
+Telematics and Informatics Reports, 100116 (2024).
+39. Sze, V ., Chen, Y.-H., Emer, J., Suleiman, A. & Zhang, Z.
+Hardware for machine learning: Challenges and opportunitiesin
+2017 IEEE custom integrated circuits conference (CICC)(2017),
+1–8.
+40. Reuther, A. et al. AI and ML accelerator survey and trends in
+2022 IEEE High Performance Extreme Computing Conference
+(HPEC) (2022), 1–10.
+41. Ortiz, F. et al. Onboard processing in satellite communica-
+tions using ai accelerators. Aerospace 10, 101 (2023).
+42. S ¨uzen, A. A., Duman, B. & S ¸en, B. Benchmark analysis of
+jetson tx2, jetson nano and raspberry pi using deep-cnn in
+2020 International Congress on Human-Computer Interaction,
+Optimization and Robotic Applications (HORA) (2020), 1–5.
+43. Simonyan, K. & Zisserman, A. Very deep convolutional
+networks for large-scale image recognition. arXiv preprint
+arXiv:1409.1556 (2014).
+44. Szegedy, C., Ioffe, S., Vanhoucke, V . & Alemi, A. A.
+Inception-v4, inception-resnet and the impact of residual connec-
+tions on learning in Thirty-first AAAI conference on artificial
+intelligence (2016).
+45. Hochreiter, S. The vanishing gradient problem during
+learning recurrent neural nets and problem solutions. In-
+ternational Journal of Uncertainty, Fuzziness and Knowledge-
+Based Systems 6, 107–116 (1998).
+46. He, K., Zhang, X., Ren, S. & Sun, J. Delving deep into recti-
+fiers: Surpassing human-level performance on imagenet classi-
+fication in Proceedings of the IEEE international conference on
+computer vision (2015), 1026–1034.
+47. Russakovsky, O. et al. Imagenet large scale visual recogni-
+tion challenge. International journal of computer vision 115,
+211–252 (2015).
+48. Hu, J., Shen, L. & Sun, G. Squeeze-and-excitation networks
+in Proceedings of the IEEE conference on computer vision and
+pattern recognition (2018), 7132–7141.
+49. Iandola, F. N. et al. SqueezeNet: AlexNet-level accuracy
+with 50x fewer parameters and¡ 0.5 MB model size. arXiv
+preprint arXiv:1602.07360 (2016).
+50. Tan, M. et al. Mnasnet: Platform-aware neural architecture
+search for mobile in Proceedings of the IEEE/CVF conference on
+computer vision and pattern recognition (2019), 2820–2828.
+51. Howard, A. G. et al. Mobilenets: Efficient convolutional
+neural networks for mobile vision applications. arXiv
+preprint arXiv:1704.04861 (2017).
+52. Zhang, X., Zhou, X., Lin, M. & Sun, J. Shufflenet: An ex-
+tremely efficient convolutional neural network for mobile devices
+in Proceedings of the IEEE conference on computer vision and
+pattern recognition (2018), 6848–6856.
+53. Wang, R. J., Li, X. & Ling, C. X. Pelee: A real-time object
+detection system on mobile devices. Advances in neural in-
+formation processing systems 31 (2018).
+54. V ´estias, M. P . A survey of convolutional neural networks
+on edge with reconfigurable computing. Algorithms 12, 154
+(2019).
+55. Duggan, A., Scully, T., Smith, N. & Giltinan, A. Profiling
+Power Consumption for Deep Learning on Resource Limited
+Devices in International Conference on Innovative Techniques
+and Applications of Artificial Intelligence (2023), 129–141.
+56. George, A. D. & Wilson, C. M. Onboard processing with
+hybrid and reconfigurable computing on small satellites.
+Proceedings of the IEEE 106, 458–470 (2018).
+57. Schmidt, A. G., Weisz, G., French, M., Flatley, T. & Vil-
+lalpando, C. Y. SpaceCubeX: A framework for evaluating hy-
+brid multi-core CPU/FPGA/DSP architectures in 2017 IEEE
+Aerospace Conference (2017), 1–10.
+58. Geist, A. et al. SpaceCube v3. 0 NASA next-generation
+high-performance processor for science applications
+(2019).
+59. Buonaiuto, N. et al. Satellite identification imaging for
+small satellites using NVIDIA (2017).
+60. Arechiga, A. P ., Michaels, A. J. & Black, J. T. Onboard image
+processing for small satellitesin NAECON 2018-IEEE National
+Aerospace and Electronics Conference (2018), 234–240.
+61. Manning, J. et al. Machine-learning space applications on
+smallsat platforms with tensorflow (2018).
+62. Yao, Y., Jiang, Z., Zhang, H. & Zhou, Y. On-board ship
+detection in micro-nano satellite based on deep learning
+and COTS component. Remote Sensing 11, 762 (2019).
+63. Mittal, S. A Survey on optimized implementation of deep
+learning models on the NVIDIA Jetson platform. Journal of
+Systems Architecture 97, 428–442 (2019).
+64. Slater, W. S., Tiwari, N. P ., Lovelly, T. M. & Mee, J. K. Total
+ionizing dose radiation testing of NVIDIA Jetson nano GPUsin
+2020 IEEE High Performance Extreme Computing Conference
+(HPEC) (2020), 1–3.
+65. Hern ´andez-G´omez, J. et al. Conceptual low-cost on-board high
+performance computing in CubeSat nanosatellites for pattern
+recognition in Earth’s remote sensing in Proceedings of the 1st
+International Con 13 (2019), 114–122.
+66. Giuffrida, G. et al. CloudScout: A deep neural network for
+on-board cloud detection on hyperspectral images. Remote
+Sensing 12, 2205 (2020).
+67. phi-sat https://www.esa.int/Applications/Observing
+the Earth/Ph-sat/.
+68. Deniz, O. et al. Eyes of things. Sensors 17, 1173 (2017).
+69. Li, D., Chen, X., Becchi, M. & Zong, Z. Evaluating the energy
+efficiency of deep convolutional neural networks on CPUs and
+GPUs in 2016 IEEE international conferences on big data and
+cloud computing (BDCloud), social computing and network-
+ing (SocialCom), sustainable computing and communications
+(SustainCom)(BDCloud-SocialCom-SustainCom) (2016), 477–
+484.
+70. Giuffrida, G. et al. The Φ-Sat-1 mission: The first on-board
+deep neural network demonstrator for satellite earth obser-
+vation. IEEE Transactions on Geoscience and Remote Sensing
+60, 1–14 (2021).
+71. Rapuano, E. et al. An FPGA-Based Hardware Accelera-
+tor for CNNs Inference on Board Satellites: Benchmarking
+with Myriad 2-Based Solution for the CloudScout Case
+Study. Remote Sensing 13, 1518 (2021).
+72. Barnell, M., Raymond, C., Smiley, S., Isereau, D. & Brown,
+D. Ultra Low-Power Deep Learning Applications at the Edge
+with Jetson Orin AGX Hardware in 2022 IEEE High Perfor-
+mance Extreme Computing Conference (HPEC) (2022), 1–4.
+--- PAGE 13 ---
+13
+73. Rad, I. O., Alarcia, R. M. G., Dengler, S., Golkar, A. & Man-
+fletti, C. Preliminary Evaluation of Commercial Off-The-
+Shelf GPUs for Machine Learning Applications in Space
+(2023).
+74. 2023. https : / / unibap . com / solutions / spacecloud -
+hardware/ix10/.
+75. 2023. https://kplabs.space/antelope/.
+76. Maskey, A. & Cho, M. CubeSatNet: Ultralight Convolu-
+tional Neural Network designed for on-orbit binary image
+classification on a 1U CubeSat. Engineering Applications of
+Artificial Intelligence 96, 103952 (2020).
+77. 2021. https://birds3.birds-project.com/.
+78. Zhang, Z., Xu, G. & Song, J. Cubesat cloud detection based
+on JPEG2000 compression and deep learning. Advances in
+Mechanical Engineering 10, 1687814018808178 (2018).

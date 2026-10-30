@@ -1,0 +1,8 @@
+# Space Debris YOLO Dataset Configuration
+path: /Users/pc/Desktop/bitirme ödevi/data/processed/yolo_debris_benchmark
+train: images/train
+val: images/val
+
+# Classes
+names:
+  0: space_debris

@@ -1,0 +1,63 @@
+# Space Debris Detection - YOLO11n-P2 (P2/4 – P3/8 – P4/16 – P5/32)
+# =========================================================
+# KEY INNOVATION: Extra P2 detection head at stride 4 (160x160 feature map)
+#
+# Why P2 for space debris?
+# - Standard YOLO P3 (stride 8) min detectable object: ~8x8 px
+# - Uzay enkazları genellikle 2–6 px boyutunda!
+# - P2 (stride 4) min detectable object: ~4x4 px → mikro enkaz yakalanır!
+#
+# SDTD paper shows line-source debris are often sub-pixel to a few pixels wide.
+# The P2 high-resolution feature map at 160x160 retains fine spatial detail
+# that is lost in deeper downsampled P3/P4/P5 feature maps.
+# =========================================================
+
+nc: 1  # single class: space_debris
+scales:
+  # [depth, width, max_channels]
+  n: [0.50, 0.25, 1024]
+
+backbone:
+  # [from, repeats, module, args]
+  - [-1, 1, Conv, [64, 3, 2]]    # 0-P1/2    320x320
+  - [-1, 1, Conv, [128, 3, 2]]   # 1-P2/4    160x160  ← P2 features (tiny objects)
+  - [-1, 2, C3k2, [256, False, 0.25]]  # 2
+  - [-1, 1, Conv, [256, 3, 2]]   # 3-P3/8    80x80
+  - [-1, 2, C3k2, [512, False, 0.25]]  # 4
+  - [-1, 1, Conv, [512, 3, 2]]   # 5-P4/16   40x40
+  - [-1, 2, C3k2, [512, True]]   # 6
+  - [-1, 1, Conv, [1024, 3, 2]]  # 7-P5/32   20x20
+  - [-1, 2, C3k2, [1024, True]]  # 8
+  - [-1, 1, SPPF, [1024, 5]]     # 9
+  - [-1, 2, C2PSA, [1024]]       # 10
+
+head:
+  # ── FPN Top-Down path ──────────────────────────────────
+  - [-1, 1, nn.Upsample, [None, 2, "nearest"]]       # 11  → 40x40
+  - [[-1, 6], 1, Concat, [1]]                         # 12  cat backbone P4
+  - [-1, 2, C3k2, [512, False]]                       # 13  FPN-P4 (40x40)
+
+  - [-1, 1, nn.Upsample, [None, 2, "nearest"]]       # 14  → 80x80
+  - [[-1, 4], 1, Concat, [1]]                         # 15  cat backbone P3
+  - [-1, 2, C3k2, [256, False]]                       # 16  FPN-P3 (80x80)
+
+  # ── EXTRA P2 branch (KEY INNOVATION) ───────────────────
+  - [-1, 1, nn.Upsample, [None, 2, "nearest"]]       # 17  → 160x160
+  - [[-1, 2], 1, Concat, [1]]                         # 18  cat backbone P2 (C3k2 features)
+  - [-1, 2, C3k2, [128, False]]                       # 19  FPN-P2 (160x160) ← tiny debris!
+
+  # ── PAN Bottom-Up path ─────────────────────────────────
+  - [-1, 1, Conv, [128, 3, 2]]                        # 20  → 80x80
+  - [[-1, 16], 1, Concat, [1]]                        # 21  cat FPN-P3
+  - [-1, 2, C3k2, [256, False]]                       # 22  PAN-P3 (80x80)
+
+  - [-1, 1, Conv, [256, 3, 2]]                        # 23  → 40x40
+  - [[-1, 13], 1, Concat, [1]]                        # 24  cat FPN-P4
+  - [-1, 2, C3k2, [512, False]]                       # 25  PAN-P4 (40x40)
+
+  - [-1, 1, Conv, [512, 3, 2]]                        # 26  → 20x20
+  - [[-1, 10], 1, Concat, [1]]                        # 27  cat backbone P5
+  - [-1, 2, C3k2, [1024, True]]                       # 28  PAN-P5 (20x20)
+
+  # Detection at P2, P3, P4, P5  (4-scale detection)
+  - [[19, 22, 25, 28], 1, Detect, [nc]]               # Detect(P2, P3, P4, P5)

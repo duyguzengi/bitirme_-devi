@@ -1,0 +1,694 @@
+
+--- PAGE 1 ---
+HIGH PERFORMANCE SPACE DEBRIS TRACKING IN COMPLEX
+SKYLIGHT BACKGROUNDS WITH A LARGE -SCALE DATASET
+Guohang Zhuang1,2∗, Weixi Song3∗, Jinyang Huang 1, Chenwei Yang4, Wanli Ouyang2,5, Yan Lu2,5†
+1Hefei University of Technology,2Shanghai Artificial Intelligence Laboratory,
+3Zhejiang University, 4Polar Research Institute of China,
+5The Chinese University of Hong Kong
+July 28, 2025
+ABSTRACT
+With the rapid development of space exploration, space debris has attracted more attention due to
+its potential extreme threat, leading to the need for real-time and accurate debris tracking. However,
+existing methods are mainly based on traditional signal processing, which cannot effectively process
+the complex background and dense space debris. In this paper, we propose a deep learning-based
+Space Debris Tracking Network (SDT-Net) to achieve highly accurate debris tracking. SDT-Net
+effectively represents the feature of debris, enhancing the efficiency and stability of end-to-end model
+learning. To train and evaluate this model effectively, we also produce a large-scale dataset Space
+Debris Tracking Dataset (SDTD) by a novel observation-based data simulation scheme. SDTD
+contains 18,040 video sequences with a total of 62,562 frames and covers 250,000 synthetic space
+debris. Extensive experiments validate the effectiveness of our model and the challenging of our
+dataset. Furthermore, we test our model on real data from the Antarctic Station, achieving a MOTA
+score of 73.2%, which demonstrates its strong transferability to real-world scenarios. Our dataset and
+code will be released soon.
+1 Introduction
+During the past decade, global space activities have exponentially increased, which has raised the potential risk of
+collisions between debris and spacecraft in near-Earth space [1, 2]. This has led to significant economic losses, drawing
+increasing attention to the issue of space debris. The Space Debris Tracking (SDT) is to detect and predict the trajectories
+of space debris, reducing the collision risks and promoting space industry development. This makes monitoring debris
+extremely urgent and critical for ensuring the safety of space operations.
+SDT is an essential task that includes detecting and predicting the trajectories of space debris. It is a computer vision
+problem, specifically an object tracking task in astronomical videos, where the goal is to identify and follow space debris
+across continuous frames for a video. However, traditional methods typically focus on object debris detection rather
+than tracking. These approaches often rely on techniques such as template-matching methods [3, 4] and morphological
+operator methods [5, 6]. While these methods are capable of detecting debris in individual images, they struggle to
+associate objects across consecutive frames, making them less suitable for space debris monitoring.
+Artificial intelligence (AI) has achieved significant success in fields such as object detection [7] and object tracking [8],
+due to its exceptional ability to process large-scale datasets. Traditional methods have limitations in space debris
+detection and cannot effectively handle long-term tracking tasks. AI models can make up for this deficiency through
+efficient data processing and learning methods. However, AI models rely on large-scale, high-quality datasets while
+astronomy data are extremely limited. So, there is no an effective AI model that could meet the requirements
+∗Equal contribution.
+†Corresponding author.
+arXiv:2506.02614v4  [cs.CV]  25 Jul 2025
+--- PAGE 2 ---
+A PREPRINT - JULY 28, 2025
+Figure 1: Illustration of the space debris formation and tracking pipeline using synthetic labels. It includes the simulation
+of space debris within Earth’s magnetic field, the generation of synthetic labels such as start (st), end (ed), and center
+(cen) points, and bounding boxes for debris in image frames. Additionally, the process of segment source debris tracking
+across multiple frames is shown, with visualization examples of debris tracking and dense debris tracking using the
+SDTD dataset.
+of debris tracking mission for popular telescopes like the Solar Data Telescope (LST) [ 9] and Wide-Field Survey
+Telescope (WFST) [10].
+To address the challenge of limited data in astronomy, we follow the idea of observation-based data simulation in the
+astronomical field [11, 12, 13]. The observation-based data simulation is widely proven to lead to realistic data and
+reliable scientific conclusions, providing a chance for us to design a method for data simulating space debris. Due to its
+success, we construct a Space Debris Tracking Dataset (SDTD), which is the first publicly available dataset designed
+for space debris tracking. Fig 1 shows the formation principle, type, examples, and corresponding SDT tasks of space
+debris. Specifically, Tab 1 highlights the key differences of SDTD compared to existing datasets. SDTD consists of
+18,040 synthetic videos, totaling 62,562 frames and 25,000 annotated debris instances.
+In order to apply AI methods to the SDT task, we propose a simple yet effective deep learning method, namely the
+Space Debris Tracking Network (SDT-Net). We introduce a Region-of-Interest Feature Enhancement (RoIFE) module
+to highlight debris features, aiding in more accurate detection. A detection module is then used to localize the debris by
+predicting their positions in the image. After localization, a debris offset module is applied to perform cross-frame data
+association, generating tracking trajectories for each debris.
+In summary, the key contributions of this paper are as follows:
+1. We propose a space debris simulation method. Based on this method, we construct SDTD, the first benchmark
+dataset for SDT. It contains 18,040 video data with complex backgrounds and diverse debris targets, and the data is
+close to the real space debris situation.
+2. We introduce the Space Debris Tracking Network (SDT-Net) to improve space debris tracking. By integrating a
+RoIFE module, a detection module, and a tracking module, we effectively enhance debris representations, leading to
+more accurate and reliable tracking performance.
+3. Evaluation on the constructed SDTD dataset shows that the proposed SDT-Net achieves state-of-the-art performance
+in terms of space debris tracking on the test set overall.
+2
+--- PAGE 3 ---
+A PREPRINT - JULY 28, 2025
+Table 1: Summary of Space Debris Target Datasets.
+Dataset Type Size #Video. #Det. #Seg. #Track. Target Variations Debris Number
+Lin et al. [11] Real 83 images 7 video ✓ × × One One
+SDebrisNet [14] Real 1551 images × ✓ × × Three One
+Jiang et al. [6] Real 200 images × ✓ × × One One
+AstroStripeSet [15] Real 1500 images × ✓ ✓ × Four One
+SDTD Synthetic & Real 65,562 images 18,040 video ✓ ✓ ✓ Five One to Five
+2 Related Work
+2.1 Object Detection and Tracking
+Object detection and tracking involves detecting objects, assigning a unique ID to each detection, and then tracking
+these objects across frames in a video while maintaining the ID assignments. This task has been a central focus in
+computer vision and has found applications in various fields, such as autonomous driving [16].
+In the context of tracking, several methods have been proposed over the years. For instance, SORT [ 17] conducted
+track association by combining Kalman Filter [ 18] and Hungarian algorithm [ 19]. DeepSORT [ 20] introduced an
+extra cosine distance and compute the appearance similarity for track association. CenterTrack [21] is a center-based
+multi-object tracking method that extends the detection framework of CenterNet [ 22] to achieve efficient real-time
+tracking. ByteTrack [ 23] exploits low-score detection boxes by first matching high-confidence detections and then
+associating them with low-score detections.
+2.2 Space Debris Detection
+Space Debris Detection is a task of predicting space debris location from a single image. Jiang et al. [ 24] applied
+enhanced median filtering to remove noise and used an improved Hough transform to detect targets. Guo et al. [25]
+proposed an enhanced YOLOv8-based method for space debris detection, achieving improved accuracy and speed.
+Jia et al. [ 26] proposed a deep neural network-based framework for detecting and classifying astronomical targets.
+Specifically, they utilized Faster R-CNN [27] with a modified ResNet-50 [28] backbone to improve the detection of low
+signal-to-noise targets. Previous studies have primarily focused on detection tasks, limiting their applications in space
+debris. In this paper, we extend the detection to tracking, playing a key role in advancing space exploration.
+3 Benchmark Dataset
+In this paper, we utilize astronomical images collected by the Zwicky Transient Facility (ZTF) [29] to simulate space
+debris. We propose a simulation tool to generate space debris, which provides sufficient data for constructing the SDTD
+dataset. Under long-exposure conditions in telescopic observations, debris often appears as a line source in the images.
+So, our simulation target is to generate realistic long-exposure line sources. We develop a pipeline that includes data
+pre-processing, line source debris video generation, and post processing. Fig 2 and the following paragraphs provide a
+detailed description of this process.
+3.1 Data Collection and Pre-Processing
+3.1.1 Data Collection
+The ZTF is an optical survey project designed to monitor astronomical transient phenomena. It operates on the
+48-inch Samuel Oschin Telescope at Palomar Observatory, using a 47-square-degree, 600-megapixel CCD camera for
+high-cadence, wide-field imaging. Its capability to capture large-scale, high-resolution astronomical images makes it
+suitable for simulating space debris.
+In order to obtain enough data for simulation, we collected 17,235 ZTF astronomical observation data from June 2018
+to June 2022. These data contain complex skylight background information, including atmospheric scattered light,
+moonlight, and human factors such as light pollution. Based on these richer astronomical observation data, we conduct
+simulations and generated debris videos.
+3
+--- PAGE 4 ---
+A PREPRINT - JULY 28, 2025
+Figure 2: Overview of the space debris simulation pipeline. Step 1: Data Collection. Step 2: ZTF Raw Data Filtering.
+Step 3: Simulation Tool for Space Debris. Various parameters, including random initial points, angle change, length
+change, point spread function (PSF), fracture interference, and displacement, are applied to simulate space debris. The
+process generates synthetic video sequences and shows the real-world debris for reference.
+Some regions of the images contain outliers, appearing as zeros or extremely high values, which leads to numerical
+overflow issues. To ensure the quality of our dataset, we carefully examine the dataset, remove 1,195 unusable images,
+and retain 16,040 high-quality images.
+3.1.2 Data Pre-Processing
+Unlike natural images, astronomical images typically contain larger pixel values. Therefore, a data processing step is
+necessary to transform these values into the standard range of grayscale image pixels. To achieve this, we apply the
+ZScale method [30] to map image pixel values to a reasonable range. The ZScale method first calculates the median
+zmedian and standard deviation zstd of the image pixels. Then uses these two values to estimate a range [z1, z2]:
+z1 = zmedian − k × zstd, z2 = zmedian + k × zstd, (1)
+where z1 and z2 represent the lower and upper bounds of the pixel intensity range, respectively. The hyperparameter k
+is assigned a value of 2.5. Then, we perform a linear stretch on the grayscale values of the image, mapping the range
+[z1, z2] to [0, 255]:
+Iscaled(x, y) = 255 × I(x, y) − z1
+z2 − z1
+. (2)
+Finally, pixels with grayscale values below z1 or above z2 are set to 0 or 255:
+Ifinal(x, y) =
+max(Iscale(x, y), 0), I scale(x, y) < 0
+min(Iscale(x, y), 255), I scale(x, y) > 0 (3)
+By enhancing the contrast and detail of astronomical images, the ZScale method ensures a reliable basis for the next
+simulations.
+After pre-processing the data, we conduct simulations to generate space debris, providing sufficient data for constructing
+the SDTD dataset. Details of the simulation process are described in Section 3.2.
+3.2 Simulation of Space Debris
+For a single astronomical image, the Space Debris Simulation generates a video with T frames of line source debris,
+simulating the movement of debris across each frame.
+3.2.1 Line Source Debris Video Generation
+The goal of the space debris simulation is to generate a sequence video with multiple line source debris. For each debris
+(set k-th as an example), we represent it as a parameter sequence {S1
+k, S2
+k, S3
+k, ...ST
+k } where T is the total frame number.
+4
+--- PAGE 5 ---
+A PREPRINT - JULY 28, 2025
+St
+k is the debris parameters for the t-th frame, which is set as follows:
+St
+k = {xt
+k, yt
+k|{z}
+center
+, l k, wk|{z}
+dimension
+, θk, vk|{z}
+velocity
+}, (4)
+where (xt
+k, yt
+k) represents center point coordinates of the line source at time t. lk, wk, θk and vk are line length, line
+width, velocity angle and velocity magnitude, respectively.
+With this parametrized line source, we randomly sample a value K as the total line source number and then for the
+k-th line source, we first generate its S1
+k by randomly sampling its 6 parameters. The generated S1
+k provide the initial
+center point locations, defined dimension, and a fixed velocity of the debris. So, we utilize these parameters to produce
+subsequent parameters S2
+k ∼ ST
+k .
+Take the second frame (t = 2) as an example, we calculate the parameters for S2
+k. The center point coordinates (x2
+k, y2
+k)
+is calculated by combining velocity and initial center as follows:
+x2
+k = x1
+l + vk · cos(θk) · ∆t,
+y2
+k = y1
+k + vk · sin(θk) · ∆t,
+(5)
+where ∆t represents the time interval between consecutive frames, which is set to 1 here for simplification. Thus, the pa-
+rameters for the second frame are represented asS2
+k = {x2
+k, y2
+k, lk, wk, θk, vk}. The same procedure is repeated for each
+subsequent frame t = {3, 4, 5, ..., T}. This process continues frame by frame, until all parameters {S1
+k, S2
+k, S3
+k, ...ST
+k }
+are generated.
+We proceed to generate the corresponding line source in the image. For each frame t, we take the parameters
+St
+k = {xt
+k, yt
+k, lk, wk, θk, vk} and follow three steps to generate the line source. With these, at the center point
+coordinates (xt
+k, yt
+k), we draw a rectangle with dimensions, lk and wk, and angle θk. Then, we apply random brightness
+noise to the rectangle. By traversing k, we draw entire K objects and if the rectangle is out of the image, we would
+neglect it.
+At last, using the parameters {S1
+k, S2
+k, S3
+k, ...ST
+k }, we generate the corresponding images {I 1, I2, I3, ..., IT }, resulting
+in a video that captures the movement trajectory of the debris.
+3.2.2 Post Processing for Realistic
+Since the real line source debris conforms to the Point Spread Function (PSF) characteristics [31], we perform point
+diffusion function processing on the preliminary line source debris. Among them, PSF is expressed as follows:
+I t
+k(x, y) = S
+2πδ 2
+psf
+exp(−(x − xc)2 + (y − y2
+c)
+2δ2
+psf
+), (6)
+where I t
+k(x, y) is the pixel value of the line source debris, (xc, yc) represents the center point coordinates of the line
+source debris, S is the scale factor, and δpsf is the diffusion standard deviation of the imaging system PSF. Additionally,
+we apply random truncation to the line source to simulate more realistic conditions. This operation enables us to
+simulate realistic line source debris.
+3.3 Statistics and Visualization
+3.3.1 Dataset Statistics
+After the simulation, we obtain 18,040 videos with a total of 62,562 frames. As shown in Fig. 12(a), to evaluate model
+performance in complex environments, we select 1,000 images from the 16,040 dataset to create two test sets: the debris
+test set and the dense debris test set. These two test sets allow for a comprehensive evaluation of model robustness
+under different conditions, including dense debris.
+3.3.2 Debris Type
+To facilitate comprehensive evaluation of model performance at different levels of complexity, we classify the space
+debris in our dataset into two categories: debris type and dense debris type. This distinction allows us to systematically
+evaluate tracking robustness in both sparse and complex observation environments.
+Debris type refers to space objects that appear singly or sparsely in an observation frame. These objects are separated
+from each other with limited spatial or temporal overlap, and are therefore relatively easy to detect and track. In contrast,
+5
+--- PAGE 6 ---
+A PREPRINT - JULY 28, 2025
+Figure 3: Overview of SDTD dataset statistics and analysis of debris simulation intensity distribution. (a) The left
+shows the number statistics for training, test, and dense debris categories in the SDTD dataset. The pie charts represent
+the distribution of debris across different objects in both the training and test sets. (b) The right displays the analysis
+of simulation intensity distribution, comparing the target, simulation, background, and star noise. It also shows the
+intensity distribution for debris and background noise.
+dense debris type represents scenes with high target density, where multiple debris objects (usually more than three)
+appear within a single frame or between adjacent frames. These instances typically exhibit significant spatial overlap
+and motion correlation, which increases the difficulty of identity assignment and temporal association.
+3.3.3 Simulation Visualization
+Line source debris in the image generally exhibits high-intensity values. To better compare the effect of simulated
+line source debris, we visualize the intensity distribution of the image. Fig 12(b) shows the intensity distribution
+analysis of the target image. On the left side of the image, we visualized the intensity distribution of different regions in
+three dimensions. In the yellow box area, we show the intensity distribution of the real target, which shows obvious
+concentrated peaks, representing the intensity characteristics of the real celestial body. These peaks indicate the
+concentrated distribution area of the target signal.
+In contrast, the red box area shows the target distribution generated by simulation, and the intensity distribution of the
+simulated target shows a similar trend. In addition, the green box area in the image shows the intensity distribution
+of the background noise. In the simulated image, the background noise (such as star noise) shows multiple peaks,
+indicating that the distribution of the noise is more dispersed, and strong interference signals appear in some areas. By
+comparing these distributions, we can verify the effectiveness of the simulation and confirm that the simulated data can
+still accurately retain the basic structural characteristics of the target under the influence of background noise.
+4 Method
+4.1 Overview
+The entire pipeline of our Space Debris Tracking Network (SDT-Net) method is shown in Fig. 4, which is a CenterTrack-
+style [21] tracking method. Due to the debris long-exposure as linear, we treat the debris tracking as tracking for linear
+segments. For each object, we follow the tracking-by-detection idea. Our model detects two endpoints of each line and
+predicts velocity for cross-frame object association to generate trajectory.
+Specifically, a backbone extract base features for each frame, we establish a Region-of-Interest Feature Enhance-
+ment (RoI-FE) module to highlight the debris object cues in feature maps. Then, a novel design detection module
+consists of an endpoint heatmap head and a line source embedding head that collaborate to localize two endpoints of
+each debris. After that, a tracking head predicts velocity for each object by computing endpoint offsets across frames.
+6
+--- PAGE 7 ---
+A PREPRINT - JULY 28, 2025
+Figure 4: The overall pipeline of our SDT-Net. The inputs are the current frameIt, the previous frame It−1 and heatmap
+Ht−1. The outputs include amodal endpoints heatmap, line source embedding, and tracking offset.
+4.2 Backbone
+For the t-th frame, the model takes three components as inputs, the image of the current frame, the previous frame and
+its predicted endpoints representing as heatmaps. Each input is passed through a corresponding input-dependent module
+containing a convolutional layer, a batch normalization layer, and a ReLU activation function. After this, the three
+feature maps are added together, resulting in a unified feature map Finput ∈ R Win×Hin×3. The feature map Finput is
+then passed through our backbone, a DLA model [32], which consists of an encoder and a decoder. The encoder outputs
+a series of feature maps at different resolutions, denoted as {F1, F2, F3, F4}. The decoder, an IDA up-sampler [32],
+takes these feature maps to gradually generate upsampled feature maps and we take the highest resolution one as our
+backbone feature Fb ∈ R W ×H×C.
+4.3 Region-of-Interest Feature Enhancement
+The Region-of-Interest Feature Enhancement module first computes a debris mask. Specifically, we introduce another
+IDA up-sampler, sharing the same structure with the backbone decoder but having independent parameters, as our
+segmentation head. Its output channels are set to 1 to obtain a debris mask ˆM ∈ R W ×H×1 based on encoder features.
+The output mask is multiplied by Fb as follows:
+Fen = ˆM ⊙ Fb (7)
+to acquire the enhanced feature Fen ∈ R W ×H×C. Fen highlights debris features and removes background noise.
+To ensure that the obtained mask ˆS accurately indicates the desired debris region, we use a Segmentation Loss to train
+the segmentation head. The mask S is supervised by a target mask S with the following loss function:
+Lseg = − 1
+W H
+W,HX
+i=1,j=1
+
+Mij log( ˆMij) + (1 − Mij) log(1 − ˆMij)
+
+, (8)
+where W, H are image dimensions, Mij is the ground truth, and ˆMij is the predicted probability. The obtained Fen is
+then passed through two modules: a Debris Detection module and a Debris Offset module.
+4.4 Debris Detection Module
+In each frame, we detect each line source by detecting its two endpoints. Two endpoints of each line source must be
+one on the left and one on the right. So, we design our model to produce a left-endpoint heatmap and a right-endpoint
+heatmap. The left-endpoint heatmap indicates left endpoints of all line sources, where the right one reflects right points.
+And then, we establish an endpoint embedding module to match different left and right endpoints belonging to a same
+line source together.
+4.4.1 Endpoints Heatmap
+The endpoints heatmap head is a convolutional layer that takes Fen as input and feedback heatmaps ˆH ∈ R W ×H×2,
+which has two channels that one for the left and one for the right endpoint. Each pixel in the heatmap represents the
+likelihood of the position being a line source endpoint.
+7
+--- PAGE 8 ---
+A PREPRINT - JULY 28, 2025
+Follow existing detection heatmap training pipeline, we utilize the focal loss to train the heatmap head as follows:
+Lhm = 1
+Npos
+X
+whc
+Focal(H, ˆH), (9)
+where ˆH and H are the predicted and the ground-truth heatmaps. w, h, c means the spatial and channel index. The
+ground-truth heatmaps H are generated by drawing Gaussian kernels at the positions of each endpoint.
+4.4.2 Line Source Embedding
+The line source embedding predicts features for each endpoint. Specifically, we predict a left endpoint line source
+embedding maps ˆEl ∈ R W ×H×C2 and a right endpoint line source embedding maps ˆEr ∈ R W ×H×C2. During
+inference, with the predicted endpoints heatmaps, we first derive local-maximum points for each heatmap, resulting in
+N left endpoints and M right endpoints. Then we utilize there points to take corresponding embeddings from ˆEl and
+ˆEr, respectively, denoted as {e1
+l , e2
+l , ..., eN
+l } and {e1
+r, e2
+r, ..., eM
+r }. Based on these, we would compute an embedding
+similarity matrix Semb ∈ R N ×M where Semb
+i,j is computed as follows:
+Semb
+i,j = |(e)i
+l − (e)j
+r|. (10)
+Semb
+i,j reflects similarity of i-th left point and j-th right point. With this, we provide a simple yet effective scheme, that
+each left point matches with its nearest neighbors right point to organize an endpoint pair as a detected object.
+Inspired by CornerNet [33], we design the loss function of our embedding as follows:
+Lsame = 1
+K
+KX
+k=1
+
+(ek
+l − ek
+c)2 + (ek
+r − ek
+c)2
+, (11)
+where ek
+l and ek
+r are endpoint features, ek
+c is the mean of ek
+l and ek
+r, utilized to push ek
+l and ek
+r as close as possible.
+Meanwhile, we introduce Ldiff to separate the features of different pairs as:
+Ldiff = 1
+K(K − 1)
+KX
+k=1
+KX
+j=1
+j̸=k
+max
+ 
+0, ∆ − |ek − ej|
+
+, (12)
+where ∆ is the minimum feature distance threshold. In our experiments, we set ∆ to 1. This term facilities to push
+center features belonging to different objects far away.
+4.5 Debris Offset Module
+We construct a Debris Offset module. For the t-th frame, this module predicts two offset maps, ˆOt
+l ∈ R W ×H×2 and
+ˆOt
+r ∈ R W ×H×2 for left and right endpoints, respectively.
+During inference, the offset plays a key role in data association. Assume that the detection head provides N detected
+objects, we could index N offsets as: {(ot
+l)1, (ot
+l)2, (ot
+l)2..., (ot
+l)N } and {(ot
+r)1, (ot
+r)2, (ot
+r)2..., (ot
+r)N }. They indicate
+object endpoint offsets between the current frame and the previous t − 1 frame. With these predicted offsets, for each
+detected object, we could derive endpoint locations at the previous frame as follows:
+left: (c′)t−1
+l = ct
+l − ot
+l, right: (c′)t−1
+r = ct
+r − ot
+r, (13)
+where c′ is the derived endpoint coordinate and c is the detected one. These derived endpoints imply the potential
+previous object locations. With these, we could match objects across frames by measuring the location consistency
+between the derived endpoints and the detected object endpoints. If the previous frame has M detected objects, we
+would compute a similarity matrix Sobj ∈ R N ×M where Sobj
+i,j is computed as follows:
+Sobj
+i,j = |(c′)t−1
+l − (c)t−1
+l | + |(c′)t−1
+r − (c)t−1
+r |. (14)
+Sobj
+i,j reflects similarity of i-th object in the t-th frame and j-th object in the t − 1 frame. Similar to the embedding
+module, we also utilize nearest neighbor as a matching scheme that the object in the current frame associates with its
+nearest neighbors in the previous frame.
+To achieve the aforementioned function, during the training phase, we minimize the difference between the ground-truth
+offset and the predicted offset as follows:
+Loff = 1
+K
+KX
+i=1
+(ot)i − [(ct)i − (ct−1)i]
+ , (15)
+8
+--- PAGE 9 ---
+A PREPRINT - JULY 28, 2025
+4.6 Loss function
+Finally, the loss function L is defined by the weighted summation of all loss terms,
+L = λsegLseg + λhmLhm + λemb(Lsame + Ldiff) + λoffLoff, (16)
+where λseg, λhm, λemb and λoff represent the weights for Lseg, Lhm, (Lsame + Ldiff) and Loff.
+5 Experiments
+Table 2: Comparison of trackers on Debris Test and Dense Debris Test. The table compares the performance of various
+tracking algorithms in two distinct scenarios. The best and second−best figures are in color and n represents the
+number of debris.
+Tracker Debris(n ≤ 2) Dense Debris( 1 ≤ n ≤ 5)
+IDF1↑ MOTA↑ IDS↓ HOTA↑ DetA↑ AssA↑ IDF1↑ MOTA↑ IDS↓ HOTA↑ DetA↑ AssA↑
+LSD [34] 11.4 9.8 / / / / / / / / / /
+Deepsort [17] 71.7 55.3 211 56.4 56.9 55.8 72.9 57.8 1947 58.7 60.1 57.4
+Motdt [35] 69.1 54.0 239 54.2 55.6 52.8 68.6 53.5 2015 53.9 55.7 52.2
+CTracker [36] 83.4 71.0 240 72.9 74.3 71.5 69.3 61.7 1660 58.2 63.9 53.0
+Sort+YoloX[37] 85.6 74.7 130 75.1 75.3 74.8 76.0 59.3 1394 61.5 61.7 61.3
+Centertrack [21] 86.3 77.1 174 81.0 85.6 75.9 72.5 64.8 1292 66.1 76.7 56.9
+ByteTrack [23] 91.0 83.3 195 82.8 83.9 81.6 79.4 62.8 1211 66.3 66.8 65.8
+OCSORT [38] 91.6 84.1 138 83.7 84.9 82.5 82.6 68.5 1260 70.8 73.3 68.3
+SDTNet (Ours) 91.8 87.7 169 87.8 90.9 84.8 80.6 70.3 1070 73.6 81.6 65.6
+5.1 Experimental Setup
+All experiments are performed using the mmdetection framework [39] with Pytorch [40]. The SDT-Net model is trained
+on 8 NVIDIA 4090 GPUs. The entire model is trained for 60 epochs, and the initial learning rate is set to 3e-3, which
+is decayed by 0.1 at the 20 epoch. The association radius r to 200. Additionally, We adopt a downsampling strategy
+to generate paired images for training. Specifically, we first crop image patches of size 1524×1524 from the original
+high-resolution images as ground truth. We employ the resolution of the input images is set to 1524 ×1524 and the
+batch size is set to 2. Besides, the value of λseg and λemb are set to 1.0, λhm is set to 10, and λoff is set to 0.1,
+5.2 Evaluation Metrics
+For evaluating the performance, we use standard MOT [41] evaluation metrics. Specifically, we adopt commonly used
+metrics in the field, including Multi-Object Tracking Accuracy (MOTA), identity F1 score (IDF1), Identity Switches
+(IDs), and Higher Order Tracking Accuracy (HOTA) [ 42]. These metrics provide a comprehensive assessment of
+tracking performance. Notably, HOTA includes Detection Accuracy (DetA) and Association Accuracy (AssA), where
+DetA measures the accuracy of detecting objects regardless of their identities, and AssA evaluates how well identities
+are consistently maintained across frames.
+5.3 Comparison with Existing MOT Methods
+As shown in Tab. 2, we compare our proposed SDT-Net with state-of-the-art MOT methods on the SDTD test set.
+Our method outperforms previous approaches in tracking space debris, particularly under dense debris conditions.
+Especially, SDT-Net significantly outperforms CenterTrack in tracking performance. On the debris test set, it improves
+MOTA and HOTA by 10.6% and 6.8%, respectively, while on the dense debris test set, the improvements are 5.5%
+and 7.5%. These results demonstrate that SDT-Net achieves superior object association (higher AssA) and detection
+robustness (higher DetA). As shown in Tab. 2, SDT-Net consistently outperforms CenterTrack across all key metrics,
+highlighting its effectiveness in complex space debris tracking scenarios.
+5.4 Ablation Study
+To analyze the contributions of different components in SDT-Net, we conduct an ablation study on the Debris Test and
+Dense Debris Test sets, as shown in Tab 3. We evaluate three configurations: (a) Based on Centertrack, the center point
+and box size parameters are used to predict line source debris, and the debris offset module is also included; (b) LSE
+9
+--- PAGE 10 ---
+A PREPRINT - JULY 28, 2025
+Figure 5: Visualization example of the tracking results of the SDTD model on the test set. The green bounding
+box represents the GT, and the red bounding box represents the model prediction result. When the Intersection over
+Union (IoU) between the predicted box and GT is 0, the presence of only a green box indicates a False Negative, while
+the presence of only a red box indicates a False Positive.
+(Line Source Embedding), which models debris as line sources and directly locates their endpoint pairs; (c) RoI-FE
+(Region of Interest Feature Enhancement) further enhances the fragment feature representation and removes the debris
+offset module; and (d) Complete SDT-Net.
+Effect of Line Source Embedding (LSE) : Compared to CenterTrack (row a), introducing the line source embedding
+in SDT-Net (row b) leads to notable improvements across all metrics. Specifically, MOTA improves from 77.1% to
+85.5% on the Debris Test set and from 64.8% to 64.9% on the Dense Debris Test set. This indicates that directly
+modeling debris as segments rather than center-based boxes provides better spatial localization, leading to improved
+object association (higher IDF1) and overall tracking performance.
+Region-of-Interest Feature Enhancement (RoI-FE): Further incorporating segmentation masks (compare rows b and
+d) enhances the representation of debris features. This results in additional performance gains, with MOTA improving
+from 85.5% to 87.7% on the Debris Test set and from 64.9% to 70.3% on the Dense Debris Test set. Similarly, HOTA
+sees a significant increase, confirming that segmentation helps improve tracking robustness.
+Offset Module: As shown in rows (c) and (d), introducing the debris offset module alone can significantly improve all
+indicators. Specifically, MOTA is improved from 86.0% (row c) to 87.7% on the fragmented test set, and from 62.9% to
+70.3% on the dense fragmented test set. These improvements show that the offset module plays a key role in improving
+endpoint accuracy and overall tracking robustness. Finally, after integrating all modules, IDF1 is 80.6%, MOTA is
+70.3%, and HOTA is 73.6% on the dense fragmented test set.
+Table 3: Ablation study of SDT-Net.
+LSE RoI-FE Offset Module Debris Test ( n ≤ 2) Dense Debris Test (1 ≤ n ≤ 5)
+IDF1↑ MOTA↑ HOTA↑ DetA↑ IDF1↑ MOTA↑ HOTA↑ DetA↑
+(a) ✓ 86.3 77.1 81.0 85.6 72.5 64.8 66.1 76.7
+(b) ✓ ✓ 90.4 85.5 84.8 88.3 78.5 64.9 65.3 79.1
+(c) ✓ ✓ 88.2 86.0 85.2 88.9 73.5 62.9 63.0 78.6
+(d) ✓ ✓ ✓ 91.8 87.7 87.8 90.9 80.6 70.3 73.6 81.6
+The complete SDT-Net (row c) achieves the best performance, demonstrating that combining LSE and RoI-FE leads
+to the most accurate debris tracking. These results highlight that directly predicting line source endpoints improves
+accuracy, while segmentation masks further strengthen debris features, particularly in challenging dense debris scenarios.
+10
+--- PAGE 11 ---
+A PREPRINT - JULY 28, 2025
+Figure 6: Visualization of sample tracking results of real-world observations. Left: real-world debris observation. Right:
+model predicts tracking results, represented by predicted endpoints and connecting segments forming the trajectory
+(superimposed on a blank background). Different colors correspond to different debris IDs.
+5.5 Qualitative Results
+We compare it with state-of-the-art tracking methods, including OCSORT and CenterTrack, in complex scenarios.
+Fig. 5 illustrates the tracking results on datasets containing space debris with cluttered backgrounds, occlusions, and
+varying object densities.
+CenterTrack fails to maintain debris tracking when occluded by light sources, whereas SDTD successfully detects and
+tracks the debris in such situations. In scenarios with dense debris, OCSORT produces false positives, while SDTD
+exhibits superior spatial detection and tracking capabilities. This reflects its ability to accurately associate and locate
+dense debris.
+To further verify the effectiveness of SDT-Net, we evaluate the model with real-world debris data. Due to the scarcity of
+real-world debris observation data, we finally select 36 video sequences containing debris (a total of 2,228 frames) and
+invited astronomy experts to annotate the real-world observation data. As shown in Table 4, our method (SDT-Net)
+achieves a MOTA score exceeding 73%, demonstrating strong real-world performance. Fig 6 further illustrates the
+effectiveness of our approach. The left side of the figure presents raw debris observations, while the right side visualizes
+the predicted tracking results. Notably, the right side does not represent ground truth but rather our model’s predictions.
+For clarity, we display each tracked object using a line connecting its two key points instead of conventional bounding
+boxes. In practical applications, these tracked trajectories are overlaid on blank background images to facilitate
+interpretation. Each color in the visualization corresponds to a distinct debris ID, reflecting the model’s ability to
+distinguish and track multiple objects.
+Table 4: Evaluation of SDT-Net on the Antarctic Station real-world data.
+Method MOTA ↑ HOTA↑ DetA↑
+Deepsort [17] 48.7 48.9 51.8
+Motdt [35] 47.4 45.2 47.6
+CTracker [36] 51.9 45.8 54.5
+Sort+YoloX [37] 57.4 57.4 58.9
+CenterTrack [21] 64.7 58.3 68.7
+ByteTrack [23] 66.8 62.4 70.1
+OCSORT [38] 69.3 66.8 72.2
+SDT-Net 73.2 68.1 75.8
+11
+--- PAGE 12 ---
+A PREPRINT - JULY 28, 2025
+6 Conclusion
+In this paper, we introduce SDTD, the first benchmark dataset for space debris tracking. SDTD consisting of 18,040
+videos from ZTF with 62,562 frames and 250,000 synthetic debris. SDTD provides diverse scenarios, including
+complex backgrounds and dense debris. Based on this, we propose a deep learning-based tracking network, SDTD,
+which achieves state-of-the-art performance. Furthermore, we conduct a user study on real-world data to assess the
+model’s generalization ability. The results demonstrate that SDT-Net not only performs well on real debris scenes
+(e.g., Antarctic Station data) but also exhibits transferability to out-of-distribution scenarios, ensuring robust tracking
+capabilities in challenging environments.
+References
+[1] JI Katz. Can a satellite dodge space debris? Acta Astronautica, 2024.
+[2] Michael A Steindorfer, Peiyuan Wang, Franz Koidl, and Georg Kirchner. Space debris and satellite laser ranging
+combined using a megahertz system. Nature Communications, 16(1):1–12, 2025.
+[3] Ruiming Liu, Yanhong Lu, Chenglong Gong, and Yang Liu. Infrared point target detection with improved template
+matching. Infrared Physics & Technology, 55(4):380–387, 2012.
+[4] Timothy S Murphy, Marcus J Holzinger, and Brien Flewelling. Space object detection in images using matched
+filter bank and bayesian update. Journal of Guidance, Control, and Dynamics, 40(3):497–509, 2017.
+[5] Min-Song Wei, Fei Xing, and Zheng You. A real-time detection and positioning method for small and weak
+targets using a 1d morphology-based approach in 2d images. Light: Science & Applications, 7(5):18006–18006,
+2018.
+[6] Ping Jiang, Chengzhi Liu, Wenbo Yang, Zhe Kang, and Zhenwei Li. Automatic space debris extraction channel
+based on large field of view photoelectric detection system. Publications of the Astronomical Society of the Pacific,
+134(1032):024503, 2022.
+[7] Zhengxia Zou, Keyan Chen, Zhenwei Shi, Yuhong Guo, and Jieping Ye. Object detection in 20 years: A survey.
+Proceedings of the IEEE, 111(3):257–276, 2023.
+[8] Sajid Javed, Martin Danelljan, Fahad Shahbaz Khan, Muhammad Haris Khan, Michael Felsberg, and Jiri Matas.
+Visual object tracking with discriminative filters and siamese networks: a survey and outlook. IEEE transactions
+on pattern analysis and machine intelligence, 45(5):6552–6574, 2022.
+[9] Hui Li, Bo Chen, Li Feng, Ying Li, Yu Huang, Jing-Wei Li, Lei Lu, Jian-Chao Xue, Bei-Li Ying, Jie Zhao, et al.
+The lyman-alpha solar telescope (lst) for the aso-s mission—i. scientific objectives and overview. Research in
+Astronomy and Astrophysics, 19(11):158, 2019.
+[10] Tinggui Wang, Guilin Liu, Zhenyi Cai, Jinjun Geng, Min Fang, Haoning He, Ji-an Jiang, Ning Jiang, Xu Kong,
+Bin Li, et al. Science with the 2.5-meter wide field survey telescope (wfst). Science China Physics, Mechanics &
+Astronomy, 66(10):109512, 2023.
+[11] Bin Lin, Lijun Zhong, Sheng Zhuge, Xia Yang, Yang Yang, Kunpeng Wang, and Xiaohu Zhang. A new pattern
+for detection of streak-like space target from single optical images. IEEE Transactions on Geoscience and Remote
+Sensing, 60:1–13, 2021.
+[12] JR Peterson, JG Jernigan, SM Kahn, AP Rasmussen, E Peng, Z Ahmad, J Bankert, C Chang, C Claver, DK Gilmore,
+et al. Simulation of astronomical images from optical survey telescopes using a comprehensive photon monte
+carlo approach. The Astrophysical Journal Supplement Series, 218(1):14, 2015.
+[13] Marshall D Perrin, Anand Sivaramakrishnan, Charles-Philippe Lajoie, Erin Elliott, Laurent Pueyo, Swara Ravin-
+dranath, and Loïc Albert. Updated point spread function simulations for jwst with webbpsf. In Space telescopes
+and instrumentation 2014: optical, infrared, and millimeter wave, volume 9143, pages 1174–1184. SPIE, 2014.
+[14] Jiang Tao, Yunfeng Cao, and Meng Ding. Sdebrisnet: A spatial–temporal saliency network for space debris
+detection. Applied Sciences, 13(8):4955, 2023.
+[15] Zijian Zhu, Ali Zia, Xuesong Li, Bingbing Dan, Yuebo Ma, Enhai Liu, and Rujin Zhao. Sstd: Stripe-like space
+target detection using single-point weak supervision. arXiv preprint arXiv:2407.18097, 2024.
+[16] Andreas Geiger, Philip Lenz, and Raquel Urtasun. Are we ready for autonomous driving? the kitti vision
+benchmark suite. In 2012 IEEE conference on computer vision and pattern recognition, pages 3354–3361. IEEE,
+2012.
+12
+--- PAGE 13 ---
+A PREPRINT - JULY 28, 2025
+[17] Alex Bewley, Zongyuan Ge, Lionel Ott, Fabio Ramos, and Ben Upcroft. Simple online and realtime tracking. In
+2016 IEEE international conference on image processing (ICIP), pages 3464–3468. Ieee, 2016.
+[18] Greg Welch, Gary Bishop, et al. An introduction to the kalman filter. 1995.
+[19] Harold W Kuhn. The hungarian method for the assignment problem. Naval research logistics quarterly, 2(1-
+2):83–97, 1955.
+[20] Nicolai Wojke, Alex Bewley, and Dietrich Paulus. Simple online and realtime tracking with a deep association
+metric. In 2017 IEEE international conference on image processing (ICIP), pages 3645–3649. IEEE, 2017.
+[21] Xingyi Zhou, Vladlen Koltun, and Philipp Krähenbühl. Tracking objects as points. In European conference on
+computer vision, pages 474–490. Springer, 2020.
+[22] Xingyi Zhou, Dequan Wang, and Philipp Krähenbühl. Objects as points. arXiv preprint arXiv:1904.07850, 2019.
+[23] Yifu Zhang, Peize Sun, Yi Jiang, Dongdong Yu, Fucheng Weng, Zehuan Yuan, Ping Luo, Wenyu Liu, and
+Xinggang Wang. Bytetrack: Multi-object tracking by associating every detection box. In European conference on
+computer vision, pages 1–21. Springer, 2022.
+[24] Ping Jiang, Chengzhi Liu, Wenbo Yang, Zhe Kang, Cunbo Fan, and Zhenwei Li. Space debris automation
+detection and extraction based on a wide-field surveillance system. The Astrophysical Journal Supplement Series,
+259(1):4, 2022.
+[25] Yang Guo, Xianlong Yin, Yao Xiao, Zhengxu Zhao, Xu Yang, and Chenggang Dai. Enhanced yolov8-based
+method for space debris detection using cross-scale feature fusion. Discover Applied Sciences, 7(2):95, 2025.
+[26] Peng Jia, Qiang Liu, and Yongyang Sun. Detection and classification of astronomical targets with deep neural
+networks in wide-field small aperture telescopes. The Astronomical Journal, 159(5):212, 2020.
+[27] Shaoqing Ren, Kaiming He, Ross Girshick, and Jian Sun. Faster r-cnn: Towards real-time object detection with
+region proposal networks. Advances in neural information processing systems, 28, 2015.
+[28] Kaiming He, Xiangyu Zhang, Shaoqing Ren, and Jian Sun. Deep residual learning for image recognition. In
+Proceedings of the IEEE conference on computer vision and pattern recognition, pages 770–778, 2016.
+[29] Eric Bellm. The zwicky transient facility. In The Third Hot-wiring the Transient Universe Workshop, volume 27,
+2014.
+[30] Harry Edward Payne, Robert I Jedrzejewski, and Richard N Hook. Astronomical data analysis software and
+systems xii. Astronomical Data Analysis Software and Systems XII, 295, 2003.
+[31] Vladimir Kouprianov. Distinguishing features of ccd astrometry of faint geo objects. Advances in Space Research,
+41(7):1029–1038, 2008.
+[32] Fisher Yu, Dequan Wang, Evan Shelhamer, and Trevor Darrell. Deep layer aggregation. InProceedings of the
+IEEE conference on computer vision and pattern recognition, pages 2403–2412, 2018.
+[33] Hei Law and Jia Deng. Cornernet: Detecting objects as paired keypoints. In Proceedings of the European
+conference on computer vision (ECCV), pages 734–750, 2018.
+[34] Rafael Grompone V on Gioi, Jérémie Jakubowicz, Jean-Michel Morel, and Gregory Randall. Lsd: A line segment
+detector. Image Processing On Line, 2:35–55, 2012.
+[35] Long Chen, Haizhou Ai, Zijie Zhuang, and Chong Shang. Real-time multiple people tracking with deeply learned
+candidate selection and person re-identification. In 2018 IEEE international conference on multimedia and expo
+(ICME), pages 1–6. IEEE, 2018.
+[36] Jinlong Peng, Changan Wang, Fangbin Wan, Yang Wu, Yabiao Wang, Ying Tai, Chengjie Wang, Jilin Li, Feiyue
+Huang, and Yanwei Fu. Chained-tracker: Chaining paired attentive regression results for end-to-end joint multiple-
+object detection and tracking. In Computer Vision–ECCV 2020: 16th European Conference, Glasgow, UK, August
+23–28, 2020, Proceedings, Part IV 16, pages 145–161. Springer, 2020.
+[37] Z Ge. Yolox: Exceeding yolo series in 2021. arXiv preprint arXiv:2107.08430, 2021.
+[38] Jinkun Cao, Jiangmiao Pang, Xinshuo Weng, Rawal Khirodkar, and Kris Kitani. Observation-centric sort:
+Rethinking sort for robust multi-object tracking. In Proceedings of the IEEE/CVF conference on computer vision
+and pattern recognition, pages 9686–9696, 2023.
+[39] Kai Chen, Jiaqi Wang, Jiangmiao Pang, Yuhang Cao, Yu Xiong, Xiaoxiao Li, Shuyang Sun, Wansen Feng,
+Ziwei Liu, Jiarui Xu, et al. Mmdetection: Open mmlab detection toolbox and benchmark. arXiv preprint
+arXiv:1906.07155, 2019.
+13
+--- PAGE 14 ---
+A PREPRINT - JULY 28, 2025
+[40] Adam Paszke, Sam Gross, Francisco Massa, Adam Lerer, James Bradbury, Gregory Chanan, Trevor Killeen,
+Zeming Lin, Natalia Gimelshein, Luca Antiga, et al. Pytorch: An imperative style, high-performance deep
+learning library. Advances in neural information processing systems, 32, 2019.
+[41] Keni Bernardin and Rainer Stiefelhagen. Evaluating multiple object tracking performance: the clear mot metrics.
+EURASIP Journal on Image and Video Processing, 2008:1–10, 2008.
+[42] Jonathon Luiten, Aljosa Osep, Patrick Dendorfer, Philip Torr, Andreas Geiger, Laura Leal-Taixé, and Bastian
+Leibe. Hota: A higher order metric for evaluating multi-object tracking. International journal of computer vision,
+129:548–578, 2021.
+14
+--- PAGE 15 ---
+A PREPRINT - JULY 28, 2025
+Figure 7: Data example of complex skylight background.
+Figure 8: Comparison of debris simulation and real-world debris. The green bounding box represents real-world debris,
+and the red bounding box represents simulated debris.
+15
+--- PAGE 16 ---
+A PREPRINT - JULY 28, 2025
+Figure 9: Dynamic imaging process of space debris.
+Figure 10: SDT-Net tracking results in the real-world data.
+16
+--- PAGE 17 ---
+A PREPRINT - JULY 28, 2025
+Figure 11: SDT-Net test tracking result example in SDTD.
+Figure 12: SDT-Net test tracking result example in SDTD, including at least two debris.
+17

@@ -1,0 +1,28 @@
+{
+  "baseline": {
+    "best_epoch": 4,
+    "total_epochs": 5,
+    "mAP50": 0.6939,
+    "mAP50_95": 0.34598,
+    "precision": 0.99371,
+    "recall": 0.4592,
+    "box_loss": 1.73062,
+    "cls_loss": 1.86641,
+    "val_box_loss": 1.75819,
+    "val_cls_loss": 2.69999,
+    "train_time_sec": 436.681
+  },
+  "p2head": {
+    "best_epoch": 5,
+    "total_epochs": 5,
+    "mAP50": 0.69197,
+    "mAP50_95": 0.36271,
+    "precision": 0.76797,
+    "recall": 0.64463,
+    "box_loss": 1.63472,
+    "cls_loss": 2.27032,
+    "val_box_loss": 1.59794,
+    "val_cls_loss": 1.84611,
+    "train_time_sec": 1190.36
+  }
+}
