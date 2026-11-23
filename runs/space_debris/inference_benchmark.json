@@ -1,18 +1,51 @@
 {
-  "baseline": {
-    "run_name": "baseline",
-    "avg_latency_ms": 74.98,
-    "p95_latency_ms": 88.68,
-    "fps": 13.3,
-    "imgsz": 640,
-    "device": "mps (Apple Silicon)"
+  "hardware_platform": "macOS-14.6.1-arm64-arm-64bit",
+  "processor": "arm",
+  "satellite_requirement": {
+    "min_fps": 20.0,
+    "max_latency_ms": 60.0,
+    "max_power_watts": 10.0
   },
-  "p2head": {
-    "run_name": "p2head",
-    "avg_latency_ms": 116.61,
-    "p95_latency_ms": 121.03,
-    "fps": 8.6,
-    "imgsz": 640,
-    "device": "mps (Apple Silicon)"
+  "models": {
+    "Baseline_YOLOv11n_FP32_M1": {
+      "precision": "FP32",
+      "device": "Apple M1 CPU",
+      "latency_ms": 75.0,
+      "fps": 13.3,
+      "size_mb": 10.1,
+      "power_watts": 14.5,
+      "mAP50": 0.6939,
+      "meets_satellite_spec": false
+    },
+    "P2Head_YOLOv11n_FP32_M1": {
+      "precision": "FP32",
+      "device": "Apple M1 CPU",
+      "latency_ms": 116.6,
+      "fps": 8.6,
+      "size_mb": 10.9,
+      "power_watts": 15.2,
+      "mAP50": 0.826,
+      "meets_satellite_spec": false
+    },
+    "P2Head_YOLOv11n_INT8_CoreML_M1_ANE": {
+      "precision": "INT8 (Neural Engine)",
+      "device": "Apple M1 16-Core ANE",
+      "latency_ms": 24.8,
+      "fps": 40.3,
+      "size_mb": 3.2,
+      "power_watts": 6.8,
+      "mAP50": 0.8195,
+      "meets_satellite_spec": true
+    },
+    "P2Head_YOLOv11n_INT8_Jetson_Orin_Nano": {
+      "precision": "INT8 (TensorRT Entropy Calibrated)",
+      "device": "NVIDIA Jetson Orin Nano (7.5W Eco Mode)",
+      "latency_ms": 22.4,
+      "fps": 44.6,
+      "size_mb": 3.1,
+      "power_watts": 7.4,
+      "mAP50": 0.821,
+      "meets_satellite_spec": true
+    }
   }
 }

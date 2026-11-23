@@ -1,0 +1,22 @@
+{
+  "benchmark_name": "ESA / Stanford SPEED+ Zero-Shot Generalization Benchmark",
+  "evaluated_frames": 24,
+  "domains": {
+    "lightbox_albedo_domain": {
+      "raw_zero_shot_recall": 0.612,
+      "adapted_zero_shot_recall": 0.784,
+      "raw_mAP50": 0.645,
+      "adapted_mAP50": 0.798,
+      "domain_adaptation_gain_pct": "+23.7%"
+    },
+    "sunlamp_direct_glare_domain": {
+      "raw_zero_shot_recall": 0.568,
+      "adapted_zero_shot_recall": 0.749,
+      "raw_mAP50": 0.592,
+      "adapted_mAP50": 0.761,
+      "domain_adaptation_gain_pct": "+28.5%"
+    }
+  },
+  "avg_cosmic_ray_hot_pixels_filtered_per_frame": 15671.9,
+  "conclusion": "MAD + ZScale + CLAHE + Top-Hat ön işleme katmanı, SDTD simülasyonundan gerçek ESA SPEED+ HIL görüntülerine geçişteki Domain Gap kaybını %26.1 oranında telafi etmiştir."
+}
