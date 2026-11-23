@@ -1,0 +1,3303 @@
+[
+  {
+    "timestamp": "2026-11-23T12:32:26.297459Z",
+    "satellite_id": "NASA-ORBIT-SURVEILLANCE",
+    "frame_index": 0,
+    "overall_status": "SAFE",
+    "active_tracks_count": 29,
+    "critical_threats_count": 0,
+    "recommended_action": "CONTINUE_NOMINAL_ATTITUDE",
+    "threats": []
+  },
+  {
+    "timestamp": "2026-11-23T12:32:26.415456Z",
+    "satellite_id": "NASA-ORBIT-SURVEILLANCE",
+    "frame_index": 1,
+    "overall_status": "SAFE",
+    "active_tracks_count": 29,
+    "critical_threats_count": 0,
+    "recommended_action": "CONTINUE_NOMINAL_ATTITUDE",
+    "threats": []
+  },
+  {
+    "timestamp": "2026-11-23T12:32:26.578088Z",
+    "satellite_id": "NASA-ORBIT-SURVEILLANCE",
+    "frame_index": 2,
+    "overall_status": "SAFE",
+    "active_tracks_count": 28,
+    "critical_threats_count": 0,
+    "recommended_action": "CONTINUE_NOMINAL_ATTITUDE",
+    "threats": []
+  },
+  {
+    "timestamp": "2026-11-23T12:32:26.718238Z",
+    "satellite_id": "NASA-ORBIT-SURVEILLANCE",
+    "frame_index": 3,
+    "overall_status": "SAFE",
+    "active_tracks_count": 30,
+    "critical_threats_count": 0,
+    "recommended_action": "CONTINUE_NOMINAL_ATTITUDE",
+    "threats": []
+  },
+  {
+    "timestamp": "2026-11-23T12:32:26.804886Z",
+    "satellite_id": "NASA-ORBIT-SURVEILLANCE",
+    "frame_index": 4,
+    "overall_status": "COLLISION_WARNING_MONITORING",
+    "active_tracks_count": 28,
+    "critical_threats_count": 0,
+    "recommended_action": "CHARGE_PROPULSION_PREPARE_MANEUVER",
+    "threats": [
+      {
+        "debris_id": 16,
+        "threat_level": "COLLISION_WARNING",
+        "time_to_collision_sec": 9.64,
+        "miss_distance_pixels": 56.7,
+        "relative_velocity_pixels_sec": [
+          12.3,
+          13.8
+        ],
+        "evasive_vector": [
+          0.747,
+          -0.665
+        ]
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-11-23T12:32:26.905000Z",
+    "satellite_id": "NASA-ORBIT-SURVEILLANCE",
+    "frame_index": 5,
+    "overall_status": "COLLISION_WARNING_MONITORING",
+    "active_tracks_count": 32,
+    "critical_threats_count": 0,
+    "recommended_action": "CHARGE_PROPULSION_PREPARE_MANEUVER",
+    "threats": [
+      {
+        "debris_id": 16,
+        "threat_level": "COLLISION_WARNING",
+        "time_to_collision_sec": 7.76,
+        "miss_distance_pixels": 48.9,
+        "relative_velocity_pixels_sec": [
+          15.8,
+          16.4
+        ],
+        "evasive_vector": [
+          0.72,
+          -0.694
+        ]
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-11-23T12:32:26.992793Z",
+    "satellite_id": "NASA-ORBIT-SURVEILLANCE",
+    "frame_index": 6,
+    "overall_status": "CRITICAL_COLLISION_WARNING",
+    "active_tracks_count": 28,
+    "critical_threats_count": 2,
+    "recommended_action": "EXECUTE_IMPULSIVE_BURN_DIRECTION_[-0.36,+0.93]",
+    "threats": [
+      {
+        "debris_id": 8,
+        "threat_level": "CRITICAL_COLLISION_ALERT",
+        "time_to_collision_sec": 2.75,
+        "miss_distance_pixels": 39.0,
+        "relative_velocity_pixels_sec": [
+          -2.7,
+          22.1
+        ],
+        "evasive_vector": [
+          0.993,
+          0.12
+        ]
+      },
+      {
+        "debris_id": 18,
+        "threat_level": "CRITICAL_COLLISION_ALERT",
+        "time_to_collision_sec": 2.49,
+        "miss_distance_pixels": 71.6,
+        "relative_velocity_pixels_sec": [
+          26.0,
+          10.2
+        ],
+        "evasive_vector": [
+          -0.365,
+          0.931
+        ]
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-11-23T12:32:27.060255Z",
+    "satellite_id": "NASA-ORBIT-SURVEILLANCE",
+    "frame_index": 7,
+    "overall_status": "COLLISION_WARNING_MONITORING",
+    "active_tracks_count": 27,
+    "critical_threats_count": 0,
+    "recommended_action": "CHARGE_PROPULSION_PREPARE_MANEUVER",
+    "threats": [
+      {
+        "debris_id": 16,
+        "threat_level": "COLLISION_WARNING",
+        "time_to_collision_sec": 6.91,
+        "miss_distance_pixels": 138.4,
+        "relative_velocity_pixels_sec": [
+          5.0,
+          18.5
+        ],
+        "evasive_vector": [
+          0.965,
+          -0.262
+        ]
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-11-23T12:32:27.155524Z",
+    "satellite_id": "NASA-ORBIT-SURVEILLANCE",
+    "frame_index": 8,
+    "overall_status": "COLLISION_WARNING_MONITORING",
+    "active_tracks_count": 32,
+    "critical_threats_count": 0,
+    "recommended_action": "CHARGE_PROPULSION_PREPARE_MANEUVER",
+    "threats": [
+      {
+        "debris_id": 7,
+        "threat_level": "COLLISION_WARNING",
+        "time_to_collision_sec": 5.74,
+        "miss_distance_pixels": 2.1,
+        "relative_velocity_pixels_sec": [
+          31.5,
+          -5.8
+        ],
+        "evasive_vector": [
+          0.18,
+          0.984
+        ]
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-11-23T12:32:27.245884Z",
+    "satellite_id": "NASA-ORBIT-SURVEILLANCE",
+    "frame_index": 9,
+    "overall_status": "COLLISION_WARNING_MONITORING",
+    "active_tracks_count": 27,
+    "critical_threats_count": 0,
+    "recommended_action": "CHARGE_PROPULSION_PREPARE_MANEUVER",
+    "threats": [
+      {
+        "debris_id": 18,
+        "threat_level": "COLLISION_WARNING",
+        "time_to_collision_sec": 0.84,
+        "miss_distance_pixels": 96.2,
+        "relative_velocity_pixels_sec": [
+          -20.5,
+          34.8
+        ],
+        "evasive_vector": [
+          0.861,
+          0.509
+        ]
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-11-23T12:32:27.346296Z",
+    "satellite_id": "NASA-ORBIT-SURVEILLANCE",
+    "frame_index": 10,
+    "overall_status": "COLLISION_WARNING_MONITORING",
+    "active_tracks_count": 31,
+    "critical_threats_count": 0,
+    "recommended_action": "CHARGE_PROPULSION_PREPARE_MANEUVER",
+    "threats": [
+      {
+        "debris_id": 18,
+        "threat_level": "COLLISION_WARNING",
+        "time_to_collision_sec": 0.76,
+        "miss_distance_pixels": 88.8,
+        "relative_velocity_pixels_sec": [
+          -20.6,
+          47.2
+        ],
+        "evasive_vector": [
+          0.917,
+          0.4
+        ]
+      },
+      {
+        "debris_id": 7,
+        "threat_level": "COLLISION_WARNING",
+        "time_to_collision_sec": 6.63,
+        "miss_distance_pixels": 16.0,
+        "relative_velocity_pixels_sec": [
+          27.2,
+          -6.9
+        ],
+        "evasive_vector": [
+          0.247,
+          0.969
+        ]
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-11-23T12:32:27.394884Z",
+    "satellite_id": "NASA-ORBIT-SURVEILLANCE",
+    "frame_index": 11,
+    "overall_status": "CRITICAL_COLLISION_WARNING",
+    "active_tracks_count": 30,
+    "critical_threats_count": 1,
+    "recommended_action": "EXECUTE_IMPULSIVE_BURN_DIRECTION_[+0.96,+0.27]",
+    "threats": [
+      {
+        "debris_id": 18,
+        "threat_level": "CRITICAL_COLLISION_ALERT",
+        "time_to_collision_sec": 1.16,
+        "miss_distance_pixels": 78.7,
+        "relative_velocity_pixels_sec": [
+          -12.6,
+          44.6
+        ],
+        "evasive_vector": [
+          0.963,
+          0.271
+        ]
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-11-23T12:32:27.503347Z",
+    "satellite_id": "NASA-ORBIT-SURVEILLANCE",
+    "frame_index": 12,
+    "overall_status": "COLLISION_WARNING_MONITORING",
+    "active_tracks_count": 38,
+    "critical_threats_count": 0,
+    "recommended_action": "CHARGE_PROPULSION_PREPARE_MANEUVER",
+    "threats": [
+      {
+        "debris_id": 18,
+        "threat_level": "COLLISION_WARNING",
+        "time_to_collision_sec": 0.21,
+        "miss_distance_pixels": 101.5,
+        "relative_velocity_pixels_sec": [
+          -35.8,
+          51.0
+        ],
+        "evasive_vector": [
+          0.818,
+          0.575
+        ]
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-11-23T12:32:27.555491Z",
+    "satellite_id": "NASA-ORBIT-SURVEILLANCE",
+    "frame_index": 13,
+    "overall_status": "COLLISION_WARNING_MONITORING",
+    "active_tracks_count": 32,
+    "critical_threats_count": 0,
+    "recommended_action": "CHARGE_PROPULSION_PREPARE_MANEUVER",
+    "threats": [
+      {
+        "debris_id": 7,
+        "threat_level": "COLLISION_WARNING",
+        "time_to_collision_sec": 4.87,
+        "miss_distance_pixels": 177.1,
+        "relative_velocity_pixels_sec": [
+          6.3,
+          -17.3
+        ],
+        "evasive_vector": [
+          0.94,
+          0.341
+        ]
+      },
+      {
+        "debris_id": 45,
+        "threat_level": "COLLISION_WARNING",
+        "time_to_collision_sec": 8.97,
+        "miss_distance_pixels": 2.0,
+        "relative_velocity_pixels_sec": [
+          7.3,
+          10.4
+        ],
+        "evasive_vector": [
+          -0.816,
+          0.578
+        ]
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-11-23T12:32:27.656453Z",
+    "satellite_id": "NASA-ORBIT-SURVEILLANCE",
+    "frame_index": 14,
+    "overall_status": "COLLISION_WARNING_MONITORING",
+    "active_tracks_count": 25,
+    "critical_threats_count": 0,
+    "recommended_action": "CHARGE_PROPULSION_PREPARE_MANEUVER",
+    "threats": [
+      {
+        "debris_id": 45,
+        "threat_level": "COLLISION_WARNING",
+        "time_to_collision_sec": 7.31,
+        "miss_distance_pixels": 78.8,
+        "relative_velocity_pixels_sec": [
+          -0.8,
+          11.7
+        ],
+        "evasive_vector": [
+          0.998,
+          0.066
+        ]
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-11-23T12:32:27.722426Z",
+    "satellite_id": "NASA-ORBIT-SURVEILLANCE",
+    "frame_index": 15,
+    "overall_status": "COLLISION_WARNING_MONITORING",
+    "active_tracks_count": 35,
+    "critical_threats_count": 0,
+    "recommended_action": "CHARGE_PROPULSION_PREPARE_MANEUVER",
+    "threats": [
+      {
+        "debris_id": 45,
+        "threat_level": "COLLISION_WARNING",
+        "time_to_collision_sec": 0.67,
+        "miss_distance_pixels": 120.7,
+        "relative_velocity_pixels_sec": [
+          -10.6,
+          10.9
+        ],
+        "evasive_vector": [
+          0.717,
+          0.697
+        ]
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-11-23T12:32:27.829260Z",
+    "satellite_id": "NASA-ORBIT-SURVEILLANCE",
+    "frame_index": 16,
+    "overall_status": "SAFE",
+    "active_tracks_count": 39,
+    "critical_threats_count": 0,
+    "recommended_action": "CONTINUE_NOMINAL_ATTITUDE",
+    "threats": []
+  },
+  {
+    "timestamp": "2026-11-23T12:32:27.878007Z",
+    "satellite_id": "NASA-ORBIT-SURVEILLANCE",
+    "frame_index": 17,
+    "overall_status": "SAFE",
+    "active_tracks_count": 35,
+    "critical_threats_count": 0,
+    "recommended_action": "CONTINUE_NOMINAL_ATTITUDE",
+    "threats": []
+  },
+  {
+    "timestamp": "2026-11-23T12:32:27.923415Z",
+    "satellite_id": "NASA-ORBIT-SURVEILLANCE",
+    "frame_index": 18,
+    "overall_status": "SAFE",
+    "active_tracks_count": 30,
+    "critical_threats_count": 0,
+    "recommended_action": "CONTINUE_NOMINAL_ATTITUDE",
+    "threats": []
+  },
+  {
+    "timestamp": "2026-11-23T12:32:28.028214Z",
+    "satellite_id": "NASA-ORBIT-SURVEILLANCE",
+    "frame_index": 19,
+    "overall_status": "SAFE",
+    "active_tracks_count": 26,
+    "critical_threats_count": 0,
+    "recommended_action": "CONTINUE_NOMINAL_ATTITUDE",
+    "threats": []
+  },
+  {
+    "timestamp": "2026-11-23T12:32:28.076028Z",
+    "satellite_id": "NASA-ORBIT-SURVEILLANCE",
+    "frame_index": 20,
+    "overall_status": "SAFE",
+    "active_tracks_count": 31,
+    "critical_threats_count": 0,
+    "recommended_action": "CONTINUE_NOMINAL_ATTITUDE",
+    "threats": []
+  },
+  {
+    "timestamp": "2026-11-23T12:32:28.168217Z",
+    "satellite_id": "NASA-ORBIT-SURVEILLANCE",
+    "frame_index": 21,
+    "overall_status": "SAFE",
+    "active_tracks_count": 28,
+    "critical_threats_count": 0,
+    "recommended_action": "CONTINUE_NOMINAL_ATTITUDE",
+    "threats": []
+  },
+  {
+    "timestamp": "2026-11-23T12:32:28.270957Z",
+    "satellite_id": "NASA-ORBIT-SURVEILLANCE",
+    "frame_index": 22,
+    "overall_status": "SAFE",
+    "active_tracks_count": 24,
+    "critical_threats_count": 0,
+    "recommended_action": "CONTINUE_NOMINAL_ATTITUDE",
+    "threats": []
+  },
+  {
+    "timestamp": "2026-11-23T12:32:28.360440Z",
+    "satellite_id": "NASA-ORBIT-SURVEILLANCE",
+    "frame_index": 23,
+    "overall_status": "SAFE",
+    "active_tracks_count": 27,
+    "critical_threats_count": 0,
+    "recommended_action": "CONTINUE_NOMINAL_ATTITUDE",
+    "threats": []
+  },
+  {
+    "timestamp": "2026-11-23T12:32:28.412900Z",
+    "satellite_id": "NASA-ORBIT-SURVEILLANCE",
+    "frame_index": 24,
+    "overall_status": "SAFE",
+    "active_tracks_count": 28,
+    "critical_threats_count": 0,
+    "recommended_action": "CONTINUE_NOMINAL_ATTITUDE",
+    "threats": []
+  },
+  {
+    "timestamp": "2026-11-23T12:32:28.527145Z",
+    "satellite_id": "NASA-ORBIT-SURVEILLANCE",
+    "frame_index": 25,
+    "overall_status": "SAFE",
+    "active_tracks_count": 22,
+    "critical_threats_count": 0,
+    "recommended_action": "CONTINUE_NOMINAL_ATTITUDE",
+    "threats": []
+  },
+  {
+    "timestamp": "2026-11-23T12:32:28.617461Z",
+    "satellite_id": "NASA-ORBIT-SURVEILLANCE",
+    "frame_index": 26,
+    "overall_status": "SAFE",
+    "active_tracks_count": 28,
+    "critical_threats_count": 0,
+    "recommended_action": "CONTINUE_NOMINAL_ATTITUDE",
+    "threats": []
+  },
+  {
+    "timestamp": "2026-11-23T12:32:28.726345Z",
+    "satellite_id": "NASA-ORBIT-SURVEILLANCE",
+    "frame_index": 27,
+    "overall_status": "SAFE",
+    "active_tracks_count": 33,
+    "critical_threats_count": 0,
+    "recommended_action": "CONTINUE_NOMINAL_ATTITUDE",
+    "threats": []
+  },
+  {
+    "timestamp": "2026-11-23T12:32:28.825099Z",
+    "satellite_id": "NASA-ORBIT-SURVEILLANCE",
+    "frame_index": 28,
+    "overall_status": "SAFE",
+    "active_tracks_count": 30,
+    "critical_threats_count": 0,
+    "recommended_action": "CONTINUE_NOMINAL_ATTITUDE",
+    "threats": []
+  },
+  {
+    "timestamp": "2026-11-23T12:32:28.932244Z",
+    "satellite_id": "NASA-ORBIT-SURVEILLANCE",
+    "frame_index": 29,
+    "overall_status": "SAFE",
+    "active_tracks_count": 34,
+    "critical_threats_count": 0,
+    "recommended_action": "CONTINUE_NOMINAL_ATTITUDE",
+    "threats": []
+  },
+  {
+    "timestamp": "2026-11-23T12:32:29.025968Z",
+    "satellite_id": "NASA-ORBIT-SURVEILLANCE",
+    "frame_index": 30,
+    "overall_status": "SAFE",
+    "active_tracks_count": 35,
+    "critical_threats_count": 0,
+    "recommended_action": "CONTINUE_NOMINAL_ATTITUDE",
+    "threats": []
+  },
+  {
+    "timestamp": "2026-11-23T12:32:29.134981Z",
+    "satellite_id": "NASA-ORBIT-SURVEILLANCE",
+    "frame_index": 31,
+    "overall_status": "SAFE",
+    "active_tracks_count": 37,
+    "critical_threats_count": 0,
+    "recommended_action": "CONTINUE_NOMINAL_ATTITUDE",
+    "threats": []
+  },
+  {
+    "timestamp": "2026-11-23T12:32:29.186444Z",
+    "satellite_id": "NASA-ORBIT-SURVEILLANCE",
+    "frame_index": 32,
+    "overall_status": "SAFE",
+    "active_tracks_count": 32,
+    "critical_threats_count": 0,
+    "recommended_action": "CONTINUE_NOMINAL_ATTITUDE",
+    "threats": []
+  },
+  {
+    "timestamp": "2026-11-23T12:32:29.228101Z",
+    "satellite_id": "NASA-ORBIT-SURVEILLANCE",
+    "frame_index": 33,
+    "overall_status": "SAFE",
+    "active_tracks_count": 34,
+    "critical_threats_count": 0,
+    "recommended_action": "CONTINUE_NOMINAL_ATTITUDE",
+    "threats": []
+  },
+  {
+    "timestamp": "2026-11-23T12:32:29.283473Z",
+    "satellite_id": "NASA-ORBIT-SURVEILLANCE",
+    "frame_index": 34,
+    "overall_status": "SAFE",
+    "active_tracks_count": 23,
+    "critical_threats_count": 0,
+    "recommended_action": "CONTINUE_NOMINAL_ATTITUDE",
+    "threats": []
+  },
+  {
+    "timestamp": "2026-11-23T12:32:29.333252Z",
+    "satellite_id": "NASA-ORBIT-SURVEILLANCE",
+    "frame_index": 35,
+    "overall_status": "SAFE",
+    "active_tracks_count": 29,
+    "critical_threats_count": 0,
+    "recommended_action": "CONTINUE_NOMINAL_ATTITUDE",
+    "threats": []
+  },
+  {
+    "timestamp": "2026-11-23T12:32:29.393193Z",
+    "satellite_id": "NASA-ORBIT-SURVEILLANCE",
+    "frame_index": 36,
+    "overall_status": "SAFE",
+    "active_tracks_count": 29,
+    "critical_threats_count": 0,
+    "recommended_action": "CONTINUE_NOMINAL_ATTITUDE",
+    "threats": []
+  },
+  {
+    "timestamp": "2026-11-23T12:32:29.481886Z",
+    "satellite_id": "NASA-ORBIT-SURVEILLANCE",
+    "frame_index": 37,
+    "overall_status": "SAFE",
+    "active_tracks_count": 26,
+    "critical_threats_count": 0,
+    "recommended_action": "CONTINUE_NOMINAL_ATTITUDE",
+    "threats": []
+  },
+  {
+    "timestamp": "2026-11-23T12:32:29.535623Z",
+    "satellite_id": "NASA-ORBIT-SURVEILLANCE",
+    "frame_index": 38,
+    "overall_status": "SAFE",
+    "active_tracks_count": 27,
+    "critical_threats_count": 0,
+    "recommended_action": "CONTINUE_NOMINAL_ATTITUDE",
+    "threats": []
+  },
+  {
+    "timestamp": "2026-11-23T12:32:29.592527Z",
+    "satellite_id": "NASA-ORBIT-SURVEILLANCE",
+    "frame_index": 39,
+    "overall_status": "SAFE",
+    "active_tracks_count": 25,
+    "critical_threats_count": 0,
+    "recommended_action": "CONTINUE_NOMINAL_ATTITUDE",
+    "threats": []
+  },
+  {
+    "timestamp": "2026-11-23T12:32:29.688446Z",
+    "satellite_id": "NASA-ORBIT-SURVEILLANCE",
+    "frame_index": 40,
+    "overall_status": "SAFE",
+    "active_tracks_count": 20,
+    "critical_threats_count": 0,
+    "recommended_action": "CONTINUE_NOMINAL_ATTITUDE",
+    "threats": []
+  },
+  {
+    "timestamp": "2026-11-23T12:32:29.746395Z",
+    "satellite_id": "NASA-ORBIT-SURVEILLANCE",
+    "frame_index": 41,
+    "overall_status": "SAFE",
+    "active_tracks_count": 21,
+    "critical_threats_count": 0,
+    "recommended_action": "CONTINUE_NOMINAL_ATTITUDE",
+    "threats": []
+  },
+  {
+    "timestamp": "2026-11-23T12:32:29.801792Z",
+    "satellite_id": "NASA-ORBIT-SURVEILLANCE",
+    "frame_index": 42,
+    "overall_status": "SAFE",
+    "active_tracks_count": 19,
+    "critical_threats_count": 0,
+    "recommended_action": "CONTINUE_NOMINAL_ATTITUDE",
+    "threats": []
+  },
+  {
+    "timestamp": "2026-11-23T12:32:29.858718Z",
+    "satellite_id": "NASA-ORBIT-SURVEILLANCE",
+    "frame_index": 43,
+    "overall_status": "SAFE",
+    "active_tracks_count": 18,
+    "critical_threats_count": 0,
+    "recommended_action": "CONTINUE_NOMINAL_ATTITUDE",
+    "threats": []
+  },
+  {
+    "timestamp": "2026-11-23T12:32:29.957953Z",
+    "satellite_id": "NASA-ORBIT-SURVEILLANCE",
+    "frame_index": 44,
+    "overall_status": "SAFE",
+    "active_tracks_count": 17,
+    "critical_threats_count": 0,
+    "recommended_action": "CONTINUE_NOMINAL_ATTITUDE",
+    "threats": []
+  },
+  {
+    "timestamp": "2026-11-23T12:32:30.046092Z",
+    "satellite_id": "NASA-ORBIT-SURVEILLANCE",
+    "frame_index": 45,
+    "overall_status": "CRITICAL_COLLISION_WARNING",
+    "active_tracks_count": 23,
+    "critical_threats_count": 1,
+    "recommended_action": "EXECUTE_IMPULSIVE_BURN_DIRECTION_[+0.30,-0.95]",
+    "threats": [
+      {
+        "debris_id": 64,
+        "threat_level": "CRITICAL_COLLISION_ALERT",
+        "time_to_collision_sec": 4.49,
+        "miss_distance_pixels": 79.9,
+        "relative_velocity_pixels_sec": [
+          65.1,
+          20.2
+        ],
+        "evasive_vector": [
+          0.297,
+          -0.955
+        ]
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-11-23T12:32:30.132511Z",
+    "satellite_id": "NASA-ORBIT-SURVEILLANCE",
+    "frame_index": 46,
+    "overall_status": "SAFE",
+    "active_tracks_count": 22,
+    "critical_threats_count": 0,
+    "recommended_action": "CONTINUE_NOMINAL_ATTITUDE",
+    "threats": []
+  },
+  {
+    "timestamp": "2026-11-23T12:32:30.183224Z",
+    "satellite_id": "NASA-ORBIT-SURVEILLANCE",
+    "frame_index": 47,
+    "overall_status": "COLLISION_WARNING_MONITORING",
+    "active_tracks_count": 22,
+    "critical_threats_count": 0,
+    "recommended_action": "CHARGE_PROPULSION_PREPARE_MANEUVER",
+    "threats": [
+      {
+        "debris_id": 25,
+        "threat_level": "COLLISION_WARNING",
+        "time_to_collision_sec": 6.29,
+        "miss_distance_pixels": 87.5,
+        "relative_velocity_pixels_sec": [
+          54.7,
+          -16.7
+        ],
+        "evasive_vector": [
+          -0.292,
+          -0.956
+        ]
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-11-23T12:32:30.240432Z",
+    "satellite_id": "NASA-ORBIT-SURVEILLANCE",
+    "frame_index": 48,
+    "overall_status": "COLLISION_WARNING_MONITORING",
+    "active_tracks_count": 25,
+    "critical_threats_count": 0,
+    "recommended_action": "CHARGE_PROPULSION_PREPARE_MANEUVER",
+    "threats": [
+      {
+        "debris_id": 25,
+        "threat_level": "COLLISION_WARNING",
+        "time_to_collision_sec": 5.39,
+        "miss_distance_pixels": 100.2,
+        "relative_velocity_pixels_sec": [
+          63.3,
+          -17.1
+        ],
+        "evasive_vector": [
+          -0.26,
+          -0.966
+        ]
+      },
+      {
+        "debris_id": 14,
+        "threat_level": "COLLISION_WARNING",
+        "time_to_collision_sec": 5.63,
+        "miss_distance_pixels": 112.0,
+        "relative_velocity_pixels_sec": [
+          66.0,
+          -14.3
+        ],
+        "evasive_vector": [
+          -0.212,
+          -0.977
+        ]
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-11-23T12:32:30.325881Z",
+    "satellite_id": "NASA-ORBIT-SURVEILLANCE",
+    "frame_index": 49,
+    "overall_status": "COLLISION_WARNING_MONITORING",
+    "active_tracks_count": 29,
+    "critical_threats_count": 0,
+    "recommended_action": "CHARGE_PROPULSION_PREPARE_MANEUVER",
+    "threats": [
+      {
+        "debris_id": 25,
+        "threat_level": "COLLISION_WARNING",
+        "time_to_collision_sec": 6.52,
+        "miss_distance_pixels": 88.2,
+        "relative_velocity_pixels_sec": [
+          52.9,
+          -16.0
+        ],
+        "evasive_vector": [
+          -0.29,
+          -0.957
+        ]
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-11-23T12:32:30.384706Z",
+    "satellite_id": "NASA-ORBIT-SURVEILLANCE",
+    "frame_index": 50,
+    "overall_status": "COLLISION_WARNING_MONITORING",
+    "active_tracks_count": 26,
+    "critical_threats_count": 0,
+    "recommended_action": "CHARGE_PROPULSION_PREPARE_MANEUVER",
+    "threats": [
+      {
+        "debris_id": 25,
+        "threat_level": "COLLISION_WARNING",
+        "time_to_collision_sec": 4.46,
+        "miss_distance_pixels": 122.4,
+        "relative_velocity_pixels_sec": [
+          75.1,
+          -15.5
+        ],
+        "evasive_vector": [
+          -0.202,
+          -0.979
+        ]
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-11-23T12:32:30.469307Z",
+    "satellite_id": "NASA-ORBIT-SURVEILLANCE",
+    "frame_index": 51,
+    "overall_status": "SAFE",
+    "active_tracks_count": 20,
+    "critical_threats_count": 0,
+    "recommended_action": "CONTINUE_NOMINAL_ATTITUDE",
+    "threats": []
+  },
+  {
+    "timestamp": "2026-11-23T12:32:30.516586Z",
+    "satellite_id": "NASA-ORBIT-SURVEILLANCE",
+    "frame_index": 52,
+    "overall_status": "SAFE",
+    "active_tracks_count": 19,
+    "critical_threats_count": 0,
+    "recommended_action": "CONTINUE_NOMINAL_ATTITUDE",
+    "threats": []
+  },
+  {
+    "timestamp": "2026-11-23T12:32:30.601301Z",
+    "satellite_id": "NASA-ORBIT-SURVEILLANCE",
+    "frame_index": 53,
+    "overall_status": "SAFE",
+    "active_tracks_count": 18,
+    "critical_threats_count": 0,
+    "recommended_action": "CONTINUE_NOMINAL_ATTITUDE",
+    "threats": []
+  },
+  {
+    "timestamp": "2026-11-23T12:32:30.687189Z",
+    "satellite_id": "NASA-ORBIT-SURVEILLANCE",
+    "frame_index": 54,
+    "overall_status": "SAFE",
+    "active_tracks_count": 19,
+    "critical_threats_count": 0,
+    "recommended_action": "CONTINUE_NOMINAL_ATTITUDE",
+    "threats": []
+  },
+  {
+    "timestamp": "2026-11-23T12:32:30.755947Z",
+    "satellite_id": "NASA-ORBIT-SURVEILLANCE",
+    "frame_index": 55,
+    "overall_status": "SAFE",
+    "active_tracks_count": 14,
+    "critical_threats_count": 0,
+    "recommended_action": "CONTINUE_NOMINAL_ATTITUDE",
+    "threats": []
+  },
+  {
+    "timestamp": "2026-11-23T12:32:30.856557Z",
+    "satellite_id": "NASA-ORBIT-SURVEILLANCE",
+    "frame_index": 56,
+    "overall_status": "SAFE",
+    "active_tracks_count": 15,
+    "critical_threats_count": 0,
+    "recommended_action": "CONTINUE_NOMINAL_ATTITUDE",
+    "threats": []
+  },
+  {
+    "timestamp": "2026-11-23T12:32:30.954839Z",
+    "satellite_id": "NASA-ORBIT-SURVEILLANCE",
+    "frame_index": 57,
+    "overall_status": "SAFE",
+    "active_tracks_count": 19,
+    "critical_threats_count": 0,
+    "recommended_action": "CONTINUE_NOMINAL_ATTITUDE",
+    "threats": []
+  },
+  {
+    "timestamp": "2026-11-23T12:32:31.000204Z",
+    "satellite_id": "NASA-ORBIT-SURVEILLANCE",
+    "frame_index": 58,
+    "overall_status": "SAFE",
+    "active_tracks_count": 19,
+    "critical_threats_count": 0,
+    "recommended_action": "CONTINUE_NOMINAL_ATTITUDE",
+    "threats": []
+  },
+  {
+    "timestamp": "2026-11-23T12:32:31.090781Z",
+    "satellite_id": "NASA-ORBIT-SURVEILLANCE",
+    "frame_index": 59,
+    "overall_status": "SAFE",
+    "active_tracks_count": 18,
+    "critical_threats_count": 0,
+    "recommended_action": "CONTINUE_NOMINAL_ATTITUDE",
+    "threats": []
+  },
+  {
+    "timestamp": "2026-11-23T12:32:31.190135Z",
+    "satellite_id": "NASA-ORBIT-SURVEILLANCE",
+    "frame_index": 60,
+    "overall_status": "SAFE",
+    "active_tracks_count": 15,
+    "critical_threats_count": 0,
+    "recommended_action": "CONTINUE_NOMINAL_ATTITUDE",
+    "threats": []
+  },
+  {
+    "timestamp": "2026-11-23T12:32:31.266416Z",
+    "satellite_id": "NASA-ORBIT-SURVEILLANCE",
+    "frame_index": 61,
+    "overall_status": "SAFE",
+    "active_tracks_count": 16,
+    "critical_threats_count": 0,
+    "recommended_action": "CONTINUE_NOMINAL_ATTITUDE",
+    "threats": []
+  },
+  {
+    "timestamp": "2026-11-23T12:32:31.362308Z",
+    "satellite_id": "NASA-ORBIT-SURVEILLANCE",
+    "frame_index": 62,
+    "overall_status": "SAFE",
+    "active_tracks_count": 21,
+    "critical_threats_count": 0,
+    "recommended_action": "CONTINUE_NOMINAL_ATTITUDE",
+    "threats": []
+  },
+  {
+    "timestamp": "2026-11-23T12:32:31.412412Z",
+    "satellite_id": "NASA-ORBIT-SURVEILLANCE",
+    "frame_index": 63,
+    "overall_status": "SAFE",
+    "active_tracks_count": 20,
+    "critical_threats_count": 0,
+    "recommended_action": "CONTINUE_NOMINAL_ATTITUDE",
+    "threats": []
+  },
+  {
+    "timestamp": "2026-11-23T12:32:31.462057Z",
+    "satellite_id": "NASA-ORBIT-SURVEILLANCE",
+    "frame_index": 64,
+    "overall_status": "SAFE",
+    "active_tracks_count": 23,
+    "critical_threats_count": 0,
+    "recommended_action": "CONTINUE_NOMINAL_ATTITUDE",
+    "threats": []
+  },
+  {
+    "timestamp": "2026-11-23T12:32:31.560525Z",
+    "satellite_id": "NASA-ORBIT-SURVEILLANCE",
+    "frame_index": 65,
+    "overall_status": "SAFE",
+    "active_tracks_count": 24,
+    "critical_threats_count": 0,
+    "recommended_action": "CONTINUE_NOMINAL_ATTITUDE",
+    "threats": []
+  },
+  {
+    "timestamp": "2026-11-23T12:32:31.660729Z",
+    "satellite_id": "NASA-ORBIT-SURVEILLANCE",
+    "frame_index": 66,
+    "overall_status": "SAFE",
+    "active_tracks_count": 20,
+    "critical_threats_count": 0,
+    "recommended_action": "CONTINUE_NOMINAL_ATTITUDE",
+    "threats": []
+  },
+  {
+    "timestamp": "2026-11-23T12:32:31.714072Z",
+    "satellite_id": "NASA-ORBIT-SURVEILLANCE",
+    "frame_index": 67,
+    "overall_status": "SAFE",
+    "active_tracks_count": 21,
+    "critical_threats_count": 0,
+    "recommended_action": "CONTINUE_NOMINAL_ATTITUDE",
+    "threats": []
+  },
+  {
+    "timestamp": "2026-11-23T12:32:31.752277Z",
+    "satellite_id": "NASA-ORBIT-SURVEILLANCE",
+    "frame_index": 68,
+    "overall_status": "SAFE",
+    "active_tracks_count": 21,
+    "critical_threats_count": 0,
+    "recommended_action": "CONTINUE_NOMINAL_ATTITUDE",
+    "threats": []
+  },
+  {
+    "timestamp": "2026-11-23T12:32:31.804726Z",
+    "satellite_id": "NASA-ORBIT-SURVEILLANCE",
+    "frame_index": 69,
+    "overall_status": "SAFE",
+    "active_tracks_count": 22,
+    "critical_threats_count": 0,
+    "recommended_action": "CONTINUE_NOMINAL_ATTITUDE",
+    "threats": []
+  },
+  {
+    "timestamp": "2026-11-23T12:32:31.909940Z",
+    "satellite_id": "NASA-ORBIT-SURVEILLANCE",
+    "frame_index": 70,
+    "overall_status": "SAFE",
+    "active_tracks_count": 21,
+    "critical_threats_count": 0,
+    "recommended_action": "CONTINUE_NOMINAL_ATTITUDE",
+    "threats": []
+  },
+  {
+    "timestamp": "2026-11-23T12:32:31.955935Z",
+    "satellite_id": "NASA-ORBIT-SURVEILLANCE",
+    "frame_index": 71,
+    "overall_status": "SAFE",
+    "active_tracks_count": 20,
+    "critical_threats_count": 0,
+    "recommended_action": "CONTINUE_NOMINAL_ATTITUDE",
+    "threats": []
+  },
+  {
+    "timestamp": "2026-11-23T12:32:32.049832Z",
+    "satellite_id": "NASA-ORBIT-SURVEILLANCE",
+    "frame_index": 72,
+    "overall_status": "SAFE",
+    "active_tracks_count": 19,
+    "critical_threats_count": 0,
+    "recommended_action": "CONTINUE_NOMINAL_ATTITUDE",
+    "threats": []
+  },
+  {
+    "timestamp": "2026-11-23T12:32:32.092696Z",
+    "satellite_id": "NASA-ORBIT-SURVEILLANCE",
+    "frame_index": 73,
+    "overall_status": "SAFE",
+    "active_tracks_count": 21,
+    "critical_threats_count": 0,
+    "recommended_action": "CONTINUE_NOMINAL_ATTITUDE",
+    "threats": []
+  },
+  {
+    "timestamp": "2026-11-23T12:32:32.126711Z",
+    "satellite_id": "NASA-ORBIT-SURVEILLANCE",
+    "frame_index": 74,
+    "overall_status": "SAFE",
+    "active_tracks_count": 28,
+    "critical_threats_count": 0,
+    "recommended_action": "CONTINUE_NOMINAL_ATTITUDE",
+    "threats": []
+  },
+  {
+    "timestamp": "2026-11-23T12:32:32.172881Z",
+    "satellite_id": "NASA-ORBIT-SURVEILLANCE",
+    "frame_index": 75,
+    "overall_status": "SAFE",
+    "active_tracks_count": 23,
+    "critical_threats_count": 0,
+    "recommended_action": "CONTINUE_NOMINAL_ATTITUDE",
+    "threats": []
+  },
+  {
+    "timestamp": "2026-11-23T12:32:32.216261Z",
+    "satellite_id": "NASA-ORBIT-SURVEILLANCE",
+    "frame_index": 76,
+    "overall_status": "SAFE",
+    "active_tracks_count": 24,
+    "critical_threats_count": 0,
+    "recommended_action": "CONTINUE_NOMINAL_ATTITUDE",
+    "threats": []
+  },
+  {
+    "timestamp": "2026-11-23T12:32:32.268214Z",
+    "satellite_id": "NASA-ORBIT-SURVEILLANCE",
+    "frame_index": 77,
+    "overall_status": "SAFE",
+    "active_tracks_count": 22,
+    "critical_threats_count": 0,
+    "recommended_action": "CONTINUE_NOMINAL_ATTITUDE",
+    "threats": []
+  },
+  {
+    "timestamp": "2026-11-23T12:32:32.305658Z",
+    "satellite_id": "NASA-ORBIT-SURVEILLANCE",
+    "frame_index": 78,
+    "overall_status": "SAFE",
+    "active_tracks_count": 26,
+    "critical_threats_count": 0,
+    "recommended_action": "CONTINUE_NOMINAL_ATTITUDE",
+    "threats": []
+  },
+  {
+    "timestamp": "2026-11-23T12:32:32.343469Z",
+    "satellite_id": "NASA-ORBIT-SURVEILLANCE",
+    "frame_index": 79,
+    "overall_status": "SAFE",
+    "active_tracks_count": 23,
+    "critical_threats_count": 0,
+    "recommended_action": "CONTINUE_NOMINAL_ATTITUDE",
+    "threats": []
+  },
+  {
+    "timestamp": "2026-11-23T12:32:32.480114Z",
+    "satellite_id": "NASA-ORBIT-SURVEILLANCE",
+    "frame_index": 80,
+    "overall_status": "SAFE",
+    "active_tracks_count": 27,
+    "critical_threats_count": 0,
+    "recommended_action": "CONTINUE_NOMINAL_ATTITUDE",
+    "threats": []
+  },
+  {
+    "timestamp": "2026-11-23T12:32:32.536331Z",
+    "satellite_id": "NASA-ORBIT-SURVEILLANCE",
+    "frame_index": 81,
+    "overall_status": "SAFE",
+    "active_tracks_count": 29,
+    "critical_threats_count": 0,
+    "recommended_action": "CONTINUE_NOMINAL_ATTITUDE",
+    "threats": []
+  },
+  {
+    "timestamp": "2026-11-23T12:32:32.582988Z",
+    "satellite_id": "NASA-ORBIT-SURVEILLANCE",
+    "frame_index": 82,
+    "overall_status": "SAFE",
+    "active_tracks_count": 25,
+    "critical_threats_count": 0,
+    "recommended_action": "CONTINUE_NOMINAL_ATTITUDE",
+    "threats": []
+  },
+  {
+    "timestamp": "2026-11-23T12:32:32.632941Z",
+    "satellite_id": "NASA-ORBIT-SURVEILLANCE",
+    "frame_index": 83,
+    "overall_status": "SAFE",
+    "active_tracks_count": 26,
+    "critical_threats_count": 0,
+    "recommended_action": "CONTINUE_NOMINAL_ATTITUDE",
+    "threats": []
+  },
+  {
+    "timestamp": "2026-11-23T12:32:32.692966Z",
+    "satellite_id": "NASA-ORBIT-SURVEILLANCE",
+    "frame_index": 84,
+    "overall_status": "SAFE",
+    "active_tracks_count": 27,
+    "critical_threats_count": 0,
+    "recommended_action": "CONTINUE_NOMINAL_ATTITUDE",
+    "threats": []
+  },
+  {
+    "timestamp": "2026-11-23T12:32:32.748961Z",
+    "satellite_id": "NASA-ORBIT-SURVEILLANCE",
+    "frame_index": 85,
+    "overall_status": "SAFE",
+    "active_tracks_count": 23,
+    "critical_threats_count": 0,
+    "recommended_action": "CONTINUE_NOMINAL_ATTITUDE",
+    "threats": []
+  },
+  {
+    "timestamp": "2026-11-23T12:32:32.797284Z",
+    "satellite_id": "NASA-ORBIT-SURVEILLANCE",
+    "frame_index": 86,
+    "overall_status": "SAFE",
+    "active_tracks_count": 27,
+    "critical_threats_count": 0,
+    "recommended_action": "CONTINUE_NOMINAL_ATTITUDE",
+    "threats": []
+  },
+  {
+    "timestamp": "2026-11-23T12:32:32.930729Z",
+    "satellite_id": "NASA-ORBIT-SURVEILLANCE",
+    "frame_index": 87,
+    "overall_status": "SAFE",
+    "active_tracks_count": 26,
+    "critical_threats_count": 0,
+    "recommended_action": "CONTINUE_NOMINAL_ATTITUDE",
+    "threats": []
+  },
+  {
+    "timestamp": "2026-11-23T12:32:32.989420Z",
+    "satellite_id": "NASA-ORBIT-SURVEILLANCE",
+    "frame_index": 88,
+    "overall_status": "COLLISION_WARNING_MONITORING",
+    "active_tracks_count": 28,
+    "critical_threats_count": 0,
+    "recommended_action": "CHARGE_PROPULSION_PREPARE_MANEUVER",
+    "threats": [
+      {
+        "debris_id": 194,
+        "threat_level": "COLLISION_WARNING",
+        "time_to_collision_sec": 5.94,
+        "miss_distance_pixels": 175.7,
+        "relative_velocity_pixels_sec": [
+          27.2,
+          0.2
+        ],
+        "evasive_vector": [
+          0.008,
+          -1.0
+        ]
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-11-23T12:32:33.035212Z",
+    "satellite_id": "NASA-ORBIT-SURVEILLANCE",
+    "frame_index": 89,
+    "overall_status": "COLLISION_WARNING_MONITORING",
+    "active_tracks_count": 27,
+    "critical_threats_count": 0,
+    "recommended_action": "CHARGE_PROPULSION_PREPARE_MANEUVER",
+    "threats": [
+      {
+        "debris_id": 194,
+        "threat_level": "COLLISION_WARNING",
+        "time_to_collision_sec": 4.29,
+        "miss_distance_pixels": 175.7,
+        "relative_velocity_pixels_sec": [
+          36.1,
+          0.3
+        ],
+        "evasive_vector": [
+          0.008,
+          -1.0
+        ]
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-11-23T12:32:33.076485Z",
+    "satellite_id": "NASA-ORBIT-SURVEILLANCE",
+    "frame_index": 90,
+    "overall_status": "SAFE",
+    "active_tracks_count": 23,
+    "critical_threats_count": 0,
+    "recommended_action": "CONTINUE_NOMINAL_ATTITUDE",
+    "threats": []
+  },
+  {
+    "timestamp": "2026-11-23T12:32:33.178470Z",
+    "satellite_id": "NASA-ORBIT-SURVEILLANCE",
+    "frame_index": 91,
+    "overall_status": "SAFE",
+    "active_tracks_count": 23,
+    "critical_threats_count": 0,
+    "recommended_action": "CONTINUE_NOMINAL_ATTITUDE",
+    "threats": []
+  },
+  {
+    "timestamp": "2026-11-23T12:32:33.286664Z",
+    "satellite_id": "NASA-ORBIT-SURVEILLANCE",
+    "frame_index": 92,
+    "overall_status": "SAFE",
+    "active_tracks_count": 22,
+    "critical_threats_count": 0,
+    "recommended_action": "CONTINUE_NOMINAL_ATTITUDE",
+    "threats": []
+  },
+  {
+    "timestamp": "2026-11-23T12:32:33.388585Z",
+    "satellite_id": "NASA-ORBIT-SURVEILLANCE",
+    "frame_index": 93,
+    "overall_status": "SAFE",
+    "active_tracks_count": 18,
+    "critical_threats_count": 0,
+    "recommended_action": "CONTINUE_NOMINAL_ATTITUDE",
+    "threats": []
+  },
+  {
+    "timestamp": "2026-11-23T12:32:33.487271Z",
+    "satellite_id": "NASA-ORBIT-SURVEILLANCE",
+    "frame_index": 94,
+    "overall_status": "SAFE",
+    "active_tracks_count": 27,
+    "critical_threats_count": 0,
+    "recommended_action": "CONTINUE_NOMINAL_ATTITUDE",
+    "threats": []
+  },
+  {
+    "timestamp": "2026-11-23T12:32:33.540767Z",
+    "satellite_id": "NASA-ORBIT-SURVEILLANCE",
+    "frame_index": 95,
+    "overall_status": "SAFE",
+    "active_tracks_count": 26,
+    "critical_threats_count": 0,
+    "recommended_action": "CONTINUE_NOMINAL_ATTITUDE",
+    "threats": []
+  },
+  {
+    "timestamp": "2026-11-23T12:32:33.581004Z",
+    "satellite_id": "NASA-ORBIT-SURVEILLANCE",
+    "frame_index": 96,
+    "overall_status": "SAFE",
+    "active_tracks_count": 28,
+    "critical_threats_count": 0,
+    "recommended_action": "CONTINUE_NOMINAL_ATTITUDE",
+    "threats": []
+  },
+  {
+    "timestamp": "2026-11-23T12:32:33.625016Z",
+    "satellite_id": "NASA-ORBIT-SURVEILLANCE",
+    "frame_index": 97,
+    "overall_status": "SAFE",
+    "active_tracks_count": 34,
+    "critical_threats_count": 0,
+    "recommended_action": "CONTINUE_NOMINAL_ATTITUDE",
+    "threats": []
+  },
+  {
+    "timestamp": "2026-11-23T12:32:33.675127Z",
+    "satellite_id": "NASA-ORBIT-SURVEILLANCE",
+    "frame_index": 98,
+    "overall_status": "SAFE",
+    "active_tracks_count": 29,
+    "critical_threats_count": 0,
+    "recommended_action": "CONTINUE_NOMINAL_ATTITUDE",
+    "threats": []
+  },
+  {
+    "timestamp": "2026-11-23T12:32:33.790260Z",
+    "satellite_id": "NASA-ORBIT-SURVEILLANCE",
+    "frame_index": 99,
+    "overall_status": "SAFE",
+    "active_tracks_count": 36,
+    "critical_threats_count": 0,
+    "recommended_action": "CONTINUE_NOMINAL_ATTITUDE",
+    "threats": []
+  },
+  {
+    "timestamp": "2026-11-23T12:32:33.933426Z",
+    "satellite_id": "NASA-ORBIT-SURVEILLANCE",
+    "frame_index": 100,
+    "overall_status": "SAFE",
+    "active_tracks_count": 30,
+    "critical_threats_count": 0,
+    "recommended_action": "CONTINUE_NOMINAL_ATTITUDE",
+    "threats": []
+  },
+  {
+    "timestamp": "2026-11-23T12:32:33.988293Z",
+    "satellite_id": "NASA-ORBIT-SURVEILLANCE",
+    "frame_index": 101,
+    "overall_status": "SAFE",
+    "active_tracks_count": 31,
+    "critical_threats_count": 0,
+    "recommended_action": "CONTINUE_NOMINAL_ATTITUDE",
+    "threats": []
+  },
+  {
+    "timestamp": "2026-11-23T12:32:34.038896Z",
+    "satellite_id": "NASA-ORBIT-SURVEILLANCE",
+    "frame_index": 102,
+    "overall_status": "SAFE",
+    "active_tracks_count": 33,
+    "critical_threats_count": 0,
+    "recommended_action": "CONTINUE_NOMINAL_ATTITUDE",
+    "threats": []
+  },
+  {
+    "timestamp": "2026-11-23T12:32:34.086211Z",
+    "satellite_id": "NASA-ORBIT-SURVEILLANCE",
+    "frame_index": 103,
+    "overall_status": "SAFE",
+    "active_tracks_count": 33,
+    "critical_threats_count": 0,
+    "recommended_action": "CONTINUE_NOMINAL_ATTITUDE",
+    "threats": []
+  },
+  {
+    "timestamp": "2026-11-23T12:32:34.140661Z",
+    "satellite_id": "NASA-ORBIT-SURVEILLANCE",
+    "frame_index": 104,
+    "overall_status": "SAFE",
+    "active_tracks_count": 32,
+    "critical_threats_count": 0,
+    "recommended_action": "CONTINUE_NOMINAL_ATTITUDE",
+    "threats": []
+  },
+  {
+    "timestamp": "2026-11-23T12:32:34.191022Z",
+    "satellite_id": "NASA-ORBIT-SURVEILLANCE",
+    "frame_index": 105,
+    "overall_status": "SAFE",
+    "active_tracks_count": 37,
+    "critical_threats_count": 0,
+    "recommended_action": "CONTINUE_NOMINAL_ATTITUDE",
+    "threats": []
+  },
+  {
+    "timestamp": "2026-11-23T12:32:34.252511Z",
+    "satellite_id": "NASA-ORBIT-SURVEILLANCE",
+    "frame_index": 106,
+    "overall_status": "SAFE",
+    "active_tracks_count": 35,
+    "critical_threats_count": 0,
+    "recommended_action": "CONTINUE_NOMINAL_ATTITUDE",
+    "threats": []
+  },
+  {
+    "timestamp": "2026-11-23T12:32:34.297902Z",
+    "satellite_id": "NASA-ORBIT-SURVEILLANCE",
+    "frame_index": 107,
+    "overall_status": "SAFE",
+    "active_tracks_count": 34,
+    "critical_threats_count": 0,
+    "recommended_action": "CONTINUE_NOMINAL_ATTITUDE",
+    "threats": []
+  },
+  {
+    "timestamp": "2026-11-23T12:32:34.346345Z",
+    "satellite_id": "NASA-ORBIT-SURVEILLANCE",
+    "frame_index": 108,
+    "overall_status": "COLLISION_WARNING_MONITORING",
+    "active_tracks_count": 26,
+    "critical_threats_count": 0,
+    "recommended_action": "CHARGE_PROPULSION_PREPARE_MANEUVER",
+    "threats": [
+      {
+        "debris_id": 284,
+        "threat_level": "COLLISION_WARNING",
+        "time_to_collision_sec": 9.9,
+        "miss_distance_pixels": 5.6,
+        "relative_velocity_pixels_sec": [
+          13.8,
+          -32.9
+        ],
+        "evasive_vector": [
+          0.922,
+          0.387
+        ]
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-11-23T12:32:34.404638Z",
+    "satellite_id": "NASA-ORBIT-SURVEILLANCE",
+    "frame_index": 109,
+    "overall_status": "SAFE",
+    "active_tracks_count": 34,
+    "critical_threats_count": 0,
+    "recommended_action": "CONTINUE_NOMINAL_ATTITUDE",
+    "threats": []
+  },
+  {
+    "timestamp": "2026-11-23T12:32:34.460885Z",
+    "satellite_id": "NASA-ORBIT-SURVEILLANCE",
+    "frame_index": 110,
+    "overall_status": "SAFE",
+    "active_tracks_count": 29,
+    "critical_threats_count": 0,
+    "recommended_action": "CONTINUE_NOMINAL_ATTITUDE",
+    "threats": []
+  },
+  {
+    "timestamp": "2026-11-23T12:32:34.535074Z",
+    "satellite_id": "NASA-ORBIT-SURVEILLANCE",
+    "frame_index": 111,
+    "overall_status": "SAFE",
+    "active_tracks_count": 30,
+    "critical_threats_count": 0,
+    "recommended_action": "CONTINUE_NOMINAL_ATTITUDE",
+    "threats": []
+  },
+  {
+    "timestamp": "2026-11-23T12:32:34.597143Z",
+    "satellite_id": "NASA-ORBIT-SURVEILLANCE",
+    "frame_index": 112,
+    "overall_status": "SAFE",
+    "active_tracks_count": 26,
+    "critical_threats_count": 0,
+    "recommended_action": "CONTINUE_NOMINAL_ATTITUDE",
+    "threats": []
+  },
+  {
+    "timestamp": "2026-11-23T12:32:34.701390Z",
+    "satellite_id": "NASA-ORBIT-SURVEILLANCE",
+    "frame_index": 113,
+    "overall_status": "SAFE",
+    "active_tracks_count": 31,
+    "critical_threats_count": 0,
+    "recommended_action": "CONTINUE_NOMINAL_ATTITUDE",
+    "threats": []
+  },
+  {
+    "timestamp": "2026-11-23T12:32:34.755810Z",
+    "satellite_id": "NASA-ORBIT-SURVEILLANCE",
+    "frame_index": 114,
+    "overall_status": "SAFE",
+    "active_tracks_count": 29,
+    "critical_threats_count": 0,
+    "recommended_action": "CONTINUE_NOMINAL_ATTITUDE",
+    "threats": []
+  },
+  {
+    "timestamp": "2026-11-23T12:32:34.806502Z",
+    "satellite_id": "NASA-ORBIT-SURVEILLANCE",
+    "frame_index": 115,
+    "overall_status": "SAFE",
+    "active_tracks_count": 31,
+    "critical_threats_count": 0,
+    "recommended_action": "CONTINUE_NOMINAL_ATTITUDE",
+    "threats": []
+  },
+  {
+    "timestamp": "2026-11-23T12:32:34.862250Z",
+    "satellite_id": "NASA-ORBIT-SURVEILLANCE",
+    "frame_index": 116,
+    "overall_status": "SAFE",
+    "active_tracks_count": 33,
+    "critical_threats_count": 0,
+    "recommended_action": "CONTINUE_NOMINAL_ATTITUDE",
+    "threats": []
+  },
+  {
+    "timestamp": "2026-11-23T12:32:34.907798Z",
+    "satellite_id": "NASA-ORBIT-SURVEILLANCE",
+    "frame_index": 117,
+    "overall_status": "SAFE",
+    "active_tracks_count": 34,
+    "critical_threats_count": 0,
+    "recommended_action": "CONTINUE_NOMINAL_ATTITUDE",
+    "threats": []
+  },
+  {
+    "timestamp": "2026-11-23T12:32:34.958263Z",
+    "satellite_id": "NASA-ORBIT-SURVEILLANCE",
+    "frame_index": 118,
+    "overall_status": "SAFE",
+    "active_tracks_count": 35,
+    "critical_threats_count": 0,
+    "recommended_action": "CONTINUE_NOMINAL_ATTITUDE",
+    "threats": []
+  },
+  {
+    "timestamp": "2026-11-23T12:32:35.013951Z",
+    "satellite_id": "NASA-ORBIT-SURVEILLANCE",
+    "frame_index": 119,
+    "overall_status": "SAFE",
+    "active_tracks_count": 34,
+    "critical_threats_count": 0,
+    "recommended_action": "CONTINUE_NOMINAL_ATTITUDE",
+    "threats": []
+  },
+  {
+    "timestamp": "2026-11-23T12:32:35.090522Z",
+    "satellite_id": "NASA-ORBIT-SURVEILLANCE",
+    "frame_index": 120,
+    "overall_status": "SAFE",
+    "active_tracks_count": 40,
+    "critical_threats_count": 0,
+    "recommended_action": "CONTINUE_NOMINAL_ATTITUDE",
+    "threats": []
+  },
+  {
+    "timestamp": "2026-11-23T12:32:35.140591Z",
+    "satellite_id": "NASA-ORBIT-SURVEILLANCE",
+    "frame_index": 121,
+    "overall_status": "SAFE",
+    "active_tracks_count": 37,
+    "critical_threats_count": 0,
+    "recommended_action": "CONTINUE_NOMINAL_ATTITUDE",
+    "threats": []
+  },
+  {
+    "timestamp": "2026-11-23T12:32:35.197827Z",
+    "satellite_id": "NASA-ORBIT-SURVEILLANCE",
+    "frame_index": 122,
+    "overall_status": "SAFE",
+    "active_tracks_count": 34,
+    "critical_threats_count": 0,
+    "recommended_action": "CONTINUE_NOMINAL_ATTITUDE",
+    "threats": []
+  },
+  {
+    "timestamp": "2026-11-23T12:32:35.245363Z",
+    "satellite_id": "NASA-ORBIT-SURVEILLANCE",
+    "frame_index": 123,
+    "overall_status": "SAFE",
+    "active_tracks_count": 34,
+    "critical_threats_count": 0,
+    "recommended_action": "CONTINUE_NOMINAL_ATTITUDE",
+    "threats": []
+  },
+  {
+    "timestamp": "2026-11-23T12:32:35.287214Z",
+    "satellite_id": "NASA-ORBIT-SURVEILLANCE",
+    "frame_index": 124,
+    "overall_status": "SAFE",
+    "active_tracks_count": 37,
+    "critical_threats_count": 0,
+    "recommended_action": "CONTINUE_NOMINAL_ATTITUDE",
+    "threats": []
+  },
+  {
+    "timestamp": "2026-11-23T12:32:35.339580Z",
+    "satellite_id": "NASA-ORBIT-SURVEILLANCE",
+    "frame_index": 125,
+    "overall_status": "COLLISION_WARNING_MONITORING",
+    "active_tracks_count": 38,
+    "critical_threats_count": 0,
+    "recommended_action": "CHARGE_PROPULSION_PREPARE_MANEUVER",
+    "threats": [
+      {
+        "debris_id": 290,
+        "threat_level": "COLLISION_WARNING",
+        "time_to_collision_sec": 9.39,
+        "miss_distance_pixels": 90.3,
+        "relative_velocity_pixels_sec": [
+          36.6,
+          10.5
+        ],
+        "evasive_vector": [
+          0.275,
+          -0.961
+        ]
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-11-23T12:32:35.389778Z",
+    "satellite_id": "NASA-ORBIT-SURVEILLANCE",
+    "frame_index": 126,
+    "overall_status": "COLLISION_WARNING_MONITORING",
+    "active_tracks_count": 36,
+    "critical_threats_count": 0,
+    "recommended_action": "CHARGE_PROPULSION_PREPARE_MANEUVER",
+    "threats": [
+      {
+        "debris_id": 290,
+        "threat_level": "COLLISION_WARNING",
+        "time_to_collision_sec": 9.31,
+        "miss_distance_pixels": 92.1,
+        "relative_velocity_pixels_sec": [
+          36.8,
+          10.7
+        ],
+        "evasive_vector": [
+          0.28,
+          -0.96
+        ]
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-11-23T12:32:35.433780Z",
+    "satellite_id": "NASA-ORBIT-SURVEILLANCE",
+    "frame_index": 127,
+    "overall_status": "COLLISION_WARNING_MONITORING",
+    "active_tracks_count": 31,
+    "critical_threats_count": 0,
+    "recommended_action": "CHARGE_PROPULSION_PREPARE_MANEUVER",
+    "threats": [
+      {
+        "debris_id": 290,
+        "threat_level": "COLLISION_WARNING",
+        "time_to_collision_sec": 9.34,
+        "miss_distance_pixels": 89.9,
+        "relative_velocity_pixels_sec": [
+          36.8,
+          10.5
+        ],
+        "evasive_vector": [
+          0.274,
+          -0.962
+        ]
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-11-23T12:32:35.488143Z",
+    "satellite_id": "NASA-ORBIT-SURVEILLANCE",
+    "frame_index": 128,
+    "overall_status": "COLLISION_WARNING_MONITORING",
+    "active_tracks_count": 34,
+    "critical_threats_count": 0,
+    "recommended_action": "CHARGE_PROPULSION_PREPARE_MANEUVER",
+    "threats": [
+      {
+        "debris_id": 290,
+        "threat_level": "COLLISION_WARNING",
+        "time_to_collision_sec": 6.18,
+        "miss_distance_pixels": 69.4,
+        "relative_velocity_pixels_sec": [
+          55.7,
+          12.6
+        ],
+        "evasive_vector": [
+          0.222,
+          -0.975
+        ]
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-11-23T12:32:35.542298Z",
+    "satellite_id": "NASA-ORBIT-SURVEILLANCE",
+    "frame_index": 129,
+    "overall_status": "COLLISION_WARNING_MONITORING",
+    "active_tracks_count": 34,
+    "critical_threats_count": 0,
+    "recommended_action": "CHARGE_PROPULSION_PREPARE_MANEUVER",
+    "threats": [
+      {
+        "debris_id": 290,
+        "threat_level": "COLLISION_WARNING",
+        "time_to_collision_sec": 6.69,
+        "miss_distance_pixels": 0.1,
+        "relative_velocity_pixels_sec": [
+          53.9,
+          2.3
+        ],
+        "evasive_vector": [
+          -0.042,
+          0.999
+        ]
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-11-23T12:32:35.640556Z",
+    "satellite_id": "NASA-ORBIT-SURVEILLANCE",
+    "frame_index": 130,
+    "overall_status": "COLLISION_WARNING_MONITORING",
+    "active_tracks_count": 31,
+    "critical_threats_count": 0,
+    "recommended_action": "CHARGE_PROPULSION_PREPARE_MANEUVER",
+    "threats": [
+      {
+        "debris_id": 290,
+        "threat_level": "COLLISION_WARNING",
+        "time_to_collision_sec": 6.57,
+        "miss_distance_pixels": 29.4,
+        "relative_velocity_pixels_sec": [
+          54.2,
+          6.5
+        ],
+        "evasive_vector": [
+          0.119,
+          -0.993
+        ]
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-11-23T12:32:35.688569Z",
+    "satellite_id": "NASA-ORBIT-SURVEILLANCE",
+    "frame_index": 131,
+    "overall_status": "COLLISION_WARNING_MONITORING",
+    "active_tracks_count": 31,
+    "critical_threats_count": 0,
+    "recommended_action": "CHARGE_PROPULSION_PREPARE_MANEUVER",
+    "threats": [
+      {
+        "debris_id": 290,
+        "threat_level": "COLLISION_WARNING",
+        "time_to_collision_sec": 6.39,
+        "miss_distance_pixels": 24.4,
+        "relative_velocity_pixels_sec": [
+          55.8,
+          6.0
+        ],
+        "evasive_vector": [
+          -0.106,
+          0.994
+        ]
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-11-23T12:32:35.738852Z",
+    "satellite_id": "NASA-ORBIT-SURVEILLANCE",
+    "frame_index": 132,
+    "overall_status": "COLLISION_WARNING_MONITORING",
+    "active_tracks_count": 32,
+    "critical_threats_count": 0,
+    "recommended_action": "CHARGE_PROPULSION_PREPARE_MANEUVER",
+    "threats": [
+      {
+        "debris_id": 290,
+        "threat_level": "COLLISION_WARNING",
+        "time_to_collision_sec": 5.43,
+        "miss_distance_pixels": 9.7,
+        "relative_velocity_pixels_sec": [
+          65.4,
+          1.1
+        ],
+        "evasive_vector": [
+          -0.017,
+          1.0
+        ]
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-11-23T12:32:35.796996Z",
+    "satellite_id": "NASA-ORBIT-SURVEILLANCE",
+    "frame_index": 133,
+    "overall_status": "COLLISION_WARNING_MONITORING",
+    "active_tracks_count": 33,
+    "critical_threats_count": 0,
+    "recommended_action": "CHARGE_PROPULSION_PREPARE_MANEUVER",
+    "threats": [
+      {
+        "debris_id": 290,
+        "threat_level": "COLLISION_WARNING",
+        "time_to_collision_sec": 4.94,
+        "miss_distance_pixels": 17.3,
+        "relative_velocity_pixels_sec": [
+          71.1,
+          6.3
+        ],
+        "evasive_vector": [
+          -0.088,
+          0.996
+        ]
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-11-23T12:32:35.902915Z",
+    "satellite_id": "NASA-ORBIT-SURVEILLANCE",
+    "frame_index": 134,
+    "overall_status": "COLLISION_WARNING_MONITORING",
+    "active_tracks_count": 33,
+    "critical_threats_count": 0,
+    "recommended_action": "CHARGE_PROPULSION_PREPARE_MANEUVER",
+    "threats": [
+      {
+        "debris_id": 290,
+        "threat_level": "COLLISION_WARNING",
+        "time_to_collision_sec": 4.63,
+        "miss_distance_pixels": 9.0,
+        "relative_velocity_pixels_sec": [
+          75.6,
+          5.0
+        ],
+        "evasive_vector": [
+          -0.066,
+          0.998
+        ]
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-11-23T12:32:35.947944Z",
+    "satellite_id": "NASA-ORBIT-SURVEILLANCE",
+    "frame_index": 135,
+    "overall_status": "CRITICAL_COLLISION_WARNING",
+    "active_tracks_count": 31,
+    "critical_threats_count": 1,
+    "recommended_action": "EXECUTE_IMPULSIVE_BURN_DIRECTION_[-0.06,+1.00]",
+    "threats": [
+      {
+        "debris_id": 290,
+        "threat_level": "CRITICAL_COLLISION_ALERT",
+        "time_to_collision_sec": 4.04,
+        "miss_distance_pixels": 8.0,
+        "relative_velocity_pixels_sec": [
+          85.8,
+          5.5
+        ],
+        "evasive_vector": [
+          -0.064,
+          0.998
+        ]
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-11-23T12:32:35.999885Z",
+    "satellite_id": "NASA-ORBIT-SURVEILLANCE",
+    "frame_index": 136,
+    "overall_status": "CRITICAL_COLLISION_WARNING",
+    "active_tracks_count": 33,
+    "critical_threats_count": 1,
+    "recommended_action": "EXECUTE_IMPULSIVE_BURN_DIRECTION_[-0.05,+1.00]",
+    "threats": [
+      {
+        "debris_id": 290,
+        "threat_level": "CRITICAL_COLLISION_ALERT",
+        "time_to_collision_sec": 3.58,
+        "miss_distance_pixels": 2.4,
+        "relative_velocity_pixels_sec": [
+          95.8,
+          4.7
+        ],
+        "evasive_vector": [
+          -0.049,
+          0.999
+        ]
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-11-23T12:32:36.061367Z",
+    "satellite_id": "NASA-ORBIT-SURVEILLANCE",
+    "frame_index": 137,
+    "overall_status": "CRITICAL_COLLISION_WARNING",
+    "active_tracks_count": 32,
+    "critical_threats_count": 1,
+    "recommended_action": "EXECUTE_IMPULSIVE_BURN_DIRECTION_[+0.03,+1.00]",
+    "threats": [
+      {
+        "debris_id": 290,
+        "threat_level": "CRITICAL_COLLISION_ALERT",
+        "time_to_collision_sec": 3.13,
+        "miss_distance_pixels": 26.8,
+        "relative_velocity_pixels_sec": [
+          108.2,
+          -3.1
+        ],
+        "evasive_vector": [
+          0.029,
+          1.0
+        ]
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-11-23T12:32:36.120205Z",
+    "satellite_id": "NASA-ORBIT-SURVEILLANCE",
+    "frame_index": 138,
+    "overall_status": "CRITICAL_COLLISION_WARNING",
+    "active_tracks_count": 31,
+    "critical_threats_count": 1,
+    "recommended_action": "EXECUTE_IMPULSIVE_BURN_DIRECTION_[-0.07,+1.00]",
+    "threats": [
+      {
+        "debris_id": 290,
+        "threat_level": "CRITICAL_COLLISION_ALERT",
+        "time_to_collision_sec": 2.95,
+        "miss_distance_pixels": 10.9,
+        "relative_velocity_pixels_sec": [
+          114.0,
+          8.1
+        ],
+        "evasive_vector": [
+          -0.071,
+          0.997
+        ]
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-11-23T12:32:36.161868Z",
+    "satellite_id": "NASA-ORBIT-SURVEILLANCE",
+    "frame_index": 139,
+    "overall_status": "CRITICAL_COLLISION_WARNING",
+    "active_tracks_count": 33,
+    "critical_threats_count": 1,
+    "recommended_action": "EXECUTE_IMPULSIVE_BURN_DIRECTION_[+0.01,+1.00]",
+    "threats": [
+      {
+        "debris_id": 290,
+        "threat_level": "CRITICAL_COLLISION_ALERT",
+        "time_to_collision_sec": 2.58,
+        "miss_distance_pixels": 21.0,
+        "relative_velocity_pixels_sec": [
+          128.9,
+          -1.9
+        ],
+        "evasive_vector": [
+          0.015,
+          1.0
+        ]
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-11-23T12:32:36.207297Z",
+    "satellite_id": "NASA-ORBIT-SURVEILLANCE",
+    "frame_index": 140,
+    "overall_status": "CRITICAL_COLLISION_WARNING",
+    "active_tracks_count": 36,
+    "critical_threats_count": 1,
+    "recommended_action": "EXECUTE_IMPULSIVE_BURN_DIRECTION_[-0.02,+1.00]",
+    "threats": [
+      {
+        "debris_id": 290,
+        "threat_level": "CRITICAL_COLLISION_ALERT",
+        "time_to_collision_sec": 2.4,
+        "miss_distance_pixels": 8.6,
+        "relative_velocity_pixels_sec": [
+          137.7,
+          2.6
+        ],
+        "evasive_vector": [
+          -0.019,
+          1.0
+        ]
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-11-23T12:32:36.258963Z",
+    "satellite_id": "NASA-ORBIT-SURVEILLANCE",
+    "frame_index": 141,
+    "overall_status": "CRITICAL_COLLISION_WARNING",
+    "active_tracks_count": 33,
+    "critical_threats_count": 1,
+    "recommended_action": "EXECUTE_IMPULSIVE_BURN_DIRECTION_[+0.04,+1.00]",
+    "threats": [
+      {
+        "debris_id": 290,
+        "threat_level": "CRITICAL_COLLISION_ALERT",
+        "time_to_collision_sec": 2.04,
+        "miss_distance_pixels": 28.9,
+        "relative_velocity_pixels_sec": [
+          158.3,
+          -5.7
+        ],
+        "evasive_vector": [
+          0.036,
+          0.999
+        ]
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-11-23T12:32:36.318122Z",
+    "satellite_id": "NASA-ORBIT-SURVEILLANCE",
+    "frame_index": 142,
+    "overall_status": "CRITICAL_COLLISION_WARNING",
+    "active_tracks_count": 34,
+    "critical_threats_count": 1,
+    "recommended_action": "EXECUTE_IMPULSIVE_BURN_DIRECTION_[+0.07,+1.00]",
+    "threats": [
+      {
+        "debris_id": 290,
+        "threat_level": "CRITICAL_COLLISION_ALERT",
+        "time_to_collision_sec": 1.93,
+        "miss_distance_pixels": 41.2,
+        "relative_velocity_pixels_sec": [
+          165.5,
+          -11.5
+        ],
+        "evasive_vector": [
+          0.069,
+          0.998
+        ]
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-11-23T12:32:36.380126Z",
+    "satellite_id": "NASA-ORBIT-SURVEILLANCE",
+    "frame_index": 143,
+    "overall_status": "CRITICAL_COLLISION_WARNING",
+    "active_tracks_count": 33,
+    "critical_threats_count": 1,
+    "recommended_action": "EXECUTE_IMPULSIVE_BURN_DIRECTION_[-0.03,+1.00]",
+    "threats": [
+      {
+        "debris_id": 290,
+        "threat_level": "CRITICAL_COLLISION_ALERT",
+        "time_to_collision_sec": 1.9,
+        "miss_distance_pixels": 3.6,
+        "relative_velocity_pixels_sec": [
+          169.0,
+          5.2
+        ],
+        "evasive_vector": [
+          -0.031,
+          1.0
+        ]
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-11-23T12:32:36.429989Z",
+    "satellite_id": "NASA-ORBIT-SURVEILLANCE",
+    "frame_index": 144,
+    "overall_status": "CRITICAL_COLLISION_WARNING",
+    "active_tracks_count": 30,
+    "critical_threats_count": 1,
+    "recommended_action": "EXECUTE_IMPULSIVE_BURN_DIRECTION_[+0.01,+1.00]",
+    "threats": [
+      {
+        "debris_id": 290,
+        "threat_level": "CRITICAL_COLLISION_ALERT",
+        "time_to_collision_sec": 1.76,
+        "miss_distance_pixels": 20.6,
+        "relative_velocity_pixels_sec": [
+          180.3,
+          -2.7
+        ],
+        "evasive_vector": [
+          0.015,
+          1.0
+        ]
+      },
+      {
+        "debris_id": 443,
+        "threat_level": "COLLISION_WARNING",
+        "time_to_collision_sec": 8.16,
+        "miss_distance_pixels": 41.6,
+        "relative_velocity_pixels_sec": [
+          40.8,
+          6.6
+        ],
+        "evasive_vector": [
+          0.159,
+          -0.987
+        ]
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-11-23T12:32:36.482216Z",
+    "satellite_id": "NASA-ORBIT-SURVEILLANCE",
+    "frame_index": 145,
+    "overall_status": "CRITICAL_COLLISION_WARNING",
+    "active_tracks_count": 29,
+    "critical_threats_count": 1,
+    "recommended_action": "EXECUTE_IMPULSIVE_BURN_DIRECTION_[-0.02,+1.00]",
+    "threats": [
+      {
+        "debris_id": 290,
+        "threat_level": "CRITICAL_COLLISION_ALERT",
+        "time_to_collision_sec": 1.65,
+        "miss_distance_pixels": 8.5,
+        "relative_velocity_pixels_sec": [
+          190.1,
+          3.5
+        ],
+        "evasive_vector": [
+          -0.018,
+          1.0
+        ]
+      },
+      {
+        "debris_id": 443,
+        "threat_level": "COLLISION_WARNING",
+        "time_to_collision_sec": 7.91,
+        "miss_distance_pixels": 27.4,
+        "relative_velocity_pixels_sec": [
+          42.7,
+          -1.2
+        ],
+        "evasive_vector": [
+          0.029,
+          1.0
+        ]
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-11-23T12:32:36.532867Z",
+    "satellite_id": "NASA-ORBIT-SURVEILLANCE",
+    "frame_index": 146,
+    "overall_status": "CRITICAL_COLLISION_WARNING",
+    "active_tracks_count": 27,
+    "critical_threats_count": 1,
+    "recommended_action": "EXECUTE_IMPULSIVE_BURN_DIRECTION_[+0.01,+1.00]",
+    "threats": [
+      {
+        "debris_id": 290,
+        "threat_level": "CRITICAL_COLLISION_ALERT",
+        "time_to_collision_sec": 1.49,
+        "miss_distance_pixels": 18.0,
+        "relative_velocity_pixels_sec": [
+          207.9,
+          -1.6
+        ],
+        "evasive_vector": [
+          0.008,
+          1.0
+        ]
+      },
+      {
+        "debris_id": 443,
+        "threat_level": "COLLISION_WARNING",
+        "time_to_collision_sec": 6.27,
+        "miss_distance_pixels": 68.4,
+        "relative_velocity_pixels_sec": [
+          51.5,
+          -7.4
+        ],
+        "evasive_vector": [
+          0.142,
+          0.99
+        ]
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-11-23T12:32:36.589774Z",
+    "satellite_id": "NASA-ORBIT-SURVEILLANCE",
+    "frame_index": 147,
+    "overall_status": "CRITICAL_COLLISION_WARNING",
+    "active_tracks_count": 27,
+    "critical_threats_count": 1,
+    "recommended_action": "EXECUTE_IMPULSIVE_BURN_DIRECTION_[+0.06,+1.00]",
+    "threats": [
+      {
+        "debris_id": 290,
+        "threat_level": "CRITICAL_COLLISION_ALERT",
+        "time_to_collision_sec": 1.38,
+        "miss_distance_pixels": 35.3,
+        "relative_velocity_pixels_sec": [
+          220.1,
+          -12.3
+        ],
+        "evasive_vector": [
+          0.056,
+          0.998
+        ]
+      },
+      {
+        "debris_id": 443,
+        "threat_level": "COLLISION_WARNING",
+        "time_to_collision_sec": 5.02,
+        "miss_distance_pixels": 16.6,
+        "relative_velocity_pixels_sec": [
+          64.7,
+          0.0
+        ],
+        "evasive_vector": [
+          -0.0,
+          1.0
+        ]
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-11-23T12:32:36.632424Z",
+    "satellite_id": "NASA-ORBIT-SURVEILLANCE",
+    "frame_index": 148,
+    "overall_status": "CRITICAL_COLLISION_WARNING",
+    "active_tracks_count": 30,
+    "critical_threats_count": 1,
+    "recommended_action": "EXECUTE_IMPULSIVE_BURN_DIRECTION_[+0.02,+1.00]",
+    "threats": [
+      {
+        "debris_id": 290,
+        "threat_level": "CRITICAL_COLLISION_ALERT",
+        "time_to_collision_sec": 1.3,
+        "miss_distance_pixels": 21.5,
+        "relative_velocity_pixels_sec": [
+          232.7,
+          -4.3
+        ],
+        "evasive_vector": [
+          0.019,
+          1.0
+        ]
+      },
+      {
+        "debris_id": 443,
+        "threat_level": "COLLISION_WARNING",
+        "time_to_collision_sec": 4.61,
+        "miss_distance_pixels": 55.7,
+        "relative_velocity_pixels_sec": [
+          68.7,
+          -7.5
+        ],
+        "evasive_vector": [
+          0.109,
+          0.994
+        ]
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-11-23T12:32:36.676616Z",
+    "satellite_id": "NASA-ORBIT-SURVEILLANCE",
+    "frame_index": 149,
+    "overall_status": "CRITICAL_COLLISION_WARNING",
+    "active_tracks_count": 30,
+    "critical_threats_count": 2,
+    "recommended_action": "EXECUTE_IMPULSIVE_BURN_DIRECTION_[+0.06,+1.00]",
+    "threats": [
+      {
+        "debris_id": 290,
+        "threat_level": "CRITICAL_COLLISION_ALERT",
+        "time_to_collision_sec": 1.2,
+        "miss_distance_pixels": 36.9,
+        "relative_velocity_pixels_sec": [
+          246.9,
+          -15.2
+        ],
+        "evasive_vector": [
+          0.061,
+          0.998
+        ]
+      },
+      {
+        "debris_id": 443,
+        "threat_level": "CRITICAL_COLLISION_ALERT",
+        "time_to_collision_sec": 3.8,
+        "miss_distance_pixels": 15.4,
+        "relative_velocity_pixels_sec": [
+          82.9,
+          0.3
+        ],
+        "evasive_vector": [
+          -0.004,
+          1.0
+        ]
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-11-23T12:32:36.716852Z",
+    "satellite_id": "NASA-ORBIT-SURVEILLANCE",
+    "frame_index": 150,
+    "overall_status": "CRITICAL_COLLISION_WARNING",
+    "active_tracks_count": 34,
+    "critical_threats_count": 2,
+    "recommended_action": "EXECUTE_IMPULSIVE_BURN_DIRECTION_[-0.01,+1.00]",
+    "threats": [
+      {
+        "debris_id": 290,
+        "threat_level": "CRITICAL_COLLISION_ALERT",
+        "time_to_collision_sec": 1.09,
+        "miss_distance_pixels": 12.1,
+        "relative_velocity_pixels_sec": [
+          268.4,
+          1.7
+        ],
+        "evasive_vector": [
+          -0.006,
+          1.0
+        ]
+      },
+      {
+        "debris_id": 443,
+        "threat_level": "CRITICAL_COLLISION_ALERT",
+        "time_to_collision_sec": 3.72,
+        "miss_distance_pixels": 43.7,
+        "relative_velocity_pixels_sec": [
+          83.6,
+          -6.4
+        ],
+        "evasive_vector": [
+          0.077,
+          0.997
+        ]
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-11-23T12:32:36.758731Z",
+    "satellite_id": "NASA-ORBIT-SURVEILLANCE",
+    "frame_index": 151,
+    "overall_status": "CRITICAL_COLLISION_WARNING",
+    "active_tracks_count": 34,
+    "critical_threats_count": 2,
+    "recommended_action": "EXECUTE_IMPULSIVE_BURN_DIRECTION_[+0.05,+1.00]",
+    "threats": [
+      {
+        "debris_id": 290,
+        "threat_level": "CRITICAL_COLLISION_ALERT",
+        "time_to_collision_sec": 1.05,
+        "miss_distance_pixels": 32.1,
+        "relative_velocity_pixels_sec": [
+          275.9,
+          -13.6
+        ],
+        "evasive_vector": [
+          0.049,
+          0.999
+        ]
+      },
+      {
+        "debris_id": 443,
+        "threat_level": "CRITICAL_COLLISION_ALERT",
+        "time_to_collision_sec": 3.46,
+        "miss_distance_pixels": 73.4,
+        "relative_velocity_pixels_sec": [
+          86.8,
+          -14.2
+        ],
+        "evasive_vector": [
+          0.161,
+          0.987
+        ]
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-11-23T12:32:36.810925Z",
+    "satellite_id": "NASA-ORBIT-SURVEILLANCE",
+    "frame_index": 152,
+    "overall_status": "CRITICAL_COLLISION_WARNING",
+    "active_tracks_count": 36,
+    "critical_threats_count": 2,
+    "recommended_action": "EXECUTE_IMPULSIVE_BURN_DIRECTION_[+0.02,+1.00]",
+    "threats": [
+      {
+        "debris_id": 290,
+        "threat_level": "CRITICAL_COLLISION_ALERT",
+        "time_to_collision_sec": 1.04,
+        "miss_distance_pixels": 21.4,
+        "relative_velocity_pixels_sec": [
+          277.3,
+          -5.5
+        ],
+        "evasive_vector": [
+          0.02,
+          1.0
+        ]
+      },
+      {
+        "debris_id": 443,
+        "threat_level": "CRITICAL_COLLISION_ALERT",
+        "time_to_collision_sec": 3.57,
+        "miss_distance_pixels": 51.3,
+        "relative_velocity_pixels_sec": [
+          86.3,
+          -8.6
+        ],
+        "evasive_vector": [
+          0.099,
+          0.995
+        ]
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-11-23T12:32:36.870173Z",
+    "satellite_id": "NASA-ORBIT-SURVEILLANCE",
+    "frame_index": 153,
+    "overall_status": "CRITICAL_COLLISION_WARNING",
+    "active_tracks_count": 35,
+    "critical_threats_count": 2,
+    "recommended_action": "EXECUTE_IMPULSIVE_BURN_DIRECTION_[+0.00,+1.00]",
+    "threats": [
+      {
+        "debris_id": 290,
+        "threat_level": "CRITICAL_COLLISION_ALERT",
+        "time_to_collision_sec": 1.01,
+        "miss_distance_pixels": 14.4,
+        "relative_velocity_pixels_sec": [
+          283.6,
+          -0.3
+        ],
+        "evasive_vector": [
+          0.001,
+          1.0
+        ]
+      },
+      {
+        "debris_id": 443,
+        "threat_level": "CRITICAL_COLLISION_ALERT",
+        "time_to_collision_sec": 3.14,
+        "miss_distance_pixels": 73.3,
+        "relative_velocity_pixels_sec": [
+          94.3,
+          -15.3
+        ],
+        "evasive_vector": [
+          0.16,
+          0.987
+        ]
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-11-23T12:32:36.921454Z",
+    "satellite_id": "NASA-ORBIT-SURVEILLANCE",
+    "frame_index": 154,
+    "overall_status": "CRITICAL_COLLISION_WARNING",
+    "active_tracks_count": 35,
+    "critical_threats_count": 2,
+    "recommended_action": "EXECUTE_IMPULSIVE_BURN_DIRECTION_[+0.01,+1.00]",
+    "threats": [
+      {
+        "debris_id": 290,
+        "threat_level": "CRITICAL_COLLISION_ALERT",
+        "time_to_collision_sec": 0.95,
+        "miss_distance_pixels": 17.8,
+        "relative_velocity_pixels_sec": [
+          299.0,
+          -3.2
+        ],
+        "evasive_vector": [
+          0.011,
+          1.0
+        ]
+      },
+      {
+        "debris_id": 443,
+        "threat_level": "CRITICAL_COLLISION_ALERT",
+        "time_to_collision_sec": 3.11,
+        "miss_distance_pixels": 47.4,
+        "relative_velocity_pixels_sec": [
+          97.2,
+          -8.5
+        ],
+        "evasive_vector": [
+          0.087,
+          0.996
+        ]
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-11-23T12:32:36.963441Z",
+    "satellite_id": "NASA-ORBIT-SURVEILLANCE",
+    "frame_index": 155,
+    "overall_status": "CRITICAL_COLLISION_WARNING",
+    "active_tracks_count": 37,
+    "critical_threats_count": 2,
+    "recommended_action": "EXECUTE_IMPULSIVE_BURN_DIRECTION_[-0.01,+1.00]",
+    "threats": [
+      {
+        "debris_id": 290,
+        "threat_level": "CRITICAL_COLLISION_ALERT",
+        "time_to_collision_sec": 0.91,
+        "miss_distance_pixels": 9.9,
+        "relative_velocity_pixels_sec": [
+          309.2,
+          3.6
+        ],
+        "evasive_vector": [
+          -0.012,
+          1.0
+        ]
+      },
+      {
+        "debris_id": 443,
+        "threat_level": "CRITICAL_COLLISION_ALERT",
+        "time_to_collision_sec": 2.7,
+        "miss_distance_pixels": 67.2,
+        "relative_velocity_pixels_sec": [
+          107.7,
+          -15.4
+        ],
+        "evasive_vector": [
+          0.142,
+          0.99
+        ]
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-11-23T12:32:37.006477Z",
+    "satellite_id": "NASA-ORBIT-SURVEILLANCE",
+    "frame_index": 156,
+    "overall_status": "CRITICAL_COLLISION_WARNING",
+    "active_tracks_count": 35,
+    "critical_threats_count": 2,
+    "recommended_action": "EXECUTE_IMPULSIVE_BURN_DIRECTION_[+0.01,+1.00]",
+    "threats": [
+      {
+        "debris_id": 290,
+        "threat_level": "CRITICAL_COLLISION_ALERT",
+        "time_to_collision_sec": 0.82,
+        "miss_distance_pixels": 15.4,
+        "relative_velocity_pixels_sec": [
+          335.6,
+          -1.5
+        ],
+        "evasive_vector": [
+          0.005,
+          1.0
+        ]
+      },
+      {
+        "debris_id": 443,
+        "threat_level": "CRITICAL_COLLISION_ALERT",
+        "time_to_collision_sec": 2.64,
+        "miss_distance_pixels": 44.5,
+        "relative_velocity_pixels_sec": [
+          111.6,
+          -8.6
+        ],
+        "evasive_vector": [
+          0.077,
+          0.997
+        ]
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-11-23T12:32:37.054088Z",
+    "satellite_id": "NASA-ORBIT-SURVEILLANCE",
+    "frame_index": 157,
+    "overall_status": "CRITICAL_COLLISION_WARNING",
+    "active_tracks_count": 36,
+    "critical_threats_count": 2,
+    "recommended_action": "EXECUTE_IMPULSIVE_BURN_DIRECTION_[+0.05,+1.00]",
+    "threats": [
+      {
+        "debris_id": 290,
+        "threat_level": "CRITICAL_COLLISION_ALERT",
+        "time_to_collision_sec": 0.78,
+        "miss_distance_pixels": 29.7,
+        "relative_velocity_pixels_sec": [
+          347.6,
+          -16.2
+        ],
+        "evasive_vector": [
+          0.047,
+          0.999
+        ]
+      },
+      {
+        "debris_id": 443,
+        "threat_level": "CRITICAL_COLLISION_ALERT",
+        "time_to_collision_sec": 2.36,
+        "miss_distance_pixels": 61.0,
+        "relative_velocity_pixels_sec": [
+          121.0,
+          -15.0
+        ],
+        "evasive_vector": [
+          0.123,
+          0.992
+        ]
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-11-23T12:32:37.096624Z",
+    "satellite_id": "NASA-ORBIT-SURVEILLANCE",
+    "frame_index": 158,
+    "overall_status": "CRITICAL_COLLISION_WARNING",
+    "active_tracks_count": 35,
+    "critical_threats_count": 2,
+    "recommended_action": "EXECUTE_IMPULSIVE_BURN_DIRECTION_[+0.03,+1.00]",
+    "threats": [
+      {
+        "debris_id": 290,
+        "threat_level": "CRITICAL_COLLISION_ALERT",
+        "time_to_collision_sec": 0.72,
+        "miss_distance_pixels": 23.1,
+        "relative_velocity_pixels_sec": [
+          370.6,
+          -10.1
+        ],
+        "evasive_vector": [
+          0.027,
+          1.0
+        ]
+      },
+      {
+        "debris_id": 443,
+        "threat_level": "CRITICAL_COLLISION_ALERT",
+        "time_to_collision_sec": 2.25,
+        "miss_distance_pixels": 45.2,
+        "relative_velocity_pixels_sec": [
+          127.1,
+          -10.0
+        ],
+        "evasive_vector": [
+          0.078,
+          0.997
+        ]
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-11-23T12:32:37.138198Z",
+    "satellite_id": "NASA-ORBIT-SURVEILLANCE",
+    "frame_index": 159,
+    "overall_status": "CRITICAL_COLLISION_WARNING",
+    "active_tracks_count": 32,
+    "critical_threats_count": 1,
+    "recommended_action": "EXECUTE_IMPULSIVE_BURN_DIRECTION_[+0.04,+1.00]",
+    "threats": [
+      {
+        "debris_id": 290,
+        "threat_level": "CRITICAL_COLLISION_ALERT",
+        "time_to_collision_sec": 0.83,
+        "miss_distance_pixels": 26.9,
+        "relative_velocity_pixels_sec": [
+          330.6,
+          -12.7
+        ],
+        "evasive_vector": [
+          0.038,
+          0.999
+        ]
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-11-23T12:32:37.192235Z",
+    "satellite_id": "NASA-ORBIT-SURVEILLANCE",
+    "frame_index": 160,
+    "overall_status": "CRITICAL_COLLISION_WARNING",
+    "active_tracks_count": 37,
+    "critical_threats_count": 1,
+    "recommended_action": "EXECUTE_IMPULSIVE_BURN_DIRECTION_[+0.14,+0.99]",
+    "threats": [
+      {
+        "debris_id": 290,
+        "threat_level": "CRITICAL_COLLISION_ALERT",
+        "time_to_collision_sec": 0.9,
+        "miss_distance_pixels": 60.6,
+        "relative_velocity_pixels_sec": [
+          300.9,
+          -41.7
+        ],
+        "evasive_vector": [
+          0.137,
+          0.991
+        ]
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-11-23T12:32:37.243020Z",
+    "satellite_id": "NASA-ORBIT-SURVEILLANCE",
+    "frame_index": 161,
+    "overall_status": "CRITICAL_COLLISION_WARNING",
+    "active_tracks_count": 34,
+    "critical_threats_count": 1,
+    "recommended_action": "EXECUTE_IMPULSIVE_BURN_DIRECTION_[+0.09,+1.00]",
+    "threats": [
+      {
+        "debris_id": 290,
+        "threat_level": "CRITICAL_COLLISION_ALERT",
+        "time_to_collision_sec": 0.84,
+        "miss_distance_pixels": 43.1,
+        "relative_velocity_pixels_sec": [
+          323.3,
+          -28.1
+        ],
+        "evasive_vector": [
+          0.087,
+          0.996
+        ]
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-11-23T12:32:37.290181Z",
+    "satellite_id": "NASA-ORBIT-SURVEILLANCE",
+    "frame_index": 162,
+    "overall_status": "CRITICAL_COLLISION_WARNING",
+    "active_tracks_count": 34,
+    "critical_threats_count": 1,
+    "recommended_action": "EXECUTE_IMPULSIVE_BURN_DIRECTION_[+0.15,+0.99]",
+    "threats": [
+      {
+        "debris_id": 290,
+        "threat_level": "CRITICAL_COLLISION_ALERT",
+        "time_to_collision_sec": 0.83,
+        "miss_distance_pixels": 63.6,
+        "relative_velocity_pixels_sec": [
+          319.9,
+          -47.2
+        ],
+        "evasive_vector": [
+          0.146,
+          0.989
+        ]
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-11-23T12:32:37.329109Z",
+    "satellite_id": "NASA-ORBIT-SURVEILLANCE",
+    "frame_index": 163,
+    "overall_status": "SAFE",
+    "active_tracks_count": 36,
+    "critical_threats_count": 0,
+    "recommended_action": "CONTINUE_NOMINAL_ATTITUDE",
+    "threats": []
+  },
+  {
+    "timestamp": "2026-11-23T12:32:37.369122Z",
+    "satellite_id": "NASA-ORBIT-SURVEILLANCE",
+    "frame_index": 164,
+    "overall_status": "SAFE",
+    "active_tracks_count": 36,
+    "critical_threats_count": 0,
+    "recommended_action": "CONTINUE_NOMINAL_ATTITUDE",
+    "threats": []
+  },
+  {
+    "timestamp": "2026-11-23T12:32:37.422907Z",
+    "satellite_id": "NASA-ORBIT-SURVEILLANCE",
+    "frame_index": 165,
+    "overall_status": "SAFE",
+    "active_tracks_count": 35,
+    "critical_threats_count": 0,
+    "recommended_action": "CONTINUE_NOMINAL_ATTITUDE",
+    "threats": []
+  },
+  {
+    "timestamp": "2026-11-23T12:32:37.480828Z",
+    "satellite_id": "NASA-ORBIT-SURVEILLANCE",
+    "frame_index": 166,
+    "overall_status": "SAFE",
+    "active_tracks_count": 33,
+    "critical_threats_count": 0,
+    "recommended_action": "CONTINUE_NOMINAL_ATTITUDE",
+    "threats": []
+  },
+  {
+    "timestamp": "2026-11-23T12:32:37.525973Z",
+    "satellite_id": "NASA-ORBIT-SURVEILLANCE",
+    "frame_index": 167,
+    "overall_status": "SAFE",
+    "active_tracks_count": 34,
+    "critical_threats_count": 0,
+    "recommended_action": "CONTINUE_NOMINAL_ATTITUDE",
+    "threats": []
+  },
+  {
+    "timestamp": "2026-11-23T12:32:37.568523Z",
+    "satellite_id": "NASA-ORBIT-SURVEILLANCE",
+    "frame_index": 168,
+    "overall_status": "SAFE",
+    "active_tracks_count": 32,
+    "critical_threats_count": 0,
+    "recommended_action": "CONTINUE_NOMINAL_ATTITUDE",
+    "threats": []
+  },
+  {
+    "timestamp": "2026-11-23T12:32:37.613938Z",
+    "satellite_id": "NASA-ORBIT-SURVEILLANCE",
+    "frame_index": 169,
+    "overall_status": "SAFE",
+    "active_tracks_count": 36,
+    "critical_threats_count": 0,
+    "recommended_action": "CONTINUE_NOMINAL_ATTITUDE",
+    "threats": []
+  },
+  {
+    "timestamp": "2026-11-23T12:32:37.656240Z",
+    "satellite_id": "NASA-ORBIT-SURVEILLANCE",
+    "frame_index": 170,
+    "overall_status": "SAFE",
+    "active_tracks_count": 33,
+    "critical_threats_count": 0,
+    "recommended_action": "CONTINUE_NOMINAL_ATTITUDE",
+    "threats": []
+  },
+  {
+    "timestamp": "2026-11-23T12:32:37.697004Z",
+    "satellite_id": "NASA-ORBIT-SURVEILLANCE",
+    "frame_index": 171,
+    "overall_status": "SAFE",
+    "active_tracks_count": 34,
+    "critical_threats_count": 0,
+    "recommended_action": "CONTINUE_NOMINAL_ATTITUDE",
+    "threats": []
+  },
+  {
+    "timestamp": "2026-11-23T12:32:37.751271Z",
+    "satellite_id": "NASA-ORBIT-SURVEILLANCE",
+    "frame_index": 172,
+    "overall_status": "COLLISION_WARNING_MONITORING",
+    "active_tracks_count": 33,
+    "critical_threats_count": 0,
+    "recommended_action": "CHARGE_PROPULSION_PREPARE_MANEUVER",
+    "threats": [
+      {
+        "debris_id": 515,
+        "threat_level": "COLLISION_WARNING",
+        "time_to_collision_sec": 6.98,
+        "miss_distance_pixels": 35.0,
+        "relative_velocity_pixels_sec": [
+          31.6,
+          -2.1
+        ],
+        "evasive_vector": [
+          0.065,
+          0.998
+        ]
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-11-23T12:32:37.802873Z",
+    "satellite_id": "NASA-ORBIT-SURVEILLANCE",
+    "frame_index": 173,
+    "overall_status": "COLLISION_WARNING_MONITORING",
+    "active_tracks_count": 36,
+    "critical_threats_count": 0,
+    "recommended_action": "CHARGE_PROPULSION_PREPARE_MANEUVER",
+    "threats": [
+      {
+        "debris_id": 515,
+        "threat_level": "COLLISION_WARNING",
+        "time_to_collision_sec": 5.74,
+        "miss_distance_pixels": 68.6,
+        "relative_velocity_pixels_sec": [
+          35.9,
+          -7.5
+        ],
+        "evasive_vector": [
+          0.205,
+          0.979
+        ]
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-11-23T12:32:37.844065Z",
+    "satellite_id": "NASA-ORBIT-SURVEILLANCE",
+    "frame_index": 174,
+    "overall_status": "COLLISION_WARNING_MONITORING",
+    "active_tracks_count": 36,
+    "critical_threats_count": 0,
+    "recommended_action": "CHARGE_PROPULSION_PREPARE_MANEUVER",
+    "threats": [
+      {
+        "debris_id": 515,
+        "threat_level": "COLLISION_WARNING",
+        "time_to_collision_sec": 5.06,
+        "miss_distance_pixels": 54.7,
+        "relative_velocity_pixels_sec": [
+          41.3,
+          -6.1
+        ],
+        "evasive_vector": [
+          0.147,
+          0.989
+        ]
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-11-23T12:32:37.885769Z",
+    "satellite_id": "NASA-ORBIT-SURVEILLANCE",
+    "frame_index": 175,
+    "overall_status": "COLLISION_WARNING_MONITORING",
+    "active_tracks_count": 32,
+    "critical_threats_count": 0,
+    "recommended_action": "CHARGE_PROPULSION_PREPARE_MANEUVER",
+    "threats": [
+      {
+        "debris_id": 515,
+        "threat_level": "COLLISION_WARNING",
+        "time_to_collision_sec": 5.18,
+        "miss_distance_pixels": 36.5,
+        "relative_velocity_pixels_sec": [
+          41.4,
+          -2.9
+        ],
+        "evasive_vector": [
+          0.071,
+          0.997
+        ]
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-11-23T12:32:37.932713Z",
+    "satellite_id": "NASA-ORBIT-SURVEILLANCE",
+    "frame_index": 176,
+    "overall_status": "CRITICAL_COLLISION_WARNING",
+    "active_tracks_count": 34,
+    "critical_threats_count": 1,
+    "recommended_action": "EXECUTE_IMPULSIVE_BURN_DIRECTION_[+0.23,+0.97]",
+    "threats": [
+      {
+        "debris_id": 515,
+        "threat_level": "CRITICAL_COLLISION_ALERT",
+        "time_to_collision_sec": 3.81,
+        "miss_distance_pixels": 72.8,
+        "relative_velocity_pixels_sec": [
+          51.3,
+          -11.9
+        ],
+        "evasive_vector": [
+          0.226,
+          0.974
+        ]
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-11-23T12:32:37.982014Z",
+    "satellite_id": "NASA-ORBIT-SURVEILLANCE",
+    "frame_index": 177,
+    "overall_status": "CRITICAL_COLLISION_WARNING",
+    "active_tracks_count": 32,
+    "critical_threats_count": 1,
+    "recommended_action": "EXECUTE_IMPULSIVE_BURN_DIRECTION_[+0.27,+0.96]",
+    "threats": [
+      {
+        "debris_id": 515,
+        "threat_level": "CRITICAL_COLLISION_ALERT",
+        "time_to_collision_sec": 3.26,
+        "miss_distance_pixels": 83.7,
+        "relative_velocity_pixels_sec": [
+          57.0,
+          -16.1
+        ],
+        "evasive_vector": [
+          0.272,
+          0.962
+        ]
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-11-23T12:32:38.039023Z",
+    "satellite_id": "NASA-ORBIT-SURVEILLANCE",
+    "frame_index": 178,
+    "overall_status": "CRITICAL_COLLISION_WARNING",
+    "active_tracks_count": 34,
+    "critical_threats_count": 1,
+    "recommended_action": "EXECUTE_IMPULSIVE_BURN_DIRECTION_[+0.16,+0.99]",
+    "threats": [
+      {
+        "debris_id": 515,
+        "threat_level": "CRITICAL_COLLISION_ALERT",
+        "time_to_collision_sec": 3.27,
+        "miss_distance_pixels": 57.9,
+        "relative_velocity_pixels_sec": [
+          60.3,
+          -10.0
+        ],
+        "evasive_vector": [
+          0.164,
+          0.986
+        ]
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-11-23T12:32:38.099418Z",
+    "satellite_id": "NASA-ORBIT-SURVEILLANCE",
+    "frame_index": 179,
+    "overall_status": "COLLISION_WARNING_MONITORING",
+    "active_tracks_count": 31,
+    "critical_threats_count": 0,
+    "recommended_action": "CHARGE_PROPULSION_PREPARE_MANEUVER",
+    "threats": [
+      {
+        "debris_id": 515,
+        "threat_level": "COLLISION_WARNING",
+        "time_to_collision_sec": 4.72,
+        "miss_distance_pixels": 108.2,
+        "relative_velocity_pixels_sec": [
+          37.5,
+          -15.5
+        ],
+        "evasive_vector": [
+          0.381,
+          0.925
+        ]
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-11-23T12:32:38.149418Z",
+    "satellite_id": "NASA-ORBIT-SURVEILLANCE",
+    "frame_index": 180,
+    "overall_status": "COLLISION_WARNING_MONITORING",
+    "active_tracks_count": 38,
+    "critical_threats_count": 0,
+    "recommended_action": "CHARGE_PROPULSION_PREPARE_MANEUVER",
+    "threats": [
+      {
+        "debris_id": 515,
+        "threat_level": "COLLISION_WARNING",
+        "time_to_collision_sec": 4.71,
+        "miss_distance_pixels": 131.3,
+        "relative_velocity_pixels_sec": [
+          33.4,
+          -18.3
+        ],
+        "evasive_vector": [
+          0.481,
+          0.877
+        ]
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-11-23T12:32:38.199851Z",
+    "satellite_id": "NASA-ORBIT-SURVEILLANCE",
+    "frame_index": 181,
+    "overall_status": "SAFE",
+    "active_tracks_count": 33,
+    "critical_threats_count": 0,
+    "recommended_action": "CONTINUE_NOMINAL_ATTITUDE",
+    "threats": []
+  },
+  {
+    "timestamp": "2026-11-23T12:32:38.246296Z",
+    "satellite_id": "NASA-ORBIT-SURVEILLANCE",
+    "frame_index": 182,
+    "overall_status": "SAFE",
+    "active_tracks_count": 35,
+    "critical_threats_count": 0,
+    "recommended_action": "CONTINUE_NOMINAL_ATTITUDE",
+    "threats": []
+  },
+  {
+    "timestamp": "2026-11-23T12:32:38.296488Z",
+    "satellite_id": "NASA-ORBIT-SURVEILLANCE",
+    "frame_index": 183,
+    "overall_status": "SAFE",
+    "active_tracks_count": 31,
+    "critical_threats_count": 0,
+    "recommended_action": "CONTINUE_NOMINAL_ATTITUDE",
+    "threats": []
+  },
+  {
+    "timestamp": "2026-11-23T12:32:38.344941Z",
+    "satellite_id": "NASA-ORBIT-SURVEILLANCE",
+    "frame_index": 184,
+    "overall_status": "SAFE",
+    "active_tracks_count": 32,
+    "critical_threats_count": 0,
+    "recommended_action": "CONTINUE_NOMINAL_ATTITUDE",
+    "threats": []
+  },
+  {
+    "timestamp": "2026-11-23T12:32:38.385623Z",
+    "satellite_id": "NASA-ORBIT-SURVEILLANCE",
+    "frame_index": 185,
+    "overall_status": "SAFE",
+    "active_tracks_count": 31,
+    "critical_threats_count": 0,
+    "recommended_action": "CONTINUE_NOMINAL_ATTITUDE",
+    "threats": []
+  },
+  {
+    "timestamp": "2026-11-23T12:32:38.429278Z",
+    "satellite_id": "NASA-ORBIT-SURVEILLANCE",
+    "frame_index": 186,
+    "overall_status": "SAFE",
+    "active_tracks_count": 32,
+    "critical_threats_count": 0,
+    "recommended_action": "CONTINUE_NOMINAL_ATTITUDE",
+    "threats": []
+  },
+  {
+    "timestamp": "2026-11-23T12:32:38.487725Z",
+    "satellite_id": "NASA-ORBIT-SURVEILLANCE",
+    "frame_index": 187,
+    "overall_status": "SAFE",
+    "active_tracks_count": 28,
+    "critical_threats_count": 0,
+    "recommended_action": "CONTINUE_NOMINAL_ATTITUDE",
+    "threats": []
+  },
+  {
+    "timestamp": "2026-11-23T12:32:38.536010Z",
+    "satellite_id": "NASA-ORBIT-SURVEILLANCE",
+    "frame_index": 188,
+    "overall_status": "SAFE",
+    "active_tracks_count": 30,
+    "critical_threats_count": 0,
+    "recommended_action": "CONTINUE_NOMINAL_ATTITUDE",
+    "threats": []
+  },
+  {
+    "timestamp": "2026-11-23T12:32:38.575723Z",
+    "satellite_id": "NASA-ORBIT-SURVEILLANCE",
+    "frame_index": 189,
+    "overall_status": "SAFE",
+    "active_tracks_count": 29,
+    "critical_threats_count": 0,
+    "recommended_action": "CONTINUE_NOMINAL_ATTITUDE",
+    "threats": []
+  },
+  {
+    "timestamp": "2026-11-23T12:32:38.610928Z",
+    "satellite_id": "NASA-ORBIT-SURVEILLANCE",
+    "frame_index": 190,
+    "overall_status": "SAFE",
+    "active_tracks_count": 30,
+    "critical_threats_count": 0,
+    "recommended_action": "CONTINUE_NOMINAL_ATTITUDE",
+    "threats": []
+  },
+  {
+    "timestamp": "2026-11-23T12:32:38.658695Z",
+    "satellite_id": "NASA-ORBIT-SURVEILLANCE",
+    "frame_index": 191,
+    "overall_status": "SAFE",
+    "active_tracks_count": 31,
+    "critical_threats_count": 0,
+    "recommended_action": "CONTINUE_NOMINAL_ATTITUDE",
+    "threats": []
+  },
+  {
+    "timestamp": "2026-11-23T12:32:38.702322Z",
+    "satellite_id": "NASA-ORBIT-SURVEILLANCE",
+    "frame_index": 192,
+    "overall_status": "SAFE",
+    "active_tracks_count": 31,
+    "critical_threats_count": 0,
+    "recommended_action": "CONTINUE_NOMINAL_ATTITUDE",
+    "threats": []
+  },
+  {
+    "timestamp": "2026-11-23T12:32:38.812541Z",
+    "satellite_id": "NASA-ORBIT-SURVEILLANCE",
+    "frame_index": 193,
+    "overall_status": "SAFE",
+    "active_tracks_count": 26,
+    "critical_threats_count": 0,
+    "recommended_action": "CONTINUE_NOMINAL_ATTITUDE",
+    "threats": []
+  },
+  {
+    "timestamp": "2026-11-23T12:32:38.853817Z",
+    "satellite_id": "NASA-ORBIT-SURVEILLANCE",
+    "frame_index": 194,
+    "overall_status": "SAFE",
+    "active_tracks_count": 26,
+    "critical_threats_count": 0,
+    "recommended_action": "CONTINUE_NOMINAL_ATTITUDE",
+    "threats": []
+  },
+  {
+    "timestamp": "2026-11-23T12:32:38.888220Z",
+    "satellite_id": "NASA-ORBIT-SURVEILLANCE",
+    "frame_index": 195,
+    "overall_status": "SAFE",
+    "active_tracks_count": 26,
+    "critical_threats_count": 0,
+    "recommended_action": "CONTINUE_NOMINAL_ATTITUDE",
+    "threats": []
+  },
+  {
+    "timestamp": "2026-11-23T12:32:38.933195Z",
+    "satellite_id": "NASA-ORBIT-SURVEILLANCE",
+    "frame_index": 196,
+    "overall_status": "SAFE",
+    "active_tracks_count": 30,
+    "critical_threats_count": 0,
+    "recommended_action": "CONTINUE_NOMINAL_ATTITUDE",
+    "threats": []
+  },
+  {
+    "timestamp": "2026-11-23T12:32:38.979465Z",
+    "satellite_id": "NASA-ORBIT-SURVEILLANCE",
+    "frame_index": 197,
+    "overall_status": "SAFE",
+    "active_tracks_count": 26,
+    "critical_threats_count": 0,
+    "recommended_action": "CONTINUE_NOMINAL_ATTITUDE",
+    "threats": []
+  },
+  {
+    "timestamp": "2026-11-23T12:32:39.029265Z",
+    "satellite_id": "NASA-ORBIT-SURVEILLANCE",
+    "frame_index": 198,
+    "overall_status": "COLLISION_WARNING_MONITORING",
+    "active_tracks_count": 27,
+    "critical_threats_count": 0,
+    "recommended_action": "CHARGE_PROPULSION_PREPARE_MANEUVER",
+    "threats": [
+      {
+        "debris_id": 558,
+        "threat_level": "COLLISION_WARNING",
+        "time_to_collision_sec": 9.4,
+        "miss_distance_pixels": 106.9,
+        "relative_velocity_pixels_sec": [
+          16.0,
+          -7.2
+        ],
+        "evasive_vector": [
+          0.412,
+          0.911
+        ]
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-11-23T12:32:39.081376Z",
+    "satellite_id": "NASA-ORBIT-SURVEILLANCE",
+    "frame_index": 199,
+    "overall_status": "COLLISION_WARNING_MONITORING",
+    "active_tracks_count": 26,
+    "critical_threats_count": 0,
+    "recommended_action": "CHARGE_PROPULSION_PREPARE_MANEUVER",
+    "threats": [
+      {
+        "debris_id": 558,
+        "threat_level": "COLLISION_WARNING",
+        "time_to_collision_sec": 7.57,
+        "miss_distance_pixels": 103.8,
+        "relative_velocity_pixels_sec": [
+          20.0,
+          -8.6
+        ],
+        "evasive_vector": [
+          0.396,
+          0.918
+        ]
+      }
+    ]
+  }
+]

@@ -72,6 +72,12 @@ class SpaceDebrisVideoPipeline:
             frame = cv2.cvtColor(frame, cv2.COLOR_GRAY2BGR)
 
         h, w = frame.shape[:2]
+        if self.risk_analyzer.width != w or self.risk_analyzer.height != h:
+            self.risk_analyzer.width = w
+            self.risk_analyzer.height = h
+            self.risk_analyzer.center = np.array([w / 2.0, h / 2.0], dtype=np.float32)
+            self.risk_analyzer.safety_radius = min(w, h) * 0.12
+            self.risk_analyzer.caution_radius = min(w, h) * 0.25
 
         # ── 1. Inference with P2-Head Model ──────────────────────────────────
         results = self.model.predict(
@@ -285,6 +291,86 @@ class SpaceDebrisVideoPipeline:
 
         # Save flight telemetry log
         telemetry_file = os.path.join(output_dir, "flight_telemetry_log.json")
+        with open(telemetry_file, "w") as f:
+            json.dump(self.telemetry_history, f, indent=2)
+        print(f"  📡 Generated Flight Telemetry Log: {telemetry_file}")
+
+        return self.telemetry_history
+
+    def run_on_video(
+        self,
+        video_path: str,
+        output_video_path: Optional[str] = None,
+        max_frames: Optional[int] = None,
+        save_keyframes: bool = True,
+        output_dir: str = "output",
+        target_fps: Optional[float] = None,
+    ) -> List[Dict]:
+        """
+        Processes a full video file in a memory-efficient streaming manner.
+        """
+        os.makedirs(output_dir, exist_ok=True)
+        self.tracker.reset()
+        self.telemetry_history = []
+
+        cap = cv2.VideoCapture(video_path)
+        if not cap.isOpened():
+            raise FileNotFoundError(f"Cannot open video file: {video_path}")
+
+        total_frames = int(cap.get(cv2.CAP_PROP_FRAME_COUNT))
+        src_fps = cap.get(cv2.CAP_PROP_FPS) or 30.0
+        self.fps = target_fps if target_fps else src_fps
+        self.tracker.frame_rate = int(self.fps)
+        self.risk_analyzer.fps = self.fps
+
+        w = int(cap.get(cv2.CAP_PROP_FRAME_WIDTH))
+        h = int(cap.get(cv2.CAP_PROP_FRAME_HEIGHT))
+
+        frames_to_process = min(total_frames, max_frames) if max_frames else total_frames
+        print(f"\n🚀 Processing video stream: {video_path}")
+        print(f"   Resolution: {w}x{h} | Source FPS: {src_fps:.1f} | Frames to process: {frames_to_process}")
+
+        writer = None
+        if output_video_path:
+            fourcc = cv2.VideoWriter_fourcc(*"mp4v")
+            writer = cv2.VideoWriter(output_video_path, fourcc, self.fps, (w, h))
+
+        f_idx = 0
+        critical_saved = False
+        nominal_saved = False
+
+        while cap.isOpened():
+            ret, frame = cap.read()
+            if not ret or (max_frames and f_idx >= max_frames):
+                break
+
+            ann_frame, telemetry = self.process_frame(frame, f_idx)
+
+            if writer:
+                writer.write(ann_frame)
+
+            if save_keyframes:
+                if telemetry["critical_threats_count"] > 0 and not critical_saved:
+                    path_crit = os.path.join(output_dir, "real_video_hud_critical.jpg")
+                    cv2.imwrite(path_crit, ann_frame)
+                    critical_saved = True
+                    print(f"  🚨 Saved Critical Alert Keyframe: {path_crit}")
+                elif telemetry["active_tracks_count"] > 0 and not nominal_saved and f_idx > 5:
+                    path_nom = os.path.join(output_dir, "real_video_hud_tracking.jpg")
+                    cv2.imwrite(path_nom, ann_frame)
+                    nominal_saved = True
+                    print(f"  🛰️ Saved Active Tracking Keyframe: {path_nom}")
+
+            f_idx += 1
+            if f_idx % 50 == 0 or f_idx == frames_to_process:
+                print(f"   Processed frame {f_idx}/{frames_to_process} ({f_idx*100.0/frames_to_process:.1f}%) | Active tracks: {telemetry['active_tracks_count']}")
+
+        cap.release()
+        if writer:
+            writer.release()
+            print(f"  🎬 Exported Tracked Video to: {output_video_path}")
+
+        telemetry_file = os.path.join(output_dir, "real_video_telemetry_log.json")
         with open(telemetry_file, "w") as f:
             json.dump(self.telemetry_history, f, indent=2)
         print(f"  📡 Generated Flight Telemetry Log: {telemetry_file}")
